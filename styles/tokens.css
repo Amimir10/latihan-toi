@@ -1,0 +1,139 @@
+@layer tokens;
+
+:root {
+  --color-paper-50: #FAF6EB;
+  --color-paper-100: #EBE2CC;
+  --color-paper-200: #DED6C1;
+  --color-paper-800: #2A261D;
+  --color-paper-900: #1F1C15;
+  --color-paper-950: #171510;
+  
+  --color-ink-50: #EBE2CC;
+  --color-ink-100: #d6ccb5;
+  --color-ink-300: #B7B09E;
+  --color-ink-500: #8A836F;
+  --color-ink-600: #5E5844;
+  --color-ink-900: #2E2A1F;
+
+  --color-line-200: #DED6C1;
+  --color-line-300: #CFC6B1;
+  --color-line-400: #B7B09E;
+  --color-line-600: #4A4434;
+  --color-line-700: #3F3A2C;
+
+  --color-accent-100: #F8E3D3;
+  --color-accent-300: #E9A77F;
+  --color-accent-400: #E0794A;
+  --color-accent-500: #C2410C;
+  --color-accent-600: #9A3412;
+  --color-accent-700: #7C2A0E;
+
+  --color-teal-300: #8FBF86;
+  --color-teal-600: #3F6B3A;
+  --color-teal-700: #2D4F29;
+
+  --color-amber-300: #F2B45A;
+  --color-amber-500: #B45309;
+  --color-gold-600: #B45309;
+
+  --color-success-300: #8FBF86;
+  --color-success-600: #3F6B3A;
+  --color-danger-300: #F0A3A3;
+  --color-danger-600: #B91C1C;
+  --color-warning-300: #F2B45A;
+  --color-warning-600: #B45309;
+  --color-info-300: #E9A77F;
+  --color-info-600: #9A3412;
+
+  --surface-page: var(--color-paper-50);
+  --surface-raised: #FAF6EB;
+  --surface-sunken: var(--color-paper-100);
+  --surface-overlay: var(--color-paper-200);
+
+  --text-primary: var(--color-ink-900);
+  --text-secondary: var(--color-ink-600);
+  --text-tertiary: var(--color-ink-500);
+  --text-on-accent: #ffffff;
+
+  --border-subtle: var(--color-line-200);
+  --border-medium: var(--color-line-300);
+  --border-strong: var(--color-line-400);
+
+  --state-accent: var(--color-accent-600);
+  --state-accent-strong: var(--color-accent-700);
+  --state-accent-soft: var(--color-accent-100);
+  --state-success: var(--color-success-600);
+  --state-danger: var(--color-danger-600);
+  --state-warning: var(--color-warning-600);
+  --state-info: var(--color-info-600);
+
+  --focus-ring: var(--color-accent-600);
+  --overlay-backdrop: rgb(46 42 31 / 0.55);
+
+  --gradient-accent: linear-gradient(135deg, #9A3412, #C2410C);
+  --gradient-hero: linear-gradient(135deg, #FAF6EB 0%, #EBE2CC 55%, #DED6C1 100%);
+  --gradient-surface: linear-gradient(160deg, #FFFDF7 0%, #FAF6EB 100%);
+  --gradient-text: linear-gradient(90deg, #9A3412, #C2410C);
+  --bg-base: linear-gradient(180deg, #EFE8D4 0%, #E4DBC4 100%);
+  --bg-glow: radial-gradient(ellipse 70% 55% at 0% 0%, rgb(217 130 43 / 0.20), transparent 70%),
+             radial-gradient(ellipse 60% 50% at 100% 10%, rgb(255 250 235 / 0.60), transparent 70%);
+
+  --space-0: 0;
+  --space-px: 1px;
+  --space-0_5: 0.125rem;
+  --space-1: 0.25rem;
+  --space-1_5: 0.375rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: var(--radius-card);
+  --radius-2xl: var(--radius-panel);
+  --radius-pill: 999px;
+
+  --radius-btn: 999px;
+  --radius-field: 28px;
+  --radius-card: 28px;
+  --radius-panel: 32px;
+  --radius-input: 22px;
+  --radius-round: 50%;
+
+  --shadow-btn: 0 2px 6px rgb(154 52 18 / 0.12);
+  --shadow-btn-hover: 0 8px 20px rgb(154 52 18 / 0.28);
+
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: clamp(1.2rem, 1rem + 1vw, 1.5rem);
+  --font-size-2xl: clamp(1.35rem, 1.1rem + 1.5vw, 1.85rem);
+  --font-size-display: clamp(1.8rem, 1.2rem + 3vw, 2.75rem);
+
+  --line-height-body: 1.65;
+  --line-height-heading: 1.25;
+  --tracking-tight: -0.015em;
+  --tracking-tighter: -0.025em;
+  --tracking-wide: 0.02em;
+  --tracking-wider: 0.08em;
+
+  --shadow-sm: 0 1px 2px rgba(46, 42, 31, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(46, 42, 31, 0.08), 0 2px 4px -2px rgba(46, 42, 31, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(46, 42, 31, 0.1);
+
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}

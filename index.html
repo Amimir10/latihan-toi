@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Ruang Latihan ASAS - Gasal Kelas XI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: "class", corePlugins: { preflight: false } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.13.0/mammoth.browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.12.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docx@9.16.0/dist/index.iife.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <link rel="stylesheet" href="styles/main.css?v=6-0-0-foundation" />
+  <link rel="stylesheet" href="styles/landing.css?v=1" />
+  <link rel="stylesheet" href="styles/subjects-status.css?v=1" />
+  <link rel="stylesheet" href="styles/subjects-fix.css?v=1" />
+</head>
+<body class="min-h-full text-[var(--ink)] antialiased">
+  <a class="skip-link" href="#mainContent">Lewati ke konten utama</a>
+  <div class="paper-grain" aria-hidden="true"></div>
+  <div id="modeSweep" class="mode-sweep" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="mx-auto flex max-w-[1400px] flex-wrap items-center gap-3 px-4 py-3 sm:px-6 lg:px-8">
+      <div class="flex min-w-0 flex-1 items-center gap-3">
+        <div class="mark-seal" aria-hidden="true">AS</div>
+        <div class="min-w-0">
+          <p class="truncate text-[11px] font-extrabold uppercase tracking-[0.22em] text-[var(--glass-text)]">Ruang Latihan ASAS</p>
+          <h1 id="appTitle" class="truncate text-base font-extrabold leading-tight sm:text-lg">Kelas XI TOI 1</h1>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="creatorLoginBtn" class="ink-btn glass-lite glass-icon" type="button" aria-label="Buka Mode Pembuat">
+          <span aria-hidden="true">◇</span>
+          <span class="hidden sm:inline">Mode Pembuat</span>
+        </button>
+        <span id="creatorBadge" class="hidden rounded-full border border-[var(--accent)] bg-[var(--accent)]/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-[var(--state-accent-strong)]">Mode Pembuat</span>
+        <button id="themeToggleBtn" class="ink-btn glass-lite glass-icon" type="button" aria-label="Ganti tema">
+          <span id="themeIcon" aria-hidden="true">☾</span>
+          <span id="themeLabel" class="hidden sm:inline">Dark</span>
+        </button>
+        <span id="scheduleDateBadge" class="version-badge hidden sm:inline">1 Des 2026</span>
+        <span id="appVersion" class="version-badge">v5.13.0-ai-tutor</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="mainContent" tabindex="-1" aria-labelledby="appTitle" class="relative mx-auto max-w-[1400px] px-4 pb-16 pt-5 sm:px-6 lg:px-8">
+    <section id="landingPage" class="flow-page landing-page">
+      <div class="landing-hero sheet">
+        <div class="landing-copy">
+          <div class="editorial-meta">
+            <span class="editorial-issue">GASAL KELAS XI</span>
+            <span class="editorial-category">ASESMEN SUMATIF AKHIR SEMESTER</span>
+            
+          </div>
+          <h2 class="landing-title">Materi&nbsp;&amp; Soal&nbsp;</h2>
+          <p class="landing-lead">OKEE</p>
+          <div class="landing-actions">
+            <button id="landingStartBtn" class="landing-cta" type="button">Mulai Belajar <span aria-hidden="true">→</span></button>
+            <button class="landing-secondary glass" type="button" data-flow-scroll="panduan">Pelajari Alur</button>
+          </div>
+          <div class="landing-chips">
+            <span>11 Mata Pelajaran</span>
+            <span id="landingExamRange">Jadwal Ujian Gasal</span>
+            <span>Mode Belajar &amp; Latihan</span>
+          </div>
+        </div>
+        <div class="landing-visual" aria-hidden="true">
+          <div class="editorial-sigil">
+            <span class="editorial-sigil-num">11</span>
+            <span class="editorial-sigil-text">MATA PELAJARAN</span>
+          </div>
+          <div class="editorial-rule-vertical"></div>
+          <p class="editorial-tagline">KURASI SOAL &amp; MATERI GASAL</p>
+        </div>
+      </div>
+
+      <div id="panduan" class="landing-guide">
+        <div class="guide-intro">
+          <span class="editorial-issue">ALUR AKADEMIK</span>
+          <h2 class="section-title mt-2">Tiga Langkah Menuju Kesiapan Optimal</h2>
+          <p class="guide-subtitle">Dirancang ringkas dan terarah agar fokus belajar tetap terjaga sejak hari pertama persiapan ujian.</p>
+        </div>
+        <ol class="guide-steps">
+          <li>
+            <span class="guide-num">01</span>
+            <div class="guide-content">
+              <strong>Pilih Mata Pelajaran</strong>
+              <p>Eksplorasi daftar 11 mapel yang disesuaikan dengan urutan jadwal ujian gasal.</p>
+            </div>
+          </li>
+          <li>
+            <span class="guide-num">02</span>
+            <div class="guide-content">
+              <strong>Kaji Pengenalan &amp; Cakupan</strong>
+              <p>Periksa status materi, ringkasan topik, dan kesiapan bank soal sebelum masuk.</p>
+            </div>
+          </li>
+          <li>
+            <span class="guide-num">03</span>
+            <div class="guide-content">
+              <strong>Pilih Mode Pembelajaran</strong>
+              <p>Gunakan Mode Belajar untuk pendalaman atau Mode Latihan untuk simulasi ujian.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="landing-identity">
+        <span>Ruang Latihan ASAS</span>
+        <span>Progres tersimpan di perangkat ini.</span>
+      </div>
+    </section>
+
+    <section id="subjectsPage" class="flow-page hidden">
+      <div class="dashboard-shell">
+        <aside class="dashboard-sidebar" aria-label="Ringkasan Dashboard">
+          <div class="dashboard-brand">
+            <span class="dashboard-seal" aria-hidden="true">AS</span>
+            <div>
+              <p class="eyebrow">Ruang Latihan ASAS</p>
+              <p class="dashboard-brand-sub">Peta belajar gasal</p>
+            </div>
+          </div>
+
+          <nav class="dashboard-rail" aria-label="Navigasi Dashboard">
+            <button class="dashboard-rail-link flow-back glass" type="button" data-flow-nav="home">← Beranda</button>
+            <span class="dashboard-rail-link dashboard-rail-current" aria-current="page">Daftar Mapel</span>
+          </nav>
+
+          <div class="dashboard-progress" aria-label="Ringkasan jumlah mapel">
+            <span class="dashboard-progress-label">Cakupan mapel</span>
+            <span id="subjectCountFlow" class="dashboard-progress-value">11 mapel</span>
+            <span class="dashboard-progress-meter" aria-hidden="true"></span>
+          </div>
+
+          <p class="dashboard-sidebar-note">Pilih mapel untuk membuka pengenalan dan menentukan mode belajar.</p>
+        </aside>
+
+        <div class="dashboard-main">
+          <header class="dashboard-header">
+            <div>
+              <p class="eyebrow">Jelajahi Mapel</p>
+              <h2 class="dashboard-title">Daftar Mata Pelajaran</h2>
+              <p class="dashboard-subtitle">Pilih mapel untuk melihat pengenalan sebelum masuk ke ruang belajar.</p>
+            </div>
+            <div class="dashboard-header-meta">
+              <span class="dashboard-kicker">Gasal · Kelas XI</span>
+              <span class="dashboard-legend"><i aria-hidden="true"></i> Materi siap</span>
+              <span class="dashboard-legend dashboard-legend-alt"><i aria-hidden="true"></i> Latihan siap</span>
+            </div>
+          </header>
+          <div id="subjectCardGrid" class="subject-card-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="introPage" class="flow-page hidden">
+      <div class="flow-head">
+        <button class="flow-back glass" type="button" data-flow-nav="home">← Beranda</button>
+        <button class="flow-back glass" type="button" data-flow-nav="subjects">← Daftar Mapel</button>
+      </div>
+      <div class="intro-shell sheet">
+        <div class="intro-top">
+          <div>
+            <p class="eyebrow">Pengenalan Mata Pelajaran</p>
+            <h2 id="introSubjectName" class="section-title mt-1">-</h2>
+            <p id="introSubjectSchedule" class="flow-sub"></p>
+          </div>
+          <span id="introExamBadge" class="study-status">-</span>
+        </div>
+        <div id="introBody" class="intro-body"></div>
+        <div class="intro-actions">
+          <button id="introStartBtn" class="landing-cta" type="button">Mulai <span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="modePage" class="flow-page hidden">
+      <div class="flow-head">
+        <button class="flow-back glass" type="button" data-flow-nav="home">← Beranda</button>
+        <button class="flow-back glass" type="button" data-flow-nav="subjects">← Daftar Mapel</button>
+        <button class="flow-back glass" type="button" data-flow-nav="intro">← Pengenalan Mapel</button>
+      </div>
+      <div class="mode-head">
+        <p class="eyebrow">Pilih Mode</p>
+        <h2 class="section-title mt-1">Belajar atau berlatih?</h2>
+        <p class="flow-sub">Mapel yang dipilih: <strong id="modeSubjectName">-</strong></p>
+      </div>
+      <div class="mode-choice-grid">
+        <button class="mode-choice" type="button" data-flow-mode="belajar">
+          <span class="mode-choice-icon" aria-hidden="true">◈</span>
+          <span class="mode-choice-title">Belajar</span>
+          <span class="mode-choice-desc">Pelajari materi melalui materi ringkas, mind mapping, flashcard, poin penting, dan istilah penting.</span>
+          <span class="mode-choice-foot">Buka ruang belajar →</span>
+        </button>
+        <button class="mode-choice" type="button" data-flow-mode="latihan">
+          <span class="mode-choice-icon" aria-hidden="true">✎</span>
+          <span class="mode-choice-title">Latihan</span>
+          <span class="mode-choice-desc">Kerjakan soal latihan dengan umpan balik langsung, petunjuk, pembahasan, dan evaluasi jawaban.</span>
+          <span class="mode-choice-foot">Buka latihan →</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="mainNav" class="sheet mt-4 p-3 sm:p-4">
+      <span id="subjectCount" class="hidden">11</span>
+      <div class="flex flex-wrap items-start gap-3">
+        <div class="relative min-w-[210px] flex-1">
+          <button id="subjectMenuBtn" class="subject-menu-btn" type="button" aria-expanded="false">
+            <span class="min-w-0 flex-1 text-left">
+              <span id="activeSubjectName" class="block truncate text-sm font-extrabold">Memuat mapel...</span>
+              <span id="activeSubjectHari" class="mt-0.5 block truncate text-[11px] font-semibold text-[var(--glass-text)]">Menyiapkan bank soal</span>
+            </span>
+            <span class="subject-menu-caret" aria-hidden="true">▾</span>
+          </button>
+          <div id="subjectGrid" class="subject-dropdown hidden"></div>
+        </div>
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 pt-1 text-[11px] font-semibold text-[var(--muted)]">
+          <span id="questionCount">0 soal</span>
+          <span id="studyProgressCount">Progres belajar: -</span>
+        </div>
+      </div>
+
+        <div class="mt-3 grid grid-cols-2 gap-2 glass glass-segment" role="tablist" aria-label="Mode aplikasi">
+          <button id="modeStudyBtn" class="mode-tab active" type="button" role="tab" aria-selected="true"><span>◈</span> Belajar</button>
+          <button id="modePracticeBtn" class="mode-tab" type="button" role="tab" aria-selected="false"><span>✎</span> Latihan</button>
+        </div>
+
+      <div class="mt-3 flex flex-wrap items-center gap-2">
+        <p id="currentBankLabel" class="text-[10px] font-extrabold uppercase tracking-wider text-[var(--accent)]">Bank Latihan</p>
+        <button id="wrongOnlyBtn" class="ink-btn" type="button">Ulangi Soal Salah</button>
+      </div>
+
+      <div id="downloadPanel" class="mt-3 hidden rounded-xl border border-[var(--line)] bg-[var(--paper-soft)] p-3">
+        <p class="text-[10px] font-extrabold uppercase tracking-wider text-[var(--muted)]">Unduh Lembar</p>
+        <div class="mt-2 flex flex-wrap gap-2">
+          <button id="downloadPdfBtn" class="download-btn" type="button">PDF - Soal Saja</button>
+          <button id="downloadPdfKeyBtn" class="download-btn" type="button">PDF - Soal + Kunci</button>
+          <button id="downloadDocxBtn" class="download-btn" type="button">Word (.docx)</button>
+        </div>
+        <p id="downloadStatus" class="mt-2 hidden text-[11px] font-semibold"></p>
+      </div>
+
+      <div id="creatorTools" class="mt-3 hidden border-t border-[var(--line)] pt-3">
+        <div class="flex items-center justify-between gap-2">
+          <p class="eyebrow">Mode Pembuat</p>
+          <button id="creatorExitBtn" class="text-[10px] font-extrabold text-[var(--accent)] underline" type="button">Keluar Mode Pembuat</button>
+        </div>
+        <div class="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <button id="addQuestionBtn" class="ink-btn justify-center" type="button">Tambah Soal</button>
+          <button id="editStudyBtn" class="ink-btn justify-center" type="button">Kelola Materi</button>
+          <button id="exportJsonBtn" class="ink-btn justify-center" type="button">Ekspor JSON</button>
+          <button id="resetStudyBtn" class="ink-btn justify-center danger" type="button">Reset Materi</button>
+          <button id="importJsonBtn" class="ink-btn justify-center" type="button">Impor JSON</button>
+          <button id="importDocxBtn" class="ink-btn justify-center" type="button">Impor DOCX</button>
+          <button id="importPdfBtn" class="ink-btn justify-center" type="button">Impor PDF</button>
+          <button id="exportStudyJsonBtn" class="ink-btn justify-center" type="button">Ekspor JSON Materi</button>
+          <button id="importStudyJsonBtn" class="ink-btn justify-center" type="button">Impor JSON Materi</button>
+          <button id="clearAllBtn" class="ink-btn justify-center danger" type="button">Hapus Semua</button>
+        </div>
+        <p id="importStatus" class="mt-2 hidden text-[11px] font-semibold"></p>
+        <input id="importFileInput" type="file" accept=".json,.docx,.pdf,application/json,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf" class="hidden" />
+        <input id="studyImportFileInput" type="file" accept=".json,application/json" class="hidden" />
+      </div>
+    </section>
+
+    <section id="examTopbar" class="sticky exam-topbar z-30 mt-4 hidden glass">
+      <div class="sheet flex flex-wrap items-center gap-3 p-3">
+        <button id="backToModesBtn" class="ink-btn" type="button">← Menu</button>
+        <div class="min-w-0 flex-1">
+          <p class="eyebrow">Lembar Ujian</p>
+          <p id="examSubjectName" class="truncate text-sm font-extrabold">-</p>
+          <p id="examDateLabel" class="mt-0.5 truncate text-[11px] font-semibold text-[var(--muted)]">-</p>
+        </div>
+        <div id="timerChip" class="exam-timer">
+          <span class="flex items-center gap-1.5">
+            <span id="timerDot" class="timer-dot" aria-hidden="true"></span>
+            <span id="timerLabel" class="block text-[9px] font-extrabold uppercase tracking-wider opacity-70">Waktu</span>
+          </span>
+          <span id="timerText" class="block font-mono text-lg font-extrabold leading-none tabular-nums">00:00</span>
+        </div>
+        <button id="mobileNavBtn" class="ink-btn xl:hidden" type="button">Daftar Soal</button>
+      </div>
+    </section>
+
+    <div id="roomContent" class="mt-4 min-w-0 space-y-4">
+      <div class="flow-room-nav">
+        <button class="flow-back glass" type="button" data-flow-nav="home">Beranda</button>
+        <button class="flow-back glass" type="button" data-flow-nav="subjects">Daftar Mapel</button>
+        <button class="flow-back glass" type="button" data-flow-nav="intro">Pengenalan Mapel</button>
+        <button class="flow-back glass" type="button" data-flow-nav="modes">Pilih Mode</button>
+      </div>
+        <section id="studyWorkspace" class="hidden space-y-4">
+          <div class="sheet p-5">
+            <div class="flex flex-wrap items-start justify-between gap-3 border-b border-[var(--line)] pb-4">
+              <div>
+                <p class="eyebrow">Ruang Belajar</p>
+                <h2 id="studyHeaderSubject" class="section-title mt-1">Memuat mapel...</h2>
+                <p id="studySourceNote" class="mt-2 max-w-2xl text-xs leading-6 text-[var(--muted)]"></p>
+              </div>
+              <span id="studyStatusBadge" class="study-status">Materi Tersedia</span>
+            </div>
+            <p id="studyProgressText" class="mt-3 text-[11px] font-semibold text-[var(--muted)]">Progres belajar belum tersedia.</p>
+            <div id="studyJawaTools" class="mt-3 hidden flex-wrap gap-2 rounded-xl border border-dashed border-[var(--line-strong)] bg-[var(--paper-soft)] p-3">
+              <button id="studyBedahTembungBtn" class="ink-btn" type="button">Analisis Kata Sulit</button>
+              <button id="studyBedahGatraBtn" class="ink-btn" type="button">Analisis Gatra</button>
+            </div>
+            <div id="studyBedahOutput" class="mt-3 hidden rounded-xl border-l-[3px] border-[var(--teal)] bg-[var(--teal)]/5 p-3 text-xs font-bacaan leading-relaxed"></div>
+          </div>
+
+          <section id="aiTutorPanel" class="sheet ai-tutor-panel" aria-labelledby="aiTutorTitle">
+            <div class="ai-tutor-head">
+              <div>
+                <p class="eyebrow">AI Tutor</p>
+                <h2 id="aiTutorTitle" class="section-title mt-1">Tanya materi ini</h2>
+                <p id="aiTutorContext" class="ai-tutor-context">-</p>
+              </div>
+              <button id="aiTutorResetBtn" class="ink-btn" type="button">Percakapan Baru</button>
+            </div>
+            <div id="aiTutorStatus" class="ai-tutor-status hidden" role="status" aria-live="polite"><span class="ai-tutor-spinner" aria-hidden="true"></span><span id="aiTutorStatusText"></span></div>
+            <div id="aiTutorLog" class="ai-tutor-log" role="log" aria-live="polite" aria-label="Riwayat percakapan AI Tutor">
+              <div id="aiTutorEmpty" class="ai-tutor-empty">Belum ada pertanyaan. Tulis pertanyaan tentang materi atau topik yang sedang dibuka.</div>
+            </div>
+            <form id="aiTutorForm" class="ai-tutor-form">
+              <textarea id="aiTutorInput" class="field-input ai-tutor-input" rows="2" maxlength="4000" placeholder="Tulis pertanyaanmu di sini..." aria-label="Pertanyaan untuk AI Tutor"></textarea>
+              <button id="aiTutorSendBtn" class="ink-btn finish ai-tutor-send" type="submit"><span id="aiTutorSendLabel">Kirim</span></button>
+            </form>
+            <p class="ai-tutor-note">Jawaban AI dapat saja keliru. Periksa kembali dengan materi yang tersedia.</p>
+          </section>
+
+          <div id="studyEmpty" class="sheet hidden min-h-[320px] flex-col items-center justify-center p-8 text-center">
+            <div class="empty-seal">◈</div>
+            <h3 class="section-title mt-4">Menunggu Materi</h3>
+            <p class="mt-2 max-w-md text-sm leading-relaxed text-[var(--muted)]">Mapel ini belum memiliki materi Mode Belajar. Materi dapat ditambahkan melalui Mode Pembuat tanpa mengubah bank soal.</p>
+          </div>
+
+          <div id="studyTabs" class="hidden flex flex-wrap gap-2 glass glass-segment"></div>
+          <div id="studyBody" class="hidden"></div>
+        </section>
+
+        <section id="emptyState" class="sheet flex min-h-[380px] flex-col items-center justify-center p-8 text-center">
+          <div id="emptyIcon" class="empty-seal">✎</div>
+          <h2 id="emptyTitle" class="section-title mt-4">Menunggu Kisi-Kisi</h2>
+          <p id="emptyDesc" class="mt-2 max-w-md text-sm leading-relaxed text-[var(--muted)]">Matpel ini belum punya bank soal. Kisi-kisi dan soal akan muncul di sini setelah diisi.</p>
+        </section>
+
+        <section id="quizWorkspace" class="quiz-workspace hidden grid gap-4 xl:grid-cols-[minmax(0,1fr)_236px]">
+          <div class="min-w-0 space-y-4">
+            <div class="sheet p-4">
+              <div class="flex flex-wrap items-center gap-2 border-b border-[var(--line)] pb-3">
+                <div class="tool-chip">
+                  <span class="tool-label">Streak</span>
+                  <span id="streakValue" class="tool-value">0</span>
+                </div>
+                <div class="tool-chip">
+                  <span class="tool-label">Terbaik</span>
+                  <span id="bestStreakValue" class="tool-value">0</span>
+                </div>
+                <div class="ml-auto flex items-center gap-2">
+                  <button id="highlightBtn" class="ink-btn" type="button">Sorot Kata Kunci</button>
+                  <button id="flagBtn" class="ink-btn" type="button" aria-pressed="false">Ragu</button>
+                </div>
+              </div>
+              <div class="mt-3 h-1.5 overflow-hidden rounded-full bg-[var(--line)]">
+                <div id="progressFill" class="h-full rounded-full bg-[var(--accent)] transition-all duration-300" style="width:0%"></div>
+              </div>
+              <p id="progressText" class="mt-1.5 text-[11px] font-semibold text-[var(--muted)]">Terjawab 0 dari 0</p>
+              <div id="jawaTools" class="mt-3 flex hidden flex-wrap gap-2 rounded-xl border border-dashed border-[var(--line-strong)] bg-[var(--paper-soft)] p-3">
+                <button id="bedahTembungBtn" class="ink-btn" type="button">Analisis Kata Sulit</button>
+                <button id="bedahGatraBtn" class="ink-btn" type="button">Analisis Gatra</button>
+              </div>
+              <div id="bedahOutput" class="mt-3 hidden rounded-xl border-l-[3px] border-[var(--teal)] bg-[var(--teal)]/5 p-3 text-xs font-bacaan leading-relaxed"></div>
+            </div>
+
+            <div id="stimulusCard" class="sheet hidden p-4">
+              <p class="eyebrow">Bahan Bacaan</p>
+              <div id="stimulusText" class="font-bacaan mt-2 text-sm leading-7 text-[var(--ink)]"></div>
+            </div>
+
+            <div id="questionCard" class="sheet p-5">
+              <div class="flex flex-wrap items-center gap-2">
+                <span id="questionCounter" class="question-counter">Soal 1 / 1</span>
+                <span id="questionType" class="rounded-lg border border-[var(--line)] px-2 py-1 text-[10px] font-extrabold uppercase tracking-wider text-[var(--muted)]">Pilihan Ganda</span>
+                <span class="rounded-lg bg-[var(--teal)]/10 px-2 py-1 text-[10px] font-extrabold uppercase tracking-wider text-[var(--teal)]">A–E</span>
+              </div>
+              <p id="questionText" class="font-bacaan mt-4 text-base font-semibold leading-8"></p>
+              <div id="optionsContainer" class="mt-4 space-y-2"></div>
+              <div class="question-inline-actions mt-4 flex flex-wrap items-center gap-2">
+                <button id="inlinePrevBtn" class="ink-btn hidden" type="button" title="Kembali ke soal sebelumnya" aria-label="Kembali ke soal sebelumnya">← Sebelumnya</button>
+                <button id="hintBtn" class="ink-btn" type="button">Buka Petunjuk</button>
+                <span id="hintText" class="hidden text-xs font-semibold text-[var(--teal)]"></span>
+                <button id="inlineNextBtn" class="ink-btn finish ml-auto hidden" type="button">Selanjutnya →</button>
+              </div>
+              <div id="explanationBox" class="mt-4 hidden rounded-xl border-l-[3px] border-[var(--teal)] bg-[var(--teal)]/5 p-4">
+                <p class="text-[10px] font-extrabold uppercase tracking-wider text-[var(--teal)]">Pembahasan / Arti Kata</p>
+                <div id="explanationText" class="font-bacaan mt-2 text-sm leading-7 markdown-content"></div>
+              </div>
+            </div>
+          </div>
+
+          <aside id="questionNavPanel" aria-labelledby="questionNavTitle" class="question-nav-panel sheet hidden p-3 xl:sticky xl:top-[4.75rem] xl:block xl:max-h-[calc(100vh-5.5rem)] xl:overflow-y-auto">
+            <div class="flex items-center justify-between gap-2">
+              <p id="questionNavTitle" class="eyebrow">Navigasi Soal</p>
+              <button id="collapseNavBtn" class="ink-btn" type="button">Ciutkan</button>
+            </div>
+            <div id="navPanelBody" class="mt-3 space-y-3">
+              <div id="posterCard" class="poster-card">
+                <div class="poster-grid" aria-hidden="true"></div>
+                <p id="posterLabel" class="poster-label">BAHASA JAWA</p>
+                <div id="posterEmblem" class="poster-emblem" aria-hidden="true">✎</div>
+                <h3 id="posterTitle" class="poster-title">Tembang</h3>
+                <p id="posterTagline" class="poster-tagline">Pahami arti katanya.</p>
+                <div class="poster-rule"></div>
+                <p id="posterCaption" class="poster-caption">Lembar kerja ASAS Gasal XI</p>
+              </div>
+              <div id="imagePanel" class="hidden">
+                <img id="previewImage" class="w-full rounded-xl border border-[var(--line)]" alt="Ilustrasi soal" />
+                <div class="mt-2 flex gap-2">
+                  <input id="captionInput" class="field-input min-w-0 flex-1" type="text" placeholder="Keterangan gambar..." />
+                  <button id="captionSaveBtn" class="ink-btn" type="button">Simpan</button>
+                </div>
+              </div>
+              <div>
+                <p class="eyebrow">Aturan Meja</p>
+                <ol class="mt-2 space-y-1.5 text-[11px] font-semibold leading-relaxed text-[var(--muted)]">
+                  <li><span class="rule-num">01</span> Jawaban langsung tersimpan.</li>
+                  <li><span class="rule-num">02</span> Klik opsi untuk menjawab.</li>
+                  <li><span class="rule-num">03</span> A–E atau 1–5 lewat keyboard.</li>
+                  <li><span class="rule-num">04</span> Tombol ragu menandai soal.</li>
+                </ol>
+              </div>
+              <div id="navContainer" class="grid grid-cols-5 gap-2"></div>
+              <div class="flex flex-col gap-2 border-t border-[var(--line)] pt-3">
+                <button id="prevBtn" class="ink-btn justify-center" type="button">← Sebelumnya</button>
+                <button id="nextBtn" class="ink-btn justify-center" type="button">Berikutnya →</button>
+                <button id="finishBtn" class="ink-btn finish justify-center" type="button">Selesaikan</button>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <div id="mobileNavSheet" class="mobile-sheet hidden" role="dialog" aria-label="Daftar soal">
+          <div class="mobile-sheet-backdrop" data-close-mobile-nav></div>
+          <div class="mobile-sheet-panel sheet p-4">
+            <div class="flex items-center justify-between gap-3 border-b border-[var(--line)] pb-3">
+              <div>
+                <p class="eyebrow">Navigasi Lembar</p>
+                <p id="mobileNavSummary" class="mt-0.5 text-[11px] font-semibold text-[var(--muted)]">Daftar Soal</p>
+              </div>
+              <button id="closeMobileNavBtn" class="ink-btn" type="button">Tutup</button>
+            </div>
+            <div id="mobileNavContainer" class="mt-3 grid grid-cols-6 gap-2 sm:grid-cols-8"></div>
+            <div class="mt-3 flex gap-2 border-t border-[var(--line)] pt-3">
+              <button class="ink-btn flex-1 justify-center" data-quiz-action="prev" type="button">←</button>
+              <button class="ink-btn flex-1 justify-center" data-quiz-action="next" type="button">→</button>
+              <button class="ink-btn finish flex-1 justify-center" data-quiz-action="finish" type="button">Selesai</button>
+            </div>
+          </div>
+        </div>
+
+        <section id="resultView" class="hidden result-view sheet p-5">
+          <div class="result-hero">
+            <div class="flex flex-wrap items-start justify-between gap-4">
+              <div class="min-w-0">
+                <p class="eyebrow">Latihan Selesai</p>
+                <h2 id="resultTitle" class="section-title mt-1">Latihan Selesai</h2>
+                <p id="resultMessage" class="result-message mt-2">Latihan selesai. Berikut ringkasan hasil dan langkah berikutnya untukmu.</p>
+              </div>
+              <div id="scoreRing" class="score-ring" style="--score:0">
+                <div class="score-ring-inner">
+                  <strong id="scoreValue">0</strong>
+                  <span>Nilai</span>
+                </div>
+              </div>
+            </div>
+            <div class="result-encouragement mt-4">
+              <p class="result-encouragement-label">Pesan Penyemangat</p>
+              <p id="resultEncouragement" class="result-encouragement-text mt-1">Setiap latihan adalah langkah kecil menuju pemahaman yang lebih baik.</p>
+            </div>
+          </div>
+
+          <section class="mt-5">
+            <div class="result-section-heading">
+              <p>Ringkasan Jawaban</p>
+              <span id="resultAccuracy" class="result-badge">0% benar</span>
+            </div>
+            <div id="resultStats" class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3"></div>
+          </section>
+
+          <div class="mt-5 grid gap-4 md:grid-cols-2">
+            <section class="result-panel">
+              <p class="result-panel-title">Evaluasi Hasil</p>
+              <div id="resultEvaluation" class="mt-3 space-y-2"></div>
+            </section>
+            <section class="result-panel">
+              <p class="result-panel-title">Rekomendasi Belajar</p>
+              <div id="resultRecommendations" class="mt-3"></div>
+            </section>
+          </div>
+
+          <details class="result-details mt-5">
+            <summary>Rincian Capaian</summary>
+            <div class="mt-4 grid gap-5 md:grid-cols-2">
+              <div class="rounded-xl border border-[var(--line)] p-4">
+                <p class="text-xs font-extrabold uppercase tracking-wider text-[var(--muted)]">Capaian Topik</p>
+                <div id="resultTopics" class="mt-3 space-y-3"></div>
+              </div>
+              <div class="rounded-xl border border-[var(--line)] p-4">
+                <p class="text-xs font-extrabold uppercase tracking-wider text-[var(--muted)]">Capaian Level</p>
+                <div id="resultLevels" class="mt-3 space-y-3"></div>
+              </div>
+            </div>
+            <div class="mt-5 rounded-xl border border-[var(--line)] p-4">
+              <p class="text-xs font-extrabold uppercase tracking-wider text-[var(--muted)]">Analisis Indikator</p>
+              <div id="resultIndicators" class="mt-3 space-y-3"></div>
+            </div>
+          </details>
+
+          <div id="reviewContainer" class="mt-6 space-y-3"></div>
+          <div class="result-actions mt-5 border-t border-[var(--line)] pt-4">
+            <button id="reviewJumpBtn" class="ink-btn" type="button">Lihat Pembahasan</button>
+            <button id="retryWrongBtn" class="ink-btn" type="button">Ulangi Soal Salah</button>
+            <button id="restartBtn" class="ink-btn finish" type="button">Ulangi Bank Ini</button>
+            <button id="backBtn" class="ink-btn" type="button">Kembali ke Daftar Mapel</button>
+          </div>
+        </section>
+
+        <section class="sheet p-4">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <p class="eyebrow">Bank Kustom</p>
+            <p class="text-[11px] font-semibold text-[var(--muted)]">Hanya terlihat di Mode Pembuat.</p>
+          </div>
+          <div id="customListWrap" data-creator-only class="mt-3 hidden">
+            <div id="customQuestionList" class="space-y-2"></div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-[var(--line)] py-6 text-center">
+    <button id="footerTitle" class="link-btn text-[11px] font-extrabold uppercase tracking-[0.2em]" type="button">Ruang Latihan ASAS</button>
+    <p id="footerNote" class="mt-1 text-[10px] font-semibold text-[var(--muted)]">Bank soal tersimpan di perangkat ini.</p>
+  </footer>
+
+  <div id="keyTermPopover" class="popover hidden" role="dialog" aria-label="Istilah kunci">
+    <div class="flex items-start justify-between gap-3">
+      <div>
+        <p class="eyebrow">Istilah Kunci</p>
+        <p id="keyTermPopoverTitle" class="mt-1 text-sm font-extrabold"></p>
+      </div>
+      <button id="keyTermPopoverClose" class="glass glass-icon" type="button" aria-label="Tutup">×</button>
+    </div>
+    <p id="keyTermPopoverText" class="font-bacaan mt-2 text-xs leading-6"></p>
+  </div>
+
+  <div id="creatorPinModal" class="modal-backdrop hidden">
+    <div class="modal-sheet max-w-sm">
+      <h2 class="section-title">Buka Mode Pembuat</h2>
+      <p class="mt-2 text-xs font-semibold text-[var(--muted)]">Masukkan PIN pembuat untuk mengelola bank soal.</p>
+      <input id="creatorPinInput" class="field-input mt-4 w-full" type="password" inputmode="numeric" placeholder="PIN pembuat" autocomplete="off" />
+      <p id="creatorPinError" class="mt-2 hidden text-xs font-bold text-[var(--accent)]"></p>
+      <div class="mt-4 flex justify-end gap-2">
+        <button id="creatorPinCancel" class="ink-btn" type="button">Batal</button>
+        <button id="creatorPinSubmit" class="ink-btn finish" type="button">Buka</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="questionModal" class="modal-backdrop hidden">
+    <div class="modal-sheet max-w-3xl">
+      <div class="flex items-start justify-between gap-4 border-b border-[var(--line)] pb-3">
+        <div>
+          <p class="eyebrow">Mode Pembuat</p>
+          <h2 id="questionModalTitle" class="section-title mt-1">Tambah Soal</h2>
+          <p id="questionModalSubject" class="mt-1 text-[11px] font-semibold text-[var(--muted)]"></p>
+        </div>
+        <button id="closeQuestionModal" class="text-xl glass glass-icon" type="button" aria-label="Tutup">×</button>
+      </div>
+      <form id="questionForm" class="mt-4 grid max-h-[70vh] gap-3 overflow-y-auto pr-1 sm:grid-cols-2">
+        <label class="text-xs font-bold">Topik<input id="qTopik" class="field-input mt-1 w-full" required /></label>
+        <label class="text-xs font-bold">Subtopik<input id="qSubtopik" class="field-input mt-1 w-full" /></label>
+        <label class="text-xs font-bold">Indikator<input id="qIndikator" class="field-input mt-1 w-full" /></label>
+        <label class="text-xs font-bold">Level<select id="qLevel" class="field-input mt-1 w-full"><option>C1</option><option selected>C2</option><option>C3</option><option>C4</option><option>C5</option></select></label>
+        <label class="text-xs font-bold">URL Gambar (opsional)<input id="qImageUrl" class="field-input mt-1 w-full" type="url" /></label>
+        <label class="text-xs font-bold sm:col-span-2">Stimulus / Bahan Bacaan<textarea id="qStimulus" class="field-input mt-1 w-full font-bacaan" rows="3"></textarea></label>
+        <label class="text-xs font-bold sm:col-span-2">Keterangan Gambar<input id="qImageCaption" class="field-input mt-1 w-full" /></label>
+        <label class="text-xs font-bold sm:col-span-2">Pertanyaan<textarea id="qQuestion" class="field-input mt-1 w-full font-bacaan" rows="2" required></textarea></label>
+        <label class="text-xs font-bold">Opsi A<input id="qOptionA" class="field-input mt-1 w-full font-bacaan" required /></label>
+        <label class="text-xs font-bold">Opsi B<input id="qOptionB" class="field-input mt-1 w-full font-bacaan" required /></label>
+        <label class="text-xs font-bold">Opsi C<input id="qOptionC" class="field-input mt-1 w-full font-bacaan" required /></label>
+        <label class="text-xs font-bold">Opsi D<input id="qOptionD" class="field-input mt-1 w-full font-bacaan" required /></label>
+        <label class="text-xs font-bold">Opsi E<input id="qOptionE" class="field-input mt-1 w-full font-bacaan" required /></label>
+        <label class="text-xs font-bold">Kunci<select id="qAnswer" class="field-input mt-1 w-full"><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></label>
+        <label class="text-xs font-bold">Istilah Kunci (pisahkan ;)<input id="qKeyTerms" class="field-input mt-1 w-full" /></label>
+        <label class="text-xs font-bold sm:col-span-2">Pembahasan<textarea id="qExplanation" class="field-input mt-1 w-full font-bacaan" rows="3" required></textarea></label>
+        <label class="text-xs font-bold sm:col-span-2">Petunjuk (pisahkan dengan ;)<input id="qHints" class="field-input mt-1 w-full" /></label>
+        <div class="flex justify-end gap-2 border-t border-[var(--line)] pt-3 sm:col-span-2">
+          <button id="cancelQuestionModal" class="ink-btn" type="button">Batal</button>
+          <button class="ink-btn finish" type="submit">Simpan Soal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="studyModal" class="modal-backdrop hidden">
+    <div class="modal-sheet max-w-4xl">
+      <div class="flex items-start justify-between gap-4 border-b border-[var(--line)] pb-3">
+        <div>
+          <p class="eyebrow">Mode Pembuat</p>
+          <h2 class="section-title mt-1">Kelola Materi Belajar</h2>
+          <p id="studyModalSubject" class="mt-1 text-[11px] font-semibold text-[var(--muted)]"></p>
+        </div>
+        <button id="closeStudyModal" class="text-xl glass glass-icon" type="button" aria-label="Tutup">×</button>
+      </div>
+      <form id="studyForm" class="mt-4 max-h-[75vh] space-y-3 overflow-y-auto pr-1">
+        <p class="rounded-lg bg-[var(--paper-soft)] p-2 text-[11px] leading-5 text-[var(--muted)]">Tambah, ubah, atau hapus entri pada setiap bagian. Perubahan tersimpan untuk mapel yang sedang dipilih.</p>
+        <label class="block text-xs font-bold">Sumber / Catatan Materi<input id="studySumberInput" class="field-input mt-1 w-full" /></label>
+        <div id="studyItemEditor" class="space-y-3"></div>
+        <details id="studyLegacyImport" class="rounded-xl border border-dashed border-[var(--line-strong)] p-3">
+          <summary class="cursor-pointer text-xs font-extrabold text-[var(--accent)]">Impor cepat dari teks</summary>
+          <div class="mt-3 space-y-3">
+            <p class="text-[11px] leading-5 text-[var(--muted)]">Format: <strong>Judul | Isi</strong> per baris. Kosongkan semua untuk kembali ke status Menunggu Materi.</p>
+            <label class="block text-xs font-bold">Materi Ringkas<textarea id="studyRingkasInput" class="field-input mt-1 w-full font-bacaan" rows="4"></textarea></label>
+            <div class="grid gap-3 sm:grid-cols-2">
+              <label class="block text-xs font-bold">Pusat Mind Mapping<input id="studyMindCenterInput" class="field-input mt-1 w-full" /></label>
+              <label class="block text-xs font-bold">Cabang - format: Konsep | Anak1, Anak2<textarea id="studyMindInput" class="field-input mt-1 w-full" rows="4"></textarea></label>
+            </div>
+            <label class="block text-xs font-bold">Flashcard - format: Pertanyaan | Jawaban<textarea id="studyFlashInput" class="field-input mt-1 w-full font-bacaan" rows="4"></textarea></label>
+            <div class="grid gap-3 sm:grid-cols-2">
+              <label class="block text-xs font-bold">Poin Penting - format: Topik | Poin<textarea id="studyPoinInput" class="field-input mt-1 w-full" rows="4"></textarea></label>
+              <label class="block text-xs font-bold">Istilah Penting - format: Istilah | Arti<textarea id="studyGlosariumInput" class="field-input mt-1 w-full" rows="4"></textarea></label>
+            </div>
+          </div>
+        </details>
+        <div class="flex justify-end gap-2 border-t border-[var(--line)] pt-3">
+          <button id="cancelStudyModal" class="ink-btn" type="button">Batal</button>
+          <button class="ink-btn finish" type="submit">Simpan Materi</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    window.AI_TUTOR_ENDPOINT = "https://asas-ai-backend.anj4y789807.workers.dev/v1/ai/tutor";
+  </script>
+
+  <script src="markdown.js?v=5-13-2-markdown"></script>
+  <script src="questions.js?v=5-13-3-soal-docx"></script>
+  <script src="content-import.js?v=1"></script>
+  <script src="aiTutor.js?v=5-13-2-markdown"></script>
+  <script src="app.js?v=5-13-2-markdown"></script>
+</body>
+</html>

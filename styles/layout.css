@@ -1,0 +1,16 @@
+@layer layout;
+
+.question-nav-panel {
+  scrollbar-width: thin;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-raised);
+}
+
+.question-nav-panel .poster-card {
+  min-height: 140px;
+}
+
+.quiz-workspace {
+  gap: var(--space-4);
+}

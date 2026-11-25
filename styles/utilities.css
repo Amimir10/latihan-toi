@@ -1,0 +1,93 @@
+@layer utilities;
+
+.font-bacaan,
+.stimulus-text {
+  font-family: var(--serif);
+}
+
+.stimulus-block + .stimulus-block {
+  margin-top: 0.9rem;
+}
+
+.stimulus-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  overflow: hidden;
+}
+
+.stimulus-table th,
+.stimulus-table td {
+  border: 1px solid var(--line);
+  padding: 0.45rem 0.6rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.stimulus-table th {
+  background: var(--paper-soft);
+  font-weight: 800;
+}
+
+.stimulus-list {
+  margin-left: 1.25rem;
+  list-style: disc;
+}
+
+.stimulus-list[reversed],
+ol.stimulus-list {
+  list-style: decimal;
+}
+
+.stimulus-quote {
+  border-left: 3px solid var(--teal);
+  padding-left: 0.85rem;
+}
+
+.stimulus-image {
+  max-width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+}
+
+.stimulus-caption {
+  margin-top: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.hidden {
+  display: none;
+}
+
+@media (min-width: 1280px) {
+  .mobile-sheet {
+    display: none;
+  }
+}
+
+body[data-page]:not([data-page="room"]) :is(#mainNav, #examTopbar, #roomContent) {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-page,
+  .mode-choice,
+  .subject-card,
+  .subject-card.subject-card-visible,
+  .mode-sweep.run::after,
+  .content-swap,
+  .ai-tutor-spinner,
+  .subject-status.ready .subject-status-dot {
+    animation: none;
+  }
+
+  html.theme-transition :where(body, .sheet, .topbar, button, input, select, textarea, .glass, .glass-lite) {
+    transition: none;
+  }
+
+  :is(.glass, .glass-lite, .ink-btn, .landing-cta, .landing-secondary, .flow-back, .mode-tab, .study-tab, .nav-btn, .option-btn):hover {
+    transform: none;
+  }
+}

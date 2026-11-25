@@ -1,0 +1,129 @@
+@layer components;
+/* styles/landing.css - Components layer override for buttons and landing hero gradients */
+
+#landingPage .landing-hero {
+  background: var(--gradient-hero);
+}
+
+#landingPage .landing-hero::before {
+  background: var(--gradient-accent);
+}
+
+#landingPage .landing-cta,
+#landingPage .landing-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-btn);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 140ms ease-out, background 140ms ease-out, border-color 140ms ease-out, box-shadow 140ms ease-out, color 140ms ease-out;
+}
+
+#landingPage .landing-cta {
+  background: var(--gradient-accent);
+  border: 1px solid var(--state-accent);
+  color: var(--text-on-accent);
+  box-shadow: var(--shadow-btn-hover);
+}
+
+#landingPage .landing-cta:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--state-accent) 45%, transparent);
+}
+
+#landingPage .landing-cta:hover span[aria-hidden="true"] {
+  transform: translateX(4px);
+  transition: transform 120ms var(--ease-out);
+}
+
+#landingPage .landing-secondary {
+  color: var(--glass-text);
+}
+
+#landingPage .landing-secondary::after {
+  content: " ↓";
+  color: var(--state-accent);
+}
+
+#landingPage .landing-secondary:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--state-accent);
+  color: var(--glass-hover-text);
+  box-shadow: var(--glass-shadow-hover), inset 0 0 0 1px var(--glass-ring), 0 0 0 1px var(--glass-ring-strong);
+  transform: translateY(-2px);
+}
+
+#landingPage .landing-cta:active,
+#landingPage .landing-secondary:active {
+  transform: translateY(0);
+}
+
+#landingPage .landing-cta:focus-visible,
+#landingPage .landing-secondary:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+#landingPage .landing-title {
+  margin: 16px 0 0;
+  max-width: 20ch;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+#landingPage .landing-lead {
+  margin: 20px 0 0;
+  max-width: 56ch;
+}
+
+#landingPage .editorial-tagline {
+  margin: 0;
+}
+
+#landingPage .guide-intro .section-title {
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  font-weight: 700;
+}
+
+#landingPage .guide-subtitle,
+#landingPage .guide-content p {
+  margin-top: 8px;
+}
+
+#landingPage .landing-chips span {
+  cursor: default;
+}
+
+#landingPage .editorial-sigil-num {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--state-accent);
+}
+
+@media (max-width: 480px) {
+  #landingPage .landing-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+  #landingPage .landing-cta,
+  #landingPage .landing-secondary {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #landingPage .landing-cta,
+  #landingPage .landing-secondary {
+    transition: none;
+    transform: none;
+  }
+}

@@ -139,4 +139,11 @@
   --duration-fast: 120ms;
   --duration-base: 180ms;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  
+  --fx-duration: 480ms;
+  --fx-duration-fast: 260ms;
+  --fx-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --fx-distance: 18px;
+  --fx-stagger: 60ms;
+  --fx-scale-from: 0.96;
 }

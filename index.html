@@ -17,10 +17,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.12.1/html2pdf.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docx@9.16.0/dist/index.iife.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-  <link rel="stylesheet" href="styles/main.css?v=6-0-0-foundation" />
-  <link rel="stylesheet" href="styles/landing.css?v=1" />
-  <link rel="stylesheet" href="styles/subjects-status.css?v=1" />
-  <link rel="stylesheet" href="styles/subjects-fix.css?v=1" />
+  <link rel="stylesheet" href="styles/main.css?v=5-14-2-scroll-fx" />
+  <link rel="stylesheet" href="styles/landing.css?v=5-14-2-scroll-fx" />
+  <link rel="stylesheet" href="styles/subjects-status.css?v=5-14-2-scroll-fx" />
+  <link rel="stylesheet" href="styles/subjects-fix.css?v=5-14-2-scroll-fx" />
 </head>
 <body class="min-h-full text-[var(--ink)] antialiased">
   <a class="skip-link" href="#mainContent">Lewati ke konten utama</a>
@@ -53,20 +53,20 @@
 
   <main id="mainContent" tabindex="-1" aria-labelledby="appTitle" class="relative mx-auto max-w-[1400px] px-4 pb-16 pt-5 sm:px-6 lg:px-8">
     <section id="landingPage" class="flow-page landing-page">
-      <div class="landing-hero sheet">
-        <div class="landing-copy">
-          <div class="editorial-meta">
+      <div class="landing-hero sheet" data-reveal="fade">
+        <div class="landing-copy" data-reveal-stagger>
+          <div class="editorial-meta" data-reveal="up">
             <span class="editorial-issue">GASAL KELAS XI</span>
             <span class="editorial-category">ASESMEN SUMATIF AKHIR SEMESTER</span>
             
           </div>
-          <h2 class="landing-title">Materi&nbsp;&amp; Latihan Soal&nbsp;</h2>
-          <p class="landing-lead">OKEE</p>
+          <h2 class="landing-title" data-reveal="up">Materi&nbsp;&amp; Latihan Soal&nbsp;</h2>
+          <p class="landing-lead" data-reveal="up">OKEE</p>
           <div class="landing-actions">
             <button id="landingStartBtn" class="landing-cta" type="button">Mulai Belajar <span aria-hidden="true">→</span></button>
             <button class="landing-secondary glass" type="button" data-flow-scroll="panduan">Pelajari Alur</button>
           </div>
-          <div class="landing-chips">
+          <div class="landing-chips" data-reveal="up">
             <span>11 Mata Pelajaran</span>
             <span id="landingExamRange">Jadwal Ujian Gasal</span>
             <span>Mode Belajar &amp; Latihan</span>
@@ -83,27 +83,27 @@
       </div>
 
       <div id="panduan" class="landing-guide">
-        <div class="guide-intro">
+        <div class="guide-intro" data-reveal="up">
           <span class="editorial-issue">ALUR AKADEMIK</span>
           <h2 class="section-title mt-2">Tiga Langkah Menuju Kesiapan Optimal</h2>
           <p class="guide-subtitle">Dirancang ringkas dan terarah agar fokus belajar tetap terjaga sejak hari pertama persiapan ujian.</p>
         </div>
-        <ol class="guide-steps">
-          <li>
+        <ol class="guide-steps" data-reveal-stagger>
+          <li data-reveal="up">
             <span class="guide-num">01</span>
             <div class="guide-content">
               <strong>Pilih Mata Pelajaran</strong>
               <p>Eksplorasi daftar 11 mapel yang disesuaikan dengan urutan jadwal ujian gasal.</p>
             </div>
           </li>
-          <li>
+          <li data-reveal="up">
             <span class="guide-num">02</span>
             <div class="guide-content">
               <strong>Kaji Pengenalan &amp; Cakupan</strong>
               <p>Periksa status materi, ringkasan topik, dan kesiapan bank soal sebelum masuk.</p>
             </div>
           </li>
-          <li>
+          <li data-reveal="up">
             <span class="guide-num">03</span>
             <div class="guide-content">
               <strong>Pilih Mode Pembelajaran</strong>
@@ -113,7 +113,7 @@
         </ol>
       </div>
 
-      <div class="landing-identity">
+      <div class="landing-identity" data-reveal="fade">
         <span>Ruang Latihan ASAS</span>
         <span>Progres tersimpan di perangkat ini.</span>
       </div>
@@ -131,17 +131,25 @@
           </div>
 
           <nav class="dashboard-rail" aria-label="Navigasi Dashboard">
-            <button class="dashboard-rail-link flow-back glass" type="button" data-flow-nav="home">← Beranda</button>
+            <button class="dashboard-rail-link flow-back" type="button" data-flow-nav="home">← Beranda</button>
             <span class="dashboard-rail-link dashboard-rail-current" aria-current="page">Daftar Mapel</span>
           </nav>
 
           <div class="dashboard-progress" aria-label="Ringkasan jumlah mapel">
-            <span class="dashboard-progress-label">Cakupan mapel</span>
-            <span id="subjectCountFlow" class="dashboard-progress-value">11 mapel</span>
-            <span class="dashboard-progress-meter" aria-hidden="true"></span>
+            <div class="dashboard-progress-head">
+              <span class="dashboard-progress-label">Cakupan mapel</span>
+              <span id="subjectCountFlow" class="dashboard-progress-value">11 mapel</span>
+            </div>
+            <div id="coverageSegments" class="coverage-segments" role="img" aria-label="Cakupan materi per grup ujian"></div>
+            <div id="coverageFilters" class="coverage-filters" role="group" aria-label="Filter daftar mapel">
+              <button class="coverage-filter" type="button" data-subject-filter="semua" aria-pressed="true">Semua</button>
+              <button class="coverage-filter" type="button" data-subject-filter="materi" aria-pressed="false">Materi siap</button>
+              <button class="coverage-filter" type="button" data-subject-filter="latihan" aria-pressed="false">Latihan siap</button>
+            </div>
+            <div id="coverageExams" class="coverage-exams" aria-label="Jadwal ujian per grup"></div>
           </div>
 
-          <p class="dashboard-sidebar-note">Pilih mapel untuk membuka pengenalan dan menentukan mode belajar.</p>
+          <p class="dashboard-sidebar-note">Batang menunjukkan materi siap per grup ujian. Pilih filter untuk menyaring daftar mapel.</p>
         </aside>
 
         <div class="dashboard-main">
@@ -431,10 +439,10 @@
               <div>
                 <p class="eyebrow">Aturan Meja</p>
                 <ol class="mt-2 space-y-1.5 text-[11px] font-semibold leading-relaxed text-[var(--muted)]">
-                  <li><span class="rule-num">01</span> Jawaban langsung tersimpan.</li>
-                  <li><span class="rule-num">02</span> Klik opsi untuk menjawab.</li>
-                  <li><span class="rule-num">03</span> A–E atau 1–5 lewat keyboard.</li>
-                  <li><span class="rule-num">04</span> Tombol ragu menandai soal.</li>
+                  <li data-reveal="up"><span class="rule-num">01</span> Jawaban langsung tersimpan.</li>
+                  <li data-reveal="up"><span class="rule-num">02</span> Klik opsi untuk menjawab.</li>
+                  <li data-reveal="up"><span class="rule-num">03</span> A–E atau 1–5 lewat keyboard.</li>
+                  <li data-reveal="up"><span class="rule-num">04</span> Tombol ragu menandai soal.</li>
                 </ol>
               </div>
               <div id="navContainer" class="grid grid-cols-5 gap-2"></div>
@@ -653,10 +661,11 @@
     window.AI_TUTOR_ENDPOINT = "https://asas-ai-backend.anj4y789807.workers.dev/v1/ai/tutor";
   </script>
 
-  <script src="markdown.js?v=5-13-2-markdown"></script>
-  <script src="questions.js?v=5-13-4-soal-docx-source"></script>
-  <script src="content-import.js?v=3"></script>
-  <script src="aiTutor.js?v=5-13-2-markdown"></script>
-  <script src="app.js?v=5-13-2-markdown"></script>
+  <script src="markdown.js?v=5-14-2-scroll-fx"></script>
+  <script src="questions.js?v=5-14-2-scroll-fx"></script>
+  <script src="content-import.js?v=5-14-2-scroll-fx"></script>
+  <script src="aiTutor.js?v=5-14-2-scroll-fx"></script>
+  <script src="scripts/scroll-fx.js?v=5-14-2-scroll-fx"></script>
+  <script src="app.js?v=5-14-2-scroll-fx"></script>
 </body>
 </html>

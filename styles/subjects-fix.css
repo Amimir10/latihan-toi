@@ -49,10 +49,6 @@
     border-radius: var(--radius-md);
   }
 
-  body[data-page="subjects"] .dashboard-progress {
-    display: none;
-  }
-
   body[data-page="subjects"] .dashboard-header {
     display: flex;
     flex-direction: column;

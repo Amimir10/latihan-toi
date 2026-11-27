@@ -6482,6 +6482,196 @@ window.STUDY_CONTENT = Object.assign(window.STUDY_CONTENT || {}, {
       "explanation": "Kunci jawaban resmi: B.",
       "hints": [],
       "keyTerms": []
+    },
+    {
+      "id": "pkk-31",
+      "no": 31,
+      "topik": "Sikap dan Perilaku Wirausaha",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Dalam 10 karakter wirausaha menurut Bygrave (10 D), karakter Dollars memiliki makna bahwa bagi seorang wirausaha sejati ....",
+      "options": {
+        "A": "uang adalah satu-satunya ukuran keberhasilan hidup",
+        "B": "uang bukan semata-mata tujuan utama yang hendak dicapai, melainkan ukuran keberhasilan dan dampak manfaat usaha",
+        "C": "modal uang harus dipinjam dalam jumlah sebesar-besarnya",
+        "D": "keuntungan usaha tidak perlu dicatat dalam pembukuan",
+        "E": "seluruh pendapatan usaha harus langsung dibagikan habis"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B. Dollars bukan berarti uang adalah tujuan utama, melainkan indikator dampak dan keberhasilan usaha.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "pkk-32",
+      "no": 32,
+      "topik": "Sikap dan Perilaku Wirausaha",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Menurut Stephen Covey dalam bukunya First Things First, terdapat empat sisi potensial yang dimiliki manusia untuk mengembangkan perilaku kerja prestatif, salah satunya adalah Creative Imagination yang berarti ....",
+      "options": {
+        "A": "sikap mawas diri dalam menghadapi kritikan",
+        "B": "mempertajam suara hati nurani saat mengambil keputusan",
+        "C": "berpikir mengarah ke depan untuk memecahkan masalah dengan imajinasi serta adaptasi yang tepat",
+        "D": "pandangan independen tanpa mau mendengarkan masukan tim",
+        "E": "kebiasaan menunda pekerjaan hingga mendekati batas waktu"
+      },
+      "answer": "C",
+      "explanation": "Kunci jawaban resmi: C. Creative Imagination adalah kemampuan berpikir ke depan untuk memecahkan masalah.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "pkk-33",
+      "no": 33,
+      "topik": "Sikap dan Perilaku Wirausaha",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Sesi adu ide bersama anggota tim untuk mengumpulkan sebanyak mungkin gagasan kreatif dalam memecahkan masalah atau merancang produk baru disebut ....",
+      "options": {
+        "A": "Brainstorming session",
+        "B": "Quality control",
+        "C": "After-sales service",
+        "D": "Bookkeeping",
+        "E": "Stock opname"
+      },
+      "answer": "A",
+      "explanation": "Kunci jawaban resmi: A. Brainstorming adalah metode diskusi untuk menghasilkan ide kreatif.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "pkk-34",
+      "no": 34,
+      "topik": "Peluang Usaha",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Seorang pelaku usaha mikro melihat peluang saat musim hujan tiba dengan memproduksi jas hujan bermotif batik modern dan payung lipat antiangin. Cara memanfaatkan peluang usaha secara kreatif tersebut termasuk kategori ....",
+      "options": {
+        "A": "memanfaatkan barang bekas yang tidak terpakai",
+        "B": "memanfaatkan bahan tambang dari dalam bumi",
+        "C": "memanfaatkan kejadian atau peristiwa musiman yang sedang berlangsung",
+        "D": "meniru sepenuhnya produk impor tanpa perubahan",
+        "E": "mengandalkan promosi dari mulut ke mulut tanpa inovasi"
+      },
+      "answer": "C",
+      "explanation": "Kunci jawaban resmi: C. Peluang musiman dimanfaatkan dengan membuat produk yang sesuai kebutuhan saat itu (musim hujan).",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "pkk-35",
+      "no": 35,
+      "topik": "Peluang Usaha",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Seorang perajin mengubah fungsi ban bekas kendaraan yang semula merupakan limbah menjadi kursi taman yang unik dan nyaman diduduki. Berdasarkan identifikasi kreativitas, tindakan membentuk fungsi baru pada suatu benda tersebut dinamakan ....",
+      "options": {
+        "A": "To create (menciptakan)",
+        "B": "To modify (memodifikasi)",
+        "C": "To combine (mengombinasikan)",
+        "D": "To duplicate (menggandakan)",
+        "E": "To eliminate (menghilangkan)"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B. Modifikasi adalah mengubah bentuk atau fungsi barang yang sudah ada menjadi produk baru.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "pkk-36",
+      "no": 36,
+      "topik": "Peluang Usaha",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Dalam melakukan persiapan analisis peluang usaha, langkah awal yang perlu dilakukan sebelum menyusun pengadaan modal, mengurus izin usaha, dan menetapkan lokasi adalah ....",
+      "options": {
+        "A": "membubarkan mitra usaha lama",
+        "B": "membuat sketsa atau gambaran bidang usaha yang akan ditekuni",
+        "C": "melakukan promosi besar-besaran sebelum produk tersedia",
+        "D": "menjual aset pribadi untuk membiayai kerugian",
+        "E": "menutup akses informasi dari pelanggan"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B. Membuat sketsa/gambaran bidang usaha adalah langkah fundamental sebelum detail operasional lainnya.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "pkk-37",
+      "no": 37,
+      "topik": "Hak Atas Kekayaan Intelektual (HAKI)",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Tanda yang berupa gambar, nama, kata, huruf-huruf, angka-angka, susunan warna, atau kombinasi dari unsur-unsur tersebut yang memiliki daya pembeda dan digunakan dalam kegiatan perdagangan barang atau jasa disebut ....",
+      "options": {
+        "A": "Paten",
+        "B": "Merek",
+        "C": "Hak Cipta",
+        "D": "Rahasia Dagang",
+        "E": "Varietas Tanaman"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B. Merek berfungsi sebagai tanda pembeda barang/jasa dalam perdagangan.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "pkk-38",
+      "no": 38,
+      "topik": "Hak Atas Kekayaan Intelektual (HAKI)",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Tanda yang menunjukkan daerah asal suatu barang karena faktor lingkungan geografis, termasuk faktor alam, faktor manusia, atau kombinasi keduanya yang memberikan ciri dan kualitas tertentu pada barang yang dihasilkan (seperti Kopi Gayo atau Ubi Cilembu) dilindungi melalui ....",
+      "options": {
+        "A": "Desain Tata Letak Sirkuit Terpadu",
+        "B": "Indikasi Geografis",
+        "C": "Hak Cipta Sinematografi",
+        "D": "Paten Sederhana",
+        "E": "Rahasia Dagang"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B. Indikasi Geografis melindungi produk yang memiliki ciri khas berdasarkan daerah asalnya.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "pkk-39",
+      "no": 39,
+      "topik": "Hak Atas Kekayaan Intelektual (HAKI)",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Kreasi tentang bentuk, konfigurasi, atau komposisi garis atau warna yang berbentuk tiga dimensi atau dua dimensi yang memberikan kesan estetis dan dapat dipakai untuk menghasilkan suatu produk atau komoditas industri dilindungi oleh ....",
+      "options": {
+        "A": "UU No. 31 Tahun 2000 tentang Desain Industri",
+        "B": "UU No. 29 Tahun 2000 tentang Varietas Tanaman",
+        "C": "UU No. 30 Tahun 2000 tentang Rahacia Dagang",
+        "D": "UU No. 14 Tahun 2001 tentang Paten",
+        "E": "UU No. 19 Tahun 2002 tentang Hak Cipta"
+      },
+      "answer": "A",
+      "explanation": "Kunci jawaban resmi: A. Desain Industri melindungi bentuk/estetika produk.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "pkk-40",
+      "no": 40,
+      "topik": "Hak Atas Kekayaan Intelektual (HAKI)",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Hak Perlindungan Varietas Tanaman (PVT) yang dimiliki oleh pemulia tanaman dapat beralih atau dialihkan kepada pihak lain melalui beberapa cara yang sah secara hukum, kecuali ....",
+      "options": {
+        "A": "pewarisan",
+        "B": "hibah",
+        "C": "wasiat",
+        "D": "perjanjian lisan tanpa bukti tertulis",
+        "E": "perjanjian dalam bentuk akta notaris"
+      },
+      "answer": "D",
+      "explanation": "Kunci jawaban resmi: D. Pengalihan hak harus dilakukan secara tertulis (akta) agar memiliki kekuatan hukum.",
+      "hints": [],
+      "keyTerms": []
     }
   ]
 };

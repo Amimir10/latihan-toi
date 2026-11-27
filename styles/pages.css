@@ -459,10 +459,12 @@ body.dark .landing-visual {
   color: var(--text-primary);
   text-align: left;
   cursor: pointer;
-  opacity: 0;
   overflow: hidden;
-  transform: translateY(12px);
-  transition: opacity var(--duration-slow) var(--ease-out), transform var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+  transition: border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+}
+
+html.fx-ready .subject-card[data-reveal] {
+  transition: opacity var(--fx-duration) var(--fx-ease), transform var(--fx-duration) var(--fx-ease), border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
 }
 
 .subject-card.subject-card-has-material {
@@ -620,11 +622,138 @@ body.dark .landing-visual {
   }
 }
 
+body[data-page="subjects"] .dashboard-rail .flow-back {
+  box-shadow: none;
+}
+
+body[data-page="subjects"] .dashboard-progress-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+body[data-page="subjects"] .coverage-segments {
+  display: flex;
+  gap: 3px;
+  height: 6px;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: var(--surface-sunken);
+}
+
+body[data-page="subjects"] .coverage-segment {
+  min-width: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--border-medium);
+}
+
+body[data-page="subjects"] .coverage-segment-sebagian { background: var(--state-warning); }
+body[data-page="subjects"] .coverage-segment-lengkap { background: var(--state-success); }
+
+body[data-page="subjects"] .coverage-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1_5);
+}
+
+body[data-page="subjects"] .coverage-filter {
+  min-height: 32px;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-secondary);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+body[data-page="subjects"] .coverage-filter[aria-pressed="true"] {
+  border-color: var(--state-accent);
+  background: var(--state-accent-soft);
+  color: var(--ink);
+}
+
+body[data-page="subjects"] .coverage-exams {
+  display: grid;
+  gap: var(--space-1_5);
+  max-height: 250px;
+  overflow: auto;
+  padding-right: 2px;
+}
+
+body[data-page="subjects"] .exam-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 46px;
+  padding: var(--space-1_5) var(--space-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+}
+
+body[data-page="subjects"] .exam-card-hari-ini { border-color: var(--state-accent); }
+body[data-page="subjects"] .exam-card-selesai { opacity: 0.72; }
+body[data-page="subjects"] .exam-card-copy { min-inline-size: 0; }
+body[data-page="subjects"] .exam-card-title {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+body[data-page="subjects"] .exam-card-meta {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 0.64rem;
+  line-height: 1.4;
+}
+
+body[data-page="subjects"] .subject-empty {
+  margin: 0;
+  padding: var(--space-8);
+  border: 1px dashed var(--border-medium);
+  border-radius: var(--radius-xl);
+  background: var(--surface-sunken);
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  body[data-page="subjects"] .dashboard-progress {
+    flex: 1 1 100%;
+    width: 100%;
+    min-width: 0;
+    gap: var(--space-1_5);
+    padding: 0;
+    border: 0;
+  }
+
+  body[data-page="subjects"] .dashboard-progress-label,
+  body[data-page="subjects"] .coverage-exams {
+    display: none;
+  }
+
+  body[data-page="subjects"] .coverage-segments { height: 4px; }
+
+  body[data-page="subjects"] .coverage-filter {
+    min-height: 30px;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.64rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .subject-card,
   .subject-card.subject-card-visible,
   .subject-card:hover {
     transform: none;
-    transition-duration: 0.01ms;
+  }
+
+  html.fx-ready .subject-card[data-reveal] {
+    transform: none;
+    transition: opacity 220ms var(--fx-ease), border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+    transition-delay: 0ms;
   }
 }

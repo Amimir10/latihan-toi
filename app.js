@@ -18,6 +18,11 @@
   const LETTERS = ["A", "B", "C", "D", "E"];
   const BANK_LABEL = { latihan: "Latihan" };
   const MODE_LABEL = { belajar: "Belajar", latihan: "Latihan" };
+  const SUBJECT_FILTERS = {
+    semua: () => true,
+    materi: (subject) => subjectStudyInfo(subject).ready,
+    latihan: (subject) => subjectPracticeInfo(subject).ready
+  };
   const FLOW_ENABLED = (() => {
     try {
       return !!(window.history && typeof window.history.pushState === "function");
@@ -26,7 +31,6 @@
     }
   })();
   const FLOW_PAGE_IDS = { landing: "landingPage", subjects: "subjectsPage", intro: "introPage", modes: "modePage" };
-  let subjectRevealObserver = null;
   const STUDY_SECTIONS = { ringkas: "Materi Ringkas", peta: "Mind Mapping", flashcard: "Flashcard", poin: "Poin Penting", glosarium: "Istilah Penting" };
   const STUDY_STATUS = { tersedia: "Materi Tersedia", draft: "Draf Materi", menunggu: "Menunggu Materi" };
   const STUDY_MODULES = {
@@ -80,6 +84,7 @@
     subject: "bahasa-jawa",
     bank: "latihan",
     mode: "belajar",
+    subjectFilter: "semua",
     theme: "light",
     creatorMode: false,
     wrongOnly: false,
@@ -290,28 +295,10 @@
     return "Materi dan latihan sedang disiapkan.";
   }
 
-  function revealSubjectCards() {
-    const grid = $("subjectCardGrid");
-    const cards = grid ? Array.from(grid.querySelectorAll(".subject-card")) : [];
-    if (!cards.length) return;
-    if (subjectRevealObserver) subjectRevealObserver.disconnect();
-    const prefersReducedMotion = typeof window.matchMedia === "function"
-      && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion || typeof IntersectionObserver !== "function") {
-      cards.forEach((card) => card.classList.add("subject-card-visible"));
-      return;
+  function fxRefresh(root, options) {
+    if (window.ASAS_FX && typeof window.ASAS_FX.refresh === "function") {
+      window.ASAS_FX.refresh(root, options || {});
     }
-    subjectRevealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("subject-card-visible");
-        observer.unobserve(entry.target);
-      });
-    }, { root: null, rootMargin: "0px 0px -6% 0px", threshold: 0.08 });
-    cards.forEach((card, i) => {
-      card.style.setProperty("--reveal-delay", `${(i % 3) * 65}ms`);
-      subjectRevealObserver.observe(card);
-    });
   }
 
   function dateTileHtml(grup, { small = false } = {}) {
@@ -336,7 +323,7 @@
 
   function subjectCardHtml(subject, index) {
     const study = subjectStudyInfo(subject);
-    return `<button class="subject-card ${study.ready ? "subject-card-has-material" : ""}" type="button" data-subject-card="${escapeHTML(subject.id)}">
+    return `<button class="subject-card ${study.ready ? "subject-card-has-material" : ""}" type="button" data-subject-card="${escapeHTML(subject.id)}" data-reveal="up">
       <span class="subject-card-strip" aria-hidden="true"></span>
       <span class="subject-card-top">
         <span class="subject-card-index">${String(index + 1).padStart(2, "0")}</span>
@@ -355,17 +342,78 @@
     const grid = $("subjectCardGrid");
     if (!grid) return;
     const count = $("subjectCountFlow");
-    if (count) count.textContent = `${SUBJECTS.length} mapel`;
     const groups = [...new Set(SUBJECTS.map((s) => Number(s.grup) || 1))]
       .sort((a, b) => a - b);
+    const filter = SUBJECT_FILTERS[state.subjectFilter] || SUBJECT_FILTERS.semua;
+    const visible = SUBJECTS.filter(filter);
+    renderCoverage();
+    if (count) {
+      count.textContent = visible.length === SUBJECTS.length
+        ? `${SUBJECTS.length} mapel`
+        : `${visible.length} dari ${SUBJECTS.length} mapel`;
+    }
     grid.innerHTML = groups.map((grup) => {
-      const items = SUBJECTS.filter((s) => (Number(s.grup) || 1) === grup);
+      const items = visible.filter((s) => (Number(s.grup) || 1) === grup);
+      if (!items.length) return "";
       return `<div class="subject-card-group">
         ${subjectGroupTitleHtml(grup, items)}
-        <div class="subject-card-row">${items.map((subject) => subjectCardHtml(subject, SUBJECTS.indexOf(subject))).join("")}</div>
+        <div class="subject-card-row" data-reveal-stagger>${items.map((subject) => subjectCardHtml(subject, SUBJECTS.indexOf(subject))).join("")}</div>
       </div>`;
-    }).join("");
-    revealSubjectCards();
+    }).join("") || '<p class="subject-empty">Tidak ada mapel untuk filter ini.</p>';
+    fxRefresh(grid, { key: `subjects:${state.subjectFilter || "semua"}` });
+  }
+
+  function coverageSegmentHtml(grup, items) {
+    const material = items.filter((subject) => subjectStudyInfo(subject).ready).length;
+    const practice = items.filter((subject) => subjectPracticeInfo(subject).ready).length;
+    const level = material === items.length && practice === items.length
+      ? "lengkap"
+      : material > 0 || practice > 0 ? "sebagian" : "kosong";
+    return `<span class="coverage-segment coverage-segment-${level}" data-coverage-segment="${grup}" style="flex-grow:${items.length}" aria-hidden="true"></span>`;
+  }
+
+  function examPhase(grup) {
+    const today = new Date();
+    const todayValue = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+    const examValue = examDateParts(grup).date.getTime();
+    const firstValue = examDateParts(1).date.getTime();
+    if (todayValue > examValue) return { id: "selesai", label: "Selesai" };
+    if (todayValue === examValue) return { id: "hari-ini", label: "Hari ini" };
+    if (todayValue >= firstValue) return { id: "berlangsung", label: "Berlangsung" };
+    return { id: "mendatang", label: "Mendatang" };
+  }
+
+  function coverageExamHtml(grup, items) {
+    const phase = examPhase(grup);
+    const material = items.filter((subject) => subjectStudyInfo(subject).ready).length;
+    return `<article class="exam-card exam-card-${phase.id}" data-exam-phase="${phase.id}">
+      ${dateTileHtml(grup, { small: true })}
+      <div class="exam-card-copy">
+        <p class="exam-card-title">${escapeHTML(formatExamLong(grup))}</p>
+        <p class="exam-card-meta">Grup ${grup} · ${items.length} mapel · ${material}/${items.length} materi siap · ${escapeHTML(phase.label)}</p>
+      </div>
+    </article>`;
+  }
+
+  function renderCoverage() {
+    const segments = $("coverageSegments");
+    const exams = $("coverageExams");
+    const filters = $("coverageFilters");
+    const list = [...new Set(SUBJECTS.map((s) => Number(s.grup) || 1))].sort((a, b) => a - b);
+    const byGroup = list.map((grup) => [grup, SUBJECTS.filter((s) => (Number(s.grup) || 1) === grup)]);
+    if (segments) {
+      segments.innerHTML = byGroup.map(([grup, items]) => coverageSegmentHtml(grup, items)).join("");
+      segments.setAttribute("aria-label", `Cakupan materi per grup ujian. ${byGroup.map(([grup, items]) => {
+        const material = items.filter((subject) => subjectStudyInfo(subject).ready).length;
+        return `Grup ${grup}: ${material} dari ${items.length} materi siap`;
+      }).join("; ")}`);
+    }
+    if (exams) exams.innerHTML = byGroup.map(([grup, items]) => coverageExamHtml(grup, items)).join("");
+    if (filters) {
+      filters.querySelectorAll("[data-subject-filter]").forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.subjectFilter === state.subjectFilter));
+      });
+    }
   }
 
   function renderIntroPage() {
@@ -697,7 +745,7 @@
   }
 
   function studyModules(subjectId = state.subject) {
-    return STUDY_MODULES[subjectId] || {};
+    return { useGlobalGlossary: true, bedahTembung: false, bedahGatra: false, ...(STUDY_MODULES[subjectId] || {}) };
   }
 
   function resetStudyUiState() {
@@ -3437,6 +3485,12 @@
     $("subjectCardGrid").addEventListener("click", (e) => {
       const card = e.target.closest("[data-subject-card]");
       if (card && BANK[card.dataset.subjectCard]) navigateFlow("intro", { subject: card.dataset.subjectCard });
+    });
+    $("coverageFilters").addEventListener("click", (e) => {
+      const button = e.target.closest("[data-subject-filter]");
+      if (!button || !SUBJECT_FILTERS[button.dataset.subjectFilter]) return;
+      state.subjectFilter = button.dataset.subjectFilter;
+      renderSubjectCards();
     });
     $("modePage").addEventListener("click", (e) => {
       const choice = e.target.closest("[data-flow-mode]");

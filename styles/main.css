@@ -2,12 +2,12 @@
 @layer legacy;
 @layer tokens, themes, base, layout, components, pages, utilities;
 
-@import url("preflight.css") layer(preflight);
-@import url("../style.css?v=5-14-1-dashboard") layer(legacy);
-@import url("tokens.css") layer(tokens);
-@import url("themes.css") layer(themes);
-@import url("base.css") layer(base);
-@import url("layout.css") layer(layout);
-@import url("components.css") layer(components);
-@import url("pages.css") layer(pages);
-@import url("utilities.css") layer(utilities);
+@import url("preflight.css?v=5-14-2-scroll-fx") layer(preflight);
+@import url("../style.css?v=5-14-2-scroll-fx") layer(legacy);
+@import url("tokens.css?v=5-14-2-scroll-fx") layer(tokens);
+@import url("themes.css?v=5-14-2-scroll-fx") layer(themes);
+@import url("base.css?v=5-14-2-scroll-fx") layer(base);
+@import url("layout.css?v=5-14-2-scroll-fx") layer(layout);
+@import url("components.css?v=5-14-2-scroll-fx") layer(components);
+@import url("pages.css?v=5-14-2-scroll-fx") layer(pages);
+@import url("utilities.css?v=5-14-2-scroll-fx") layer(utilities);

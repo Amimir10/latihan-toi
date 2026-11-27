@@ -1775,11 +1775,12 @@ body[data-page="subjects"] .dashboard-rail-link {
   border: 0;
   border-radius: 10px;
   background: transparent;
+  box-shadow: none;
   padding: 0 12px;
-  color: var(--muted);
-  font-size: 0.78rem;
-  font-weight: 800;
-  text-align: left;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-align: left;
   text-decoration: none;
   transition: background-color 0.16s ease, color 0.16s ease;
 }
@@ -1790,9 +1791,9 @@ body[data-page="subjects"] .dashboard-rail .flow-back:hover {
 }
 
 body[data-page="subjects"] .dashboard-rail-current {
-  background: var(--accent-soft);
-  color: var(--accent);
-  box-shadow: 3px 0 0 var(--accent) inset;
+  border-left: 2px solid var(--line-strong);
+  background: var(--surface-sunken);
+  color: var(--ink);
 }
 
 .dashboard-rail-link:focus-visible {
@@ -1802,7 +1803,7 @@ body[data-page="subjects"] .dashboard-rail-current {
 
 body[data-page="subjects"] .dashboard-progress {
   display: grid;
-  gap: 6px;
+  gap: 10px;
   padding-top: 16px;
   border-top: 1px solid var(--line);
 }
@@ -1820,13 +1821,6 @@ body[data-page="subjects"] .dashboard-progress-value {
   font-family: var(--mono);
   font-size: 1.1rem;
   font-weight: 700;
-}
-
-body[data-page="subjects"] .dashboard-progress-meter {
-  display: block;
-  height: 4px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--accent) 0 58%, var(--line-strong) 58% 100%);
 }
 
 body[data-page="subjects"] .dashboard-sidebar-note {
@@ -1911,10 +1905,6 @@ html.dark body[data-page="subjects"] .dashboard-sidebar {
   background: var(--sheet);
 }
 
-html.dark body[data-page="subjects"] .dashboard-progress-meter {
-  background: linear-gradient(90deg, var(--accent) 0 58%, var(--line-strong) 58% 100%);
-}
-
 html.dark body[data-page="subjects"] .dashboard-rail-current {
   color: var(--ink);
 }
@@ -1972,11 +1962,6 @@ html.dark body[data-page="subjects"] .dashboard-rail-current {
     gap: 2px;
     padding: 0;
     border: 0;
-  }
-
-  body[data-page="subjects"] .dashboard-progress-label,
-  body[data-page="subjects"] .dashboard-progress-meter {
-    display: none;
   }
 
   body[data-page="subjects"] .dashboard-progress-value {

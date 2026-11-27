@@ -74,8 +74,6 @@ body[data-page]:not([data-page="room"]) :is(#mainNav, #examTopbar, #roomContent)
 @media (prefers-reduced-motion: reduce) {
   .flow-page,
   .mode-choice,
-  .subject-card,
-  .subject-card.subject-card-visible,
   .mode-sweep.run::after,
   .content-swap,
   .ai-tutor-spinner,

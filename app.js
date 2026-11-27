@@ -47,12 +47,12 @@
   const WEEKDAYS_SHORT = ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"];
   const DAY_META = window.DAY_GROUPS || [];
   const ACCENTS = {
-    amber: { main: "#ad402b", soft: "rgba(173,64,43,0.12)" },
-    teal: { main: "#1f6d60", soft: "rgba(31,109,96,0.12)" },
-    red: { main: "#a33a2e", soft: "rgba(163,58,46,0.12)" },
-    green: { main: "#2e8b6b", soft: "rgba(46,139,107,0.12)" },
-    gold: { main: "#a87b21", soft: "rgba(168,123,33,0.14)" },
-    slate: { main: "#4b5b6b", soft: "rgba(75,91,107,0.12)" }
+    amber: { main: "var(--color-amber-600)", soft: "var(--state-amber-soft)" },
+    teal: { main: "var(--state-success)", soft: "var(--state-success-soft)" },
+    red: { main: "var(--state-danger)", soft: "var(--state-danger-soft)" },
+    green: { main: "var(--state-success)", soft: "var(--state-success-soft)" },
+    gold: { main: "var(--color-amber-600)", soft: "var(--state-amber-soft)" },
+    slate: { main: "var(--border-strong)", soft: "var(--surface-sunken)" }
   };
 
   if (!window.QUESTION_BANK) {
@@ -80,7 +80,7 @@
     subject: "bahasa-jawa",
     bank: "latihan",
     mode: "belajar",
-    theme: "system",
+    theme: "light",
     creatorMode: false,
     wrongOnly: false,
     fullSession: null,
@@ -316,7 +316,7 @@
 
   function dateTileHtml(grup, { small = false } = {}) {
     const tile = formatExamTile(grup);
-    return `<span class="date-tile${small ? " date-tile-small" : ""}" aria-label="${escapeHTML(formatExamLong(grup))}"><span class="date-tile-face" aria-hidden="true"><span class="date-tile-weekday">${escapeHTML(tile.weekdayShort)}</span><strong class="date-tile-date">${escapeHTML(tile.day)}</strong><span class="date-tile-month">${escapeHTML(tile.monthShort)}</span></span></span>`;
+    return `<span class="date-tile${small ? " date-tile-sm" : ""}" aria-label="${escapeHTML(formatExamLong(grup))}"><span class="date-tile-face" aria-hidden="true"><span class="date-tile-weekday">${escapeHTML(tile.weekdayShort)}</span><strong class="date-tile-date">${escapeHTML(tile.day)}</strong><span class="date-tile-month">${escapeHTML(tile.monthShort)}</span></span></span>`;
   }
 
   function subjectGroupTitleHtml(grup, items) {
@@ -337,6 +337,7 @@
   function subjectCardHtml(subject, index) {
     const study = subjectStudyInfo(subject);
     return `<button class="subject-card ${study.ready ? "subject-card-has-material" : ""}" type="button" data-subject-card="${escapeHTML(subject.id)}">
+      <span class="subject-card-strip" aria-hidden="true"></span>
       <span class="subject-card-top">
         <span class="subject-card-index">${String(index + 1).padStart(2, "0")}</span>
         <span class="subject-card-go" aria-hidden="true">→</span>
@@ -375,8 +376,8 @@
     const practice = subjectPracticeInfo(meta);
     const topics = subjectTopics(meta);
     if ($("introSubjectName")) $("introSubjectName").textContent = meta.namaMapel;
-    if ($("introSubjectSchedule")) $("introSubjectSchedule").textContent = `${examDateForSubject(meta)} · Grup ${meta.grup} · Durasi ${meta.durasiMenit} menit`;
-    if ($("introExamBadge")) $("introExamBadge").textContent = `Jadwal ${examDateOnly(meta.grup, true)}`;
+    if ($("introSubjectSchedule")) $("introSubjectSchedule").textContent = `${formatExamLong(meta.grup)} · Grup ${meta.grup} · Durasi ${meta.durasiMenit} menit`;
+    if ($("introExamBadge")) $("introExamBadge").innerHTML = dateTileHtml(meta.grup);
     const objective = topics.length
       ? `Tujuan pembelajaran khusus belum tersedia sebagai data tersendiri. Cakupan materi yang tercatat menjadi acuan: ${topics.join(", ")}.`
       : "Tujuan pembelajaran khusus belum tersedia. Materi dapat ditambahkan melalui Mode Pembuat bila tersedia.";
@@ -433,7 +434,7 @@
       $(id)?.classList.toggle("hidden", state.appPage !== page);
     });
     const range = $("landingExamRange");
-    if (range) range.textContent = `Ujian ${examDateOnly(1, true)} - ${examDateOnly(6, true)}`;
+    if (range) range.textContent = `Ujian ${formatExamRange(1, 6)}`;
     renderSubjectCards();
     renderIntroPage();
     renderModePage();
@@ -1080,7 +1081,7 @@
       state.bank = "latihan";
       if (MODE_LABEL[raw.mode]) state.mode = raw.mode;
       if (STUDY_SECTIONS[raw.studySection]) state.studySection = raw.studySection;
-      if (raw.theme === "dark" || raw.theme === "light" || raw.theme === "system") state.theme = raw.theme;
+      if (raw.theme === "dark" || raw.theme === "light") state.theme = raw.theme;
     } catch (error) {
       console.warn("[ASAS] Preferensi tidak dapat dibaca.", error);
     }
@@ -1389,10 +1390,10 @@
       $("subjectCount").textContent = String(SUBJECTS.length);
       const subject = activeSubject();
       $("activeSubjectName").textContent = subject.namaMapel;
-      $("activeSubjectHari").textContent = `${examDateForSubject(subject)} - Grup ${subject.grup}`;
-      $("scheduleDateBadge").textContent = examDateOnly(1, true);
+      $("activeSubjectHari").textContent = `${subjectExamLabel(subject)} · Grup ${subject.grup}`;
+      $("scheduleDateBadge").textContent = formatExamShort(1);
       $("examSubjectName").textContent = `${subject.namaMapel} - ${tMode(state.mode)}`;
-      $("examDateLabel").textContent = examDateForSubject(subject);
+      $("examDateLabel").textContent = formatExamLong(subject.grup);
       const studying = state.mode === "belajar";
       $("mainNav").classList.toggle("hidden", !studying);
       $("examTopbar").classList.toggle("hidden", studying);
@@ -1408,12 +1409,11 @@
         : "Progres belajar: -";
       $("currentBankLabel").textContent = studying ? "Materi Belajar" : `Bank ${tBank(state.bank)}`;
 
-      const groupKeys = [...new Set(SUBJECTS.map((s) => `${s.grup}|${s.hari}`))]
-        .sort((a, b) => Number(a.split("|")[0]) - Number(b.split("|")[0]));
-      $("subjectGrid").innerHTML = groupKeys.map((key) => {
-        const [grup, hari] = key.split("|");
-        const items = SUBJECTS.filter((s) => `${s.grup}|${s.hari}` === key);
-        return `<p class="subject-group-title">${escapeHTML(hari)} · ${escapeHTML(examDateOnly(Number(grup)))}</p>` + items.map((s) => {
+      const groupKeys = [...new Set(SUBJECTS.map((s) => Number(s.grup) || 1))]
+        .sort((a, b) => a - b);
+      $("subjectGrid").innerHTML = groupKeys.map((grup) => {
+        const items = SUBJECTS.filter((s) => (Number(s.grup) || 1) === grup);
+        return `<p class="subject-group-title">${escapeHTML(formatExamLong(grup))}</p>` + items.map((s) => {
           const count = bankCount(s.id, state.bank);
           const active = s.id === state.subject;
           const studyReady = loadStudyContent(s.id).status === "tersedia";
@@ -1604,21 +1604,22 @@
     const seen = !!(node.topikId && state.studyProgress?.topics?.[node.topikId]);
     const active = !!(node.topikId && state.studyTopicId === node.topikId);
     const titleClass = `mind-node-title${seen ? " is-seen" : ""}${active ? " is-active" : ""}`;
+    const rowClass = `mind-node-row${plainJudul.length > 28 ? " is-long" : ""}`;
     const title = node.topikId
       ? `<button class="${titleClass}" type="button" data-study-topic-pick="${escapeHTML(node.topikId)}">${mdInline(judul)}</button>`
       : `<span class="${titleClass}">${mdInline(judul)}</span>`;
     const badge = depth === 0 ? String(index + 1).padStart(2, "0") : "";
     const toggleLabel = expanded ? `Tutup cabang: ${plainJudul}` : `Buka cabang: ${plainJudul}`;
     const toggle = children.length
-      ? `<button class="mind-node-toggle" type="button" data-study-node-toggle="${escapeHTML(key)}" aria-expanded="${expanded ? "true" : "false"}" aria-label="${escapeHTML(toggleLabel)}">${expanded ? "−" : "+"}</button>`
+      ? `<button class="mind-node-toggle" type="button" data-study-node-toggle="${escapeHTML(key)}" aria-expanded="${expanded ? "true" : "false"}" aria-label="${escapeHTML(toggleLabel)}"><span class="mind-node-sign" aria-hidden="true">${expanded ? "−" : "+"}</span></button>`
       : `<span class="mind-node-dot" aria-hidden="true"></span>`;
     const seenMarkup = seen ? `<span class="mind-node-seen" role="img" aria-label="Sudah dibaca">✓</span>` : "";
     return `<li class="mind-node ${depthClass}${children.length ? " has-children" : ""}" data-depth="${Math.min(depth, 3)}" data-key="${escapeHTML(key)}"${branchStyle}>
-      <div class="mind-node-row">
+      <div class="${rowClass}">
         ${badge ? `<span class="mind-node-badge">${badge}</span>` : ""}
         ${title}
         ${seenMarkup}
-        ${children.length ? `<span class="mind-node-count">${children.length}</span>` : ""}
+        ${children.length ? `<span class="mind-node-count">${children.length} sub</span>` : ""}
         ${toggle}
       </div>
       ${children.length && expanded ? `<ul class="mind-children">${children.map((child, i) => studyNodeHTML(child, `${key}-${i}`, depth + 1, i, total)).join("")}</ul>` : ""}
@@ -2321,7 +2322,7 @@
     if (r.score >= 85) {
       return {
         label: "Sangat baik",
-        tone: "text-emerald-600 dark:text-emerald-400",
+        tone: "text-[var(--state-success)] dark:text-[var(--color-success-300)]",
         summary: "Pemahaman kamu sudah sangat kuat pada sesi ini. Pertahankan ritme belajarmu.",
         lines: [
           `${r.correct} dari ${r.total} soal terjawab benar.`,
@@ -2333,7 +2334,7 @@
     if (r.score >= 70) {
       return {
         label: "Baik",
-        tone: "text-teal-600 dark:text-teal-400",
+        tone: "text-[var(--state-success)] dark:text-[var(--color-success-300)]",
         summary: "Pemahaman kamu sudah baik. Beberapa bagian masih bisa diperketat.",
         lines: [
           `${r.correct} dari ${r.total} soal terjawab benar.`,
@@ -2345,7 +2346,7 @@
     if (r.score >= 50) {
       return {
         label: "Cukup",
-        tone: "text-amber-600 dark:text-amber-400",
+        tone: "text-[var(--color-amber-600)] dark:text-[var(--color-amber-300)]",
         summary: "Pemahaman kamu mulai terbentuk. Fokus pada bagian yang masih sering salah.",
         lines: [
           `${r.correct} dari ${r.total} soal terjawab benar.`,
@@ -2356,7 +2357,7 @@
     }
     return {
       label: "Perlu latihan",
-      tone: "text-rose-600 dark:text-rose-400",
+      tone: "text-[var(--state-danger)] dark:text-[var(--color-danger-300)]",
       summary: "Ini bukan kegagalan. Ada bagian materi yang perlu dibaca ulang sebelum latihan berikutnya.",
       lines: [
         `${r.correct} dari ${r.total} soal terjawab benar.`,
@@ -2422,10 +2423,10 @@
         </ol>`;
       $("retryWrongBtn").disabled = r.wrong === 0;
       const stats = [
-        ["Benar", r.correct, "text-emerald-600 dark:text-emerald-400"],
-        ["Salah", r.wrong, "text-rose-600 dark:text-rose-400"],
-        ["Kosong", r.unanswered, "text-slate-500 dark:text-slate-400"],
-        ["Ragu", r.flagged, "text-amber-600 dark:text-amber-400"]
+        ["Benar", r.correct, "text-[var(--state-success)] dark:text-[var(--color-success-300)]"],
+        ["Salah", r.wrong, "text-[var(--state-danger)] dark:text-[var(--color-danger-300)]"],
+        ["Kosong", r.unanswered, "text-[var(--text-secondary)] dark:text-[var(--text-secondary)]"],
+        ["Ragu", r.flagged, "text-[var(--color-amber-600)] dark:text-[var(--color-amber-300)]"]
       ];
       $("resultStats").innerHTML = stats.map(([label, value, color]) => `
         <div class="stat-card text-center">
@@ -2464,14 +2465,14 @@
       card.innerHTML = `
         <div class="flex flex-wrap items-center gap-2">
           <span class="rounded-lg bg-[var(--accent-soft)] px-2 py-1 text-[11px] font-bold text-[var(--accent)]">Soal ${escapeHTML(q.no || "-")}</span>
-          <span class="text-[11px] font-semibold ${isCorrect ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}">${chosen === undefined ? "Belum dijawab" : isCorrect ? "Benar" : "Salah"}</span>
+          <span class="text-[11px] font-semibold ${isCorrect ? "text-[var(--state-success)] dark:text-[var(--color-success-300)]" : "text-[var(--state-danger)] dark:text-[var(--color-danger-300)]"}">${chosen === undefined ? "Belum dijawab" : isCorrect ? "Benar" : "Salah"}</span>
           <span class="text-[11px] font-semibold text-[var(--muted)]">${escapeHTML(q.topik || "Umum")}</span>
           ${q.indikator ? `<span class="text-[11px] font-semibold text-[var(--teal)]">${escapeHTML(q.indikator)}</span>` : ""}
         </div>
         ${stimulusBlocks(q).length ? `<div class="font-bacaan mt-3 text-xs leading-6 text-[var(--muted)]">${stimulusBlocks(q).map((block) => renderStimulusBlock(block, q)).join("")}</div>` : ""}
         <p class="font-bacaan mt-3 text-sm font-bold leading-relaxed">${renderKeyTerms(q.question, q.keyTerms, false)}</p>
         <div class="mt-3 grid gap-1.5 text-xs">
-          ${LETTERS.map((l) => `<div class="rounded-lg px-2.5 py-1.5 ${l === q.answer ? "bg-emerald-50 font-bold text-emerald-800 dark:bg-emerald-500/10 dark:text-emerald-300" : l === chosen ? "bg-rose-50 text-rose-700 dark:bg-rose-500/10 dark:text-rose-300" : "bg-[var(--paper-soft)] text-[var(--muted)]"}"><span class="font-extrabold">${l}.</span> ${renderKeyTerms(q.options[l] || "", q.keyTerms, false)}</div>`).join("")}
+          ${LETTERS.map((l) => `<div class="rounded-lg px-2.5 py-1.5 ${l === q.answer ? "bg-[var(--state-success-soft)] font-bold text-[var(--state-success)] dark:bg-[var(--state-success-soft)] dark:text-[var(--color-success-300)]" : l === chosen ? "bg-[var(--state-danger-soft)] text-[var(--state-danger)] dark:bg-[var(--state-danger-soft)] dark:text-[var(--color-danger-300)]" : "bg-[var(--paper-soft)] text-[var(--muted)]"}"><span class="font-extrabold">${l}.</span> ${renderKeyTerms(q.options[l] || "", q.keyTerms, false)}</div>`).join("")}
         </div>
         <p class="mt-3 text-xs font-bold text-[var(--muted)]">Kunci: ${escapeHTML(q.answer)} | Jawabanmu: ${escapeHTML(chosen || "-")}</p>
         ${keyTermRows ? `<ul class="mt-3 list-disc pl-5 text-xs leading-6">${keyTermRows}</ul>` : ""}
@@ -2599,8 +2600,8 @@
     const el = $("downloadStatus");
     if (!el) return;
     el.textContent = text;
-    el.classList.remove("hidden", "text-rose-600", "text-emerald-600", "dark:text-rose-400", "dark:text-emerald-400");
-    el.classList.add(isError ? "text-rose-600 dark:text-rose-400" : "text-emerald-600 dark:text-emerald-400");
+    el.classList.remove("hidden", "text-[var(--state-danger)]", "text-[var(--state-success)]", "dark:text-[var(--color-danger-300)]", "dark:text-[var(--color-success-300)]");
+    el.classList.add(isError ? "text-[var(--state-danger)] dark:text-[var(--color-danger-300)]" : "text-[var(--state-success)] dark:text-[var(--color-success-300)]");
     window.clearTimeout(state.downloadStatusTimer);
     state.downloadStatusTimer = window.setTimeout(() => el.classList.add("hidden"), 6000);
   }
@@ -2609,35 +2610,31 @@
     const el = $("importStatus");
     if (!el) return;
     el.textContent = text;
-    el.classList.remove("hidden", "text-rose-600", "text-emerald-600", "dark:text-rose-400", "dark:text-emerald-400");
-    el.classList.add(isError ? "text-rose-600 dark:text-rose-400" : "text-emerald-600 dark:text-emerald-400");
+    el.classList.remove("hidden", "text-[var(--state-danger)]", "text-[var(--state-success)]", "dark:text-[var(--color-danger-300)]", "dark:text-[var(--color-success-300)]");
+    el.classList.add(isError ? "text-[var(--state-danger)] dark:text-[var(--color-danger-300)]" : "text-[var(--state-success)] dark:text-[var(--color-success-300)]");
     window.clearTimeout(state.importStatusTimer);
     state.importStatusTimer = window.setTimeout(() => el.classList.add("hidden"), 6000);
   }
 
-  function systemPrefersDark() {
-    try {
-      return typeof window.matchMedia === "function" && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    } catch (error) {
-      return false;
-    }
-  }
-
   function isThemeDark() {
-    return state.theme === "dark" || (state.theme === "system" && systemPrefersDark());
+    return state.theme === "dark";
   }
 
   function applyTheme() {
     const dark = isThemeDark();
-    const light = state.theme === "light";
+    const light = !dark;
     document.documentElement.classList.toggle("dark", dark);
     document.body.classList.toggle("dark", dark);
     document.documentElement.classList.toggle("light", light);
     document.body.classList.toggle("light", light);
     $("themeIcon").textContent = dark ? "☀" : "☾";
-    $("themeLabel").textContent = dark ? "Light" : "Dark";
+    $("themeLabel").textContent = dark ? "Terang" : "Gelap";
     $("themeToggleBtn").setAttribute("aria-pressed", String(dark));
     $("themeToggleBtn").setAttribute("aria-label", dark ? "Ganti ke tema terang" : "Ganti ke tema gelap");
+    const colorSchemeMeta = document.querySelector('meta[name="color-scheme"]');
+    if (colorSchemeMeta) colorSchemeMeta.setAttribute("content", dark ? "dark" : "light");
+    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeColorMeta) themeColorMeta.setAttribute("content", dark ? "#0F172A" : "#F8FAFC");
   }
 
   function toggleTheme() {
@@ -2649,20 +2646,6 @@
     state.themeTransitionTimer = window.setTimeout(() => {
       document.documentElement.classList.remove("theme-transition");
     }, 360);
-  }
-
-  function watchSystemTheme() {
-    if (typeof window.matchMedia !== "function") return;
-    try {
-      const query = window.matchMedia("(prefers-color-scheme: dark)");
-      const handler = () => {
-        if (state.theme === "system") applyTheme();
-      };
-      if (typeof query.addEventListener === "function") query.addEventListener("change", handler);
-      else if (typeof query.addListener === "function") query.addListener(handler);
-    } catch (error) {
-      return;
-    }
   }
 
   function ensurePin() {
@@ -3279,10 +3262,10 @@
       const key = includeKey ? `
         <p style="margin:10px 0 4px;font-size:12px;"><strong>Kunci:</strong> ${escapeHTML(q.answer)}</p>
         <p style="font-family:'Lora',Georgia,serif;margin:0 0 6px;font-size:12px;line-height:1.6;"><strong>Pembahasan:</strong> ${escapeHTML(q.explanation)}</p>
-        ${(q.keyTerms || []).length ? `<p style="font-size:11px;color:#444;margin:0 0 8px;"><strong>Istilah kunci:</strong> ${q.keyTerms.map((t) => escapeHTML(typeof t === "string" ? t : t.term)).join(", ")}</p>` : ""}` : "";
+        ${(q.keyTerms || []).length ? `<p style="font-size:11px;color:var(--text-secondary);margin:0 0 8px;"><strong>Istilah kunci:</strong> ${q.keyTerms.map((t) => escapeHTML(typeof t === "string" ? t : t.term)).join(", ")}</p>` : ""}` : "";
       return `
-        <section style="break-inside:avoid;margin:0 0 22px;padding-bottom:14px;border-bottom:1px solid #ddd;">
-          <p style="font-size:11px;font-weight:700;color:#ad402b;text-transform:uppercase;letter-spacing:1px;margin:0 0 6px;">${i + 1}. ${escapeHTML(q.topik || "Umum")} - ${escapeHTML(q.level || "C2")}</p>
+        <section style="break-inside:avoid;margin:0 0 22px;padding-bottom:14px;border-bottom:1px solid var(--border-medium);">
+          <p style="font-size:11px;font-weight:700;color:var(--state-accent);text-transform:uppercase;letter-spacing:1px;margin:0 0 6px;">${i + 1}. ${escapeHTML(q.topik || "Umum")} - ${escapeHTML(q.level || "C2")}</p>
           ${stimulus}
           <p style="font-family:'Lora',Georgia,serif;font-weight:700;line-height:1.7;margin:0 0 8px;">${escapeHTML(q.question)}</p>
           ${options}
@@ -3290,21 +3273,21 @@
         </section>`;
     }).join("");
     return `
-      <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif;color:#222;background:#fff;">
-        <header style="border-bottom:3px solid #ad402b;padding-bottom:14px;margin-bottom:20px;">
-          <p style="font-size:10px;font-weight:800;letter-spacing:2px;color:#ad402b;text-transform:uppercase;margin:0;">Ruang Latihan ASAS - Gasal Kelas XI</p>
+      <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif;color:var(--text-primary);background:var(--surface-raised);">
+        <header style="border-bottom:3px solid var(--state-accent);padding-bottom:14px;margin-bottom:20px;">
+          <p style="font-size:10px;font-weight:800;letter-spacing:2px;color:var(--state-accent);text-transform:uppercase;margin:0;">Ruang Latihan ASAS - Gasal Kelas XI</p>
           <h1 style="font-family:'Lora',Georgia,serif;font-size:24px;margin:6px 0 4px;">${escapeHTML(subject.namaMapel)}</h1>
-          <p style="font-size:12px;color:#555;margin:0;">Bank ${tBank(state.bank)} - ${questions.length} soal - Durasi ${subject.durasiMenit} menit${includeKey ? " - Lengkap dengan kunci dan pembahasan" : ""}</p>
+          <p style="font-size:12px;color:var(--text-secondary);margin:0;">Bank ${tBank(state.bank)} - ${questions.length} soal - Durasi ${subject.durasiMenit} menit${includeKey ? " - Lengkap dengan kunci dan pembahasan" : ""}</p>
         </header>
         ${rows}
-        <footer style="margin-top:24px;border-top:1px solid #ddd;padding-top:10px;font-size:10px;color:#777;">Dicetak dari Ruang Latihan ASAS - ${APP_VERSION}</footer>
+        <footer style="margin-top:24px;border-top:1px solid var(--border-medium);padding-top:10px;font-size:10px;color:var(--text-secondary);">Dicetak dari Ruang Latihan ASAS - ${APP_VERSION}</footer>
       </div>`;
   }
 
   function withPrintContainer(html) {
     const el = document.createElement("div");
     el.id = "asasPrintContainer";
-    el.style.cssText = "position:fixed;left:0;top:0;z-index:-9999;width:794px;padding:48px;background:#fff;color:#222;";
+    el.style.cssText = "position:fixed;left:0;top:0;z-index:-9999;width:794px;padding:48px;background:var(--surface-raised);color:var(--text-primary);";
     el.innerHTML = html;
     document.body.appendChild(el);
     return el;
@@ -3864,7 +3847,6 @@
   }
 
   function init() {
-    $("appVersion").textContent = APP_VERSION;
     loadPreferences();
     if (FLOW_ENABLED) {
       const initialRoute = routeFromHash();
@@ -3874,7 +3856,6 @@
     renderAppPage();
     ensurePin();
     applyTheme();
-    watchSystemTheme();
     bindEvents();
     mountAITutor();
     syncStickyOffsets();

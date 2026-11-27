@@ -68,15 +68,4 @@
     gap: 8px;
     justify-items: start;
   }
-
-  body[data-page="subjects"] .subject-card-row {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  body[data-page="subjects"] .subject-card {
-    min-height: 0;
-    padding: 16px;
-    gap: 8px;
-  }
 }

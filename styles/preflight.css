@@ -4,7 +4,7 @@
   box-sizing: border-box;
   border-width: 0;
   border-style: solid;
-  border-color: var(--border-subtle, #e2e8f0);
+  border-color: var(--border-subtle, var(--color-line-200));
 }
 
 html {

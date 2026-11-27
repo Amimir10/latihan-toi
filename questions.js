@@ -186,7 +186,7 @@ window.STUDY_CONTENT = {
     },
     {
       no: 14, topik: "Cerkak", level: "C2",
-      question: "Ing cerkak, unsur sing nyritakake papan, wektu, dan kahanan kedadeyan crita diarani...",
+      question: "Ing cerkak, unsur sing nyritakake papan, wektu, lan kahanan kedadeyan crita diarani...",
       options: { A: "Tema", B: "Alur", C: "Setting / Latar", D: "Tokoh", E: "Amanat" },
       answer: "C",
       explanation: "Wangsulan: C.\nPapan, wektu, lan kahanan diarani latar (setting)."
@@ -256,7 +256,7 @@ window.STUDY_CONTENT = {
     },
     {
       no: 24, topik: "Cerkak", level: "C4",
-      question: "Alur crita ing cerkak sing maju diarani...",
+      question: "Alur crita ing cerkak sing maju (maju) diarani...",
       options: { A: "Alur mundur", B: "Alur campuran", C: "Alur maju (progresif)", D: "Alur sorot balik", E: "Alur maju-mundur" },
       answer: "C",
       explanation: "Wangsulan: C.\nAlur maju nyritakake kedadeyan saka wiwitan nganti pungkasan."
@@ -319,17 +319,17 @@ window.STUDY_CONTENT = {
     },
     {
       no: 33, topik: "Pariwara", level: "C4",
-      question: "Pariwara layanan bimbingan belajar nulis: “Sinau santai, hasil maksimal. Kelas cilik, pendampingan pribadi.” Apa tujuan utama pariwara kasebut?",
-      options: { A: "Menehi hiburan kanggo pamirsa.", B: "Mbujuk siswa lan wong tuwa supaya milih layanan bimbingan belajar.", C: "Ngandhani rega buku lan alat tulis.", D: "Nyritakake pengalaman pangripta.", E: "Ngajak pamirsa maca novel." },
+      question: "Disajikake gambar pariwara layanan kesehatan. Tujuan utama saka pariwara kasebut yaiku...",
+      options: { A: "Ngajak wong supaya lara.", B: "Ngajak wong supaya golek perawatan kesehatan.", C: "Ngajak wong supaya ora mangan.", D: "Ngajak wong supaya ngombe obat.", E: "Ngajak wong supaya seneng." },
       answer: "B",
-      explanation: "Wangsulan: B.\nTujuan pariwara layanan yaiku mbujuk target pasar supaya nggunakake jasane."
+      explanation: "Wangsulan: B.\nTujuan pariwara layanan kesehatan yaiku ngajak wong supaya golek perawatan kesehatan."
     },
     {
       no: 34, topik: "Pariwara", level: "C2",
-      question: "Pariwara sing ngumumake lowongan kerja saka sawijining perusahaan kalebu jinising pariwara ...",
-      options: { A: "Pariwara niaga.", B: "Pariwara layanan masyarakat.", C: "Pariwara pengumuman resmi.", D: "Pariwara lowongan kerja.", E: "Pariwara politik." },
-      answer: "D",
-      explanation: "Wangsulan: D.\nPariwara lowongan kerja khusus kanggo menehi informasi lowongan gaweyan."
+      question: "Disajikake gambar pariwara layanan kesehatan. Pariwara kasebut kalebu jenis pariwara...",
+      options: { A: "Pariwara niaga.", B: "Pariwara layanan masyarakat.", C: "Pariwara pengumuman.", D: "Pariwara lowongan kerja.", E: "Pariwara politik." },
+      answer: "B",
+      explanation: "Wangsulan: B.\nPariwara layanan kesehatan kalebu pariwara layanan masyarakat."
     },
     {
       no: 35, topik: "Pariwara", level: "C4",
@@ -361,17 +361,17 @@ window.STUDY_CONTENT = {
     },
     {
       no: 39, topik: "Pariwara", level: "C2",
-      question: "Puskesmas nyebarake pariwara babagan jadwal vaksinasi lan papan layanan kanggo warga. Pariwara kasebut kalebu jinising pariwara ...",
-      options: { A: "Pariwara niaga.", B: "Pariwara layanan masyarakat.", C: "Pariwara politik.", D: "Pariwara lowongan kerja.", E: "Pariwara hiburan." },
+      question: "Disajikake gambar pariwara layanan kesehatan. Jenis pariwara kasebut yaiku...",
+      options: { A: "Pariwara niaga.", B: "Pariwara layanan masyarakat.", C: "Pariwara pengumuman.", D: "Pariwara lowongan kerja.", E: "Pariwara politik." },
       answer: "B",
-      explanation: "Wangsulan: B.\nInformasi kesehatan lan vaksinasi puskesmas kalebu layanan masyarakat."
+      explanation: "Wangsulan: B.\nPariwara layanan kesehatan kalebu pariwara layanan masyarakat."
     },
     {
       no: 40, topik: "Pariwara", level: "C4",
-      question: "Slogan “Aja mbuwang sampah sembarangan, jaga lingkungan bebarengan” ing pariwara layanan masyarakat nduweni fungsi utama kanggo ...",
-      options: { A: "Ngandhani rega produk.", B: "Mbujuk warga supaya tumindak njaga lingkungan.", C: "Menehi hiburan marang pamirsa.", D: "Ngumumake lowongan kerja.", E: "Njlentrehi sejarah kutha." },
+      question: "Disajikake gambar pariwara layanan kesehatan. Tujuan utama saka pariwara kasebut yaiku...",
+      options: { A: "Ngajak wong supaya lara.", B: "Ngajak wong supaya golek perawatan kesehatan.", C: "Ngajak wong supaya ora mangan.", D: "Ngajak wong supaya ngombe obat.", E: "Ngajak wong supaya seneng." },
       answer: "B",
-      explanation: "Wangsulan: B.\nSlogan kasebut nduweni fungsi persuasif supaya warga njaga lingkungan."
+      explanation: "Wangsulan: B.\nTujuan pariwara layanan kesehatan yaiku ngajak wong supaya golek perawatan kesehatan."
     }
   ];
 

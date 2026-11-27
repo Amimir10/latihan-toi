@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light dark" />
-  <title>Ruang Latihan ASAS - Gasal Kelas XI</title>
+  <meta name="theme-color" content="#F8FAFC" />
+  <title>Latihan ASAS - Gasal Kelas XI</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -27,26 +28,25 @@
   <div id="modeSweep" class="mode-sweep" aria-hidden="true"></div>
 
   <header class="topbar">
-    <div class="mx-auto flex max-w-[1400px] flex-wrap items-center gap-3 px-4 py-3 sm:px-6 lg:px-8">
+    <div class="topbar-inner mx-auto flex max-w-[1400px] items-center gap-3 px-4 sm:px-6 lg:px-8">
       <div class="flex min-w-0 flex-1 items-center gap-3">
         <div class="mark-seal" aria-hidden="true">AS</div>
         <div class="min-w-0">
-          <p class="truncate text-[11px] font-extrabold uppercase tracking-[0.22em] text-[var(--glass-text)]">Ruang Latihan ASAS</p>
-          <h1 id="appTitle" class="truncate text-base font-extrabold leading-tight sm:text-lg">Kelas XI TOI 1</h1>
+          <p class="topbar-eyebrow truncate text-[11px] font-extrabold uppercase tracking-[0.22em] text-[var(--glass-text)]">Ruang Latihan ASAS</p>
+          <h1 id="appTitle" class="topbar-title text-base font-extrabold leading-tight">Kelas XI TOI 1</h1>
         </div>
       </div>
       <div class="flex items-center gap-2">
-        <button id="creatorLoginBtn" class="ink-btn glass-lite glass-icon" type="button" aria-label="Buka Mode Pembuat">
-          <span aria-hidden="true">◇</span>
-          <span class="hidden sm:inline">Mode Pembuat</span>
+        <button id="creatorLoginBtn" class="ink-btn glass-lite icon-btn icon-label-btn" type="button" aria-label="Buka Mode Pembuat">
+          <span class="creator-glyph" aria-hidden="true">◇</span>
+          <span class="icon-label-text">Mode Pembuat</span>
         </button>
         <span id="creatorBadge" class="hidden rounded-full border border-[var(--accent)] bg-[var(--accent)]/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-[var(--state-accent-strong)]">Mode Pembuat</span>
-        <button id="themeToggleBtn" class="ink-btn glass-lite glass-icon" type="button" aria-label="Ganti tema">
-          <span id="themeIcon" aria-hidden="true">☾</span>
-          <span id="themeLabel" class="hidden sm:inline">Dark</span>
+        <button id="themeToggleBtn" class="ink-btn glass-lite icon-btn icon-label-btn" type="button" aria-label="Ganti tema">
+          <span id="themeIcon" class="theme-glyph" aria-hidden="true">☾</span>
+          <span id="themeLabel" class="icon-label-text">Gelap</span>
         </button>
         <span id="scheduleDateBadge" class="version-badge hidden sm:inline">1 Des 2026</span>
-        <span id="appVersion" class="version-badge">v5.13.0-ai-tutor</span>
       </div>
     </div>
   </header>
@@ -60,7 +60,7 @@
             <span class="editorial-category">ASESMEN SUMATIF AKHIR SEMESTER</span>
             
           </div>
-          <h2 class="landing-title">Materi&nbsp;&amp; Soal&nbsp;</h2>
+          <h2 class="landing-title">Materi&nbsp;&amp; Latihan Soal&nbsp;</h2>
           <p class="landing-lead">OKEE</p>
           <div class="landing-actions">
             <button id="landingStartBtn" class="landing-cta" type="button">Mulai Belajar <span aria-hidden="true">→</span></button>
@@ -174,7 +174,7 @@
             <h2 id="introSubjectName" class="section-title mt-1">-</h2>
             <p id="introSubjectSchedule" class="flow-sub"></p>
           </div>
-          <span id="introExamBadge" class="study-status">-</span>
+          <div id="introExamBadge" class="date-tile-wrap"></div>
         </div>
         <div id="introBody" class="intro-body"></div>
         <div class="intro-actions">
@@ -654,8 +654,8 @@
   </script>
 
   <script src="markdown.js?v=5-13-2-markdown"></script>
-  <script src="questions.js?v=5-13-3-soal-docx"></script>
-  <script src="content-import.js?v=1"></script>
+  <script src="questions.js?v=5-13-4-soal-docx-source"></script>
+  <script src="content-import.js?v=3"></script>
   <script src="aiTutor.js?v=5-13-2-markdown"></script>
   <script src="app.js?v=5-13-2-markdown"></script>
 </body>

@@ -79,6 +79,58 @@
     return null;
   }
 
+  function isHr(line) {
+    return /^\s{0,3}(?:-{3,}|\*{3,}|_{3,})\s*$/.test(line);
+  }
+
+  function splitTableRow(line) {
+    const trimmed = clean(line).trim();
+    if (!trimmed.includes("|")) return null;
+    const marked = trimmed.replace(/\\\|/g, "\u0001");
+    let body = marked;
+    if (body.charAt(0) === "|") body = body.slice(1);
+    if (body.charAt(body.length - 1) === "|") body = body.slice(0, -1);
+    return body.split("|").map((cell) => cell.replace(/\u0001/g, "|").trim());
+  }
+
+  function isTableDelimiter(line) {
+    const trimmed = clean(line).trim();
+    const cells = splitTableRow(trimmed);
+    if (!cells || !cells.length) return false;
+    const outerPair = trimmed.startsWith("|") && trimmed.endsWith("|");
+    if (!outerPair && cells.length < 2) return false;
+    return cells.every((cell) => /^:?-+:?$/.test(cell));
+  }
+
+  function tableAlignment(cell) {
+    const text = clean(cell).trim();
+    if (/^:-+:$/.test(text)) return "center";
+    if (/-+:$/.test(text)) return "right";
+    if (/^:-+/.test(text)) return "left";
+    return "";
+  }
+
+  function isTableStart(lines, index) {
+    return !!splitTableRow(lines[index]) && index + 1 < lines.length && isTableDelimiter(lines[index + 1]);
+  }
+
+  function tableHtml(header, alignment, rows) {
+    const columns = Math.max(header.length, ...rows.map((row) => row.length), 1);
+    const head = Array.from({ length: columns }, (_, index) => {
+      const align = alignment[index] ? ` class="md-align-${alignment[index]}"` : "";
+      return `<th${align}>${inlineHtml(header[index] || "")}</th>`;
+    }).join("");
+    const body = rows.map((row) => {
+      const cells = Array.from({ length: columns }, (_, index) => {
+        const align = alignment[index] ? ` class="md-align-${alignment[index]}"` : "";
+        const label = escapeHtml(header[index] || "");
+        return `<td${align} data-label="${label}">${inlineHtml(row[index] || "")}</td>`;
+      }).join("");
+      return `<tr>${cells}</tr>`;
+    }).join("");
+    return `<div class="md-table-wrap"><table class="md-table"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+  }
+
   function toHtml(value) {
     const lines = clean(value).split("\n");
     const output = [];
@@ -100,6 +152,25 @@
         }
         if (index < lines.length) index += 1;
         output.push(`<pre class="md-pre"><code class="md-code-block">${escapeHtml(code.join("\n"))}</code></pre>`);
+        continue;
+      }
+
+      if (isTableStart(lines, index)) {
+        const header = splitTableRow(lines[index]);
+        const alignment = splitTableRow(lines[index + 1]).map(tableAlignment);
+        index += 2;
+        const rows = [];
+        while (index < lines.length && !isBlank(lines[index]) && !isFence(lines[index]) && !isHr(lines[index]) && !headingMatch(lines[index]) && !quoteMatch(lines[index]) && !isTableStart(lines, index)) {
+          rows.push(splitTableRow(lines[index]) || [clean(lines[index]).trim()]);
+          index += 1;
+        }
+        output.push(tableHtml(header, alignment, rows));
+        continue;
+      }
+
+      if (isHr(line)) {
+        output.push('<hr class="md-hr">');
+        index += 1;
         continue;
       }
 
@@ -140,7 +211,7 @@
       }
 
       const paragraph = [];
-      while (index < lines.length && !isBlank(lines[index]) && !isFence(lines[index]) && !headingMatch(lines[index]) && !quoteMatch(lines[index]) && !listMatch(lines[index])) {
+      while (index < lines.length && !isBlank(lines[index]) && !isFence(lines[index]) && !isHr(lines[index]) && !isTableStart(lines, index) && !headingMatch(lines[index]) && !quoteMatch(lines[index]) && !listMatch(lines[index])) {
         paragraph.push(lines[index].trim());
         index += 1;
       }

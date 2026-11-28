@@ -717,12 +717,16 @@
 
   function mountAITutor() {
     const api = window.AI_TUTOR;
-    if (!api || !$("aiTutorForm") || !$("aiTutorLog") || !$("aiTutorEmpty")) return;
+    const form = $("aiTutorForm");
+    const input = $("aiTutorInput");
+    const sendBtn = $("aiTutorSendBtn");
+    if (!api || !form || !input || !$("aiTutorLog") || !$("aiTutorEmpty")) return;
+    const coarsePointer = typeof window.matchMedia === "function" && window.matchMedia("(pointer: coarse)").matches;
     aiTutor = api.createController({
       elements: {
-        form: $("aiTutorForm"),
-        input: $("aiTutorInput"),
-        sendBtn: $("aiTutorSendBtn"),
+        form,
+        input,
+        sendBtn,
         sendLabel: $("aiTutorSendLabel"),
         log: $("aiTutorLog"),
         empty: $("aiTutorEmpty"),
@@ -740,9 +744,27 @@
       fetchImpl: (...args) => window.fetch(...args),
       createElement: (tag) => document.createElement(tag)
     });
-    $("aiTutorForm").addEventListener("submit", (event) => {
+    const canSend = () => input.value.trim().length > 0 && !sendBtn.disabled;
+    form.addEventListener("submit", (event) => {
       event.preventDefault();
-      if (aiTutor) aiTutor.submit($("aiTutorInput").value);
+      if (!canSend()) return;
+      const value = input.value;
+      const submitResult = aiTutor ? aiTutor.submit(value) : null;
+      input.value = "";
+      input.dispatchEvent(new Event("input", { bubbles: true }));
+      const restoreFocus = () => {
+        if (typeof input.focus === "function") input.focus();
+      };
+      if (submitResult && typeof submitResult.then === "function") submitResult.then(restoreFocus, restoreFocus);
+      else restoreFocus();
+    });
+    input.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter") return;
+      if (event.isComposing || event.shiftKey || event.ctrlKey || event.altKey || event.metaKey) return;
+      if (coarsePointer || !canSend()) return;
+      event.preventDefault();
+      if (typeof form.requestSubmit === "function") form.requestSubmit();
+      else form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
     });
     $("aiTutorResetBtn").addEventListener("click", () => {
       if (aiTutor) aiTutor.reset();
@@ -1878,13 +1900,21 @@
           <p class="text-[11px] font-extrabold uppercase tracking-wider text-[var(--accent)]">Kartu ${state.studyCardIndex + 1} / ${list.length}</p>
           <span class="study-chip">${escapeHTML(card.topik || studyTopicName(content, card.topikId))}</span>
         </div>
-        <div class="flashcard mt-4 ${state.studyRevealed ? "revealed" : ""}">
-          <p class="text-[10px] font-extrabold uppercase tracking-wider text-[var(--muted)]">${state.studyRevealed ? "Jawaban" : card.jenis || "Pertanyaan"}</p>
-          <div class="font-bacaan mt-3 text-base font-bold leading-8 markdown-content">${renderKeyTerms(state.studyRevealed ? card.jawaban : card.pertanyaan, card.keyTerms, true)}</div>
+        <div class="flashcard mt-4${state.studyRevealed ? " is-flipped" : ""}" role="button" tabindex="0" aria-pressed="${state.studyRevealed ? "true" : "false"}" aria-label="Balik kartu" data-study-card-flip>
+          <div class="flashcard-inner">
+            <div class="flashcard-face is-front" aria-hidden="${state.studyRevealed ? "true" : "false"}"${state.studyRevealed ? " inert" : ""}>
+              <p class="text-[10px] font-extrabold uppercase tracking-wider text-[var(--muted)]">${escapeHTML(card.jenis || "Pertanyaan")}</p>
+              <div class="font-bacaan mt-3 text-sm font-semibold leading-7 markdown-content" dir="auto">${renderKeyTerms(card.pertanyaan, card.keyTerms, true)}</div>
+            </div>
+            <div class="flashcard-face is-back" aria-hidden="${state.studyRevealed ? "false" : "true"}"${state.studyRevealed ? "" : " inert"}>
+              <p class="text-[10px] font-extrabold uppercase tracking-wider text-[var(--muted)]">Jawaban</p>
+              <div class="font-bacaan mt-3 text-sm font-semibold leading-7 markdown-content" dir="auto">${renderKeyTerms(card.jawaban, card.keyTerms, true)}</div>
+            </div>
+          </div>
         </div>
         <div class="mt-4 flex flex-wrap items-center gap-2">
           <button class="ink-btn" type="button" data-study-card-action="prev" ${state.studyCardIndex === 0 ? "disabled" : ""}>← Sebelumnya</button>
-          <button class="ink-btn" type="button" data-study-card-action="flip">${state.studyRevealed ? "Tampilkan Pertanyaan" : "Tampilkan Jawaban"}</button>
+          <button class="ink-btn" type="button" data-study-card-action="flip" aria-pressed="${state.studyRevealed ? "true" : "false"}">${state.studyRevealed ? "Tampilkan Pertanyaan" : "Tampilkan Jawaban"}</button>
           <button class="ink-btn ${mastered ? "finish" : ""}" type="button" data-study-card-action="master">${mastered ? "✓ Dikuasai" : "Tandai Dikuasai"}</button>
           <button class="ink-btn ml-auto" type="button" data-study-card-action="next" ${state.studyCardIndex >= list.length - 1 ? "disabled" : ""}>Berikutnya →</button>
         </div>
@@ -3621,6 +3651,12 @@
       showTermPopover(mark.dataset.term, mark.dataset.meaning);
       return;
     }
+    const flipCard = target && target.closest && target.closest(".flashcard");
+    if (flipCard && (event.key === "Enter" || event.key === " ")) {
+      event.preventDefault();
+      flipCard.click();
+      return;
+    }
     const modalOpen = ["creatorPinModal", "questionModal", "studyModal"].some((id) => !$(id).classList.contains("hidden"));
     if (modalOpen || state.status !== "running" || !$("quizWorkspace") || $("quizWorkspace").classList.contains("hidden")) return;
     const letterByDigit = { 1: "A", 2: "B", 3: "C", 4: "D", 5: "E" };
@@ -3827,11 +3863,35 @@
         if (restored) restored.focus({ preventScroll: true });
         return;
       }
+      const flipCard = e.target.closest(".flashcard");
       const action = e.target.closest("[data-study-card-action]")?.dataset.studyCardAction;
+      if (!action && !flipCard) return;
+      if (action === "flip" || flipCard) {
+        const list = studyCurrentFlashcards(loadStudyContent());
+        if (!list.length) return;
+        state.studyRevealed = !state.studyRevealed;
+        const revealed = state.studyRevealed;
+        const cardElement = document.querySelector(".flashcard");
+        const front = cardElement && cardElement.querySelector(".flashcard-face.is-front");
+        const back = cardElement && cardElement.querySelector(".flashcard-face.is-back");
+        const flipBtn = document.querySelector('[data-study-card-action="flip"]');
+        cardElement?.classList.toggle("is-flipped", revealed);
+        cardElement?.setAttribute("aria-pressed", revealed ? "true" : "false");
+        front?.setAttribute("aria-hidden", revealed ? "true" : "false");
+        back?.setAttribute("aria-hidden", revealed ? "false" : "true");
+        if (revealed) front?.setAttribute("inert", "");
+        else front?.removeAttribute("inert");
+        if (revealed) back?.removeAttribute("inert");
+        else back?.setAttribute("inert", "");
+        if (flipBtn) {
+          flipBtn.textContent = revealed ? "Tampilkan Pertanyaan" : "Tampilkan Jawaban";
+          flipBtn.setAttribute("aria-pressed", revealed ? "true" : "false");
+        }
+        return;
+      }
       if (!action) return;
       const list = studyCurrentFlashcards(loadStudyContent());
       if (!list.length) return;
-      if (action === "flip") state.studyRevealed = !state.studyRevealed;
       if (action === "master") toggleStudyMark("flashcardsMastered", studyItemKey(list[state.studyCardIndex]));
       if (action === "prev" && state.studyCardIndex > 0) {
         state.studyCardIndex -= 1;

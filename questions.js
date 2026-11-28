@@ -97,16 +97,16 @@ window.SUBJECT_GLOSSARY = {
     "Slogan": "Ukara cendhak kang gampang dieling-eling kanggo ngajak utawa promosi."
   },
   "sejarah": {
-    "Perang Dingin": "Ketegangan politik lan ideologi antarblok negara tanpa perang terbuka.",
-    "Globalisasi": "Proses integrasi ekonomi, budaya, lan teknologi antarnegara.",
-    "Ketahanan Nasional": "Kemampuan negara ngatasi ancaman saka dalam lan njaba.",
-    "Nasionalisme": "Rasa tresna marang bangsa lan Tanah Air.",
-    "Imperialisme": "Kawijakan njajah lan ngwasani wilayah utawa bangsa liya.",
-    "Proklamasi": "Pangumuman kamardikan bangsa.",
-    "Reformasi": "Pangowahan sistem pamarentahan lan masyarakat.",
-    "Demokrasi": "Sistem pamarentahan kanthi kedaulatan ing rakyat.",
-    "Sumpah Pemuda": "Ikrar persatuan pemuda Indonesia taun 1928.",
-    "Industrialisasi": "Proses pangalihan saka ekonomi pertanian menyang industri."
+    "Proklamasi": "Pengumuman kemerdekaan bangsa Indonesia pada 17 Agustus 1945.",
+    "PDRI": "Pemerintahan Darurat Republik Indonesia di Bukittinggi yang menjaga kelangsungan pemerintahan saat Agresi Militer Belanda II.",
+    "Perang Gerilya": "Taktik perang berpindah-pindah secara sembunyi-sembunyi dan menyerang secara tiba-tiba yang dipimpin Jenderal Sudirman.",
+    "Bandung Lautan Api": "Peristiwa pembumihangusan Kota Bandung bagian selatan pada Maret 1946 agar tidak dipakai Sekutu dan NICA.",
+    "Serangan Umum 1 Maret 1949": "Serangan TNI dan rakyat ke Yogyakarta untuk membuktikan bahwa RI dan TNI masih eksis.",
+    "Perjanjian Linggarjati": "Perjanjian yang ditandatangani 25 Maret 1947 sebagai upaya diplomasi pengakuan kedaulatan RI.",
+    "Perjanjian Renville": "Perjanjian pada Januari 1948 setelah Agresi Militer Belanda I.",
+    "Roem–Royen": "Perundingan pendahuluan sebelum Konferensi Meja Bundar.",
+    "Konferensi Meja Bundar (KMB)": "Perundingan di Den Haag, 23 Agustus–2 November 1949, yang menghasilkan pengakuan kedaulatan Indonesia.",
+    "Republik Indonesia Serikat (RIS)": "Bentuk negara federal hasil KMB sebelum Indonesia kembali ke NKRI pada 17 Agustus 1950."
   },
   "matematika": {
     "Fungsi": "Relasi kang memetakan saben unsur himpunan menyang siji unsur himpunan liya.",

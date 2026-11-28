@@ -18,10 +18,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.12.1/html2pdf.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docx@9.16.0/dist/index.iife.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-  <link rel="stylesheet" href="styles/main.css?v=5-14-6-hint-contrast-scroll-fx" />
-  <link rel="stylesheet" href="styles/landing.css?v=5-14-6-hint-contrast-scroll-fx" />
-  <link rel="stylesheet" href="styles/subjects-status.css?v=5-14-6-hint-contrast-scroll-fx" />
-  <link rel="stylesheet" href="styles/subjects-fix.css?v=5-14-6-hint-contrast-scroll-fx" />
+  <link rel="stylesheet" href="styles/main.css?v=5-14-14-sejarah-glosarium-scroll-fx" />
+  <link rel="stylesheet" href="styles/landing.css?v=5-14-14-sejarah-glosarium-scroll-fx" />
+  <link rel="stylesheet" href="styles/subjects-status.css?v=5-14-14-sejarah-glosarium-scroll-fx" />
+  <link rel="stylesheet" href="styles/subjects-fix.css?v=5-14-14-sejarah-glosarium-scroll-fx" />
 </head>
 <body class="min-h-full text-[var(--ink)] antialiased">
   <a class="skip-link" href="#mainContent">Lewati ke konten utama</a>
@@ -334,9 +334,10 @@
               <div id="aiTutorEmpty" class="ai-tutor-empty">Belum ada pertanyaan. Tulis pertanyaan tentang materi atau topik yang sedang dibuka.</div>
             </div>
             <form id="aiTutorForm" class="ai-tutor-form">
-              <textarea id="aiTutorInput" class="field-input ai-tutor-input" rows="2" maxlength="4000" placeholder="Tulis pertanyaanmu di sini..." aria-label="Pertanyaan untuk AI Tutor"></textarea>
+              <textarea id="aiTutorInput" class="field-input ai-tutor-input" rows="1" maxlength="4000" placeholder="Tulis pertanyaanmu di sini..." aria-label="Pertanyaan untuk AI Tutor"></textarea>
               <button id="aiTutorSendBtn" class="ink-btn finish ai-tutor-send" type="submit"><span id="aiTutorSendLabel">Kirim</span></button>
             </form>
+            <p id="aiTutorShortcutHint" class="ai-tutor-shortcut-hint">Enter kirim · Shift+Enter baris baru</p>
             <p class="ai-tutor-note">Jawaban AI dapat saja keliru. Periksa kembali dengan materi yang tersedia.</p>
           </section>
 
@@ -656,11 +657,11 @@
     window.AI_TUTOR_ENDPOINT = "https://asas-ai-backend.anj4y789807.workers.dev/v1/ai/tutor";
   </script>
 
-  <script src="markdown.js?v=5-14-6-hint-contrast-scroll-fx"></script>
-  <script src="questions.js?v=5-14-6-hint-contrast-scroll-fx"></script>
-  <script src="content-import.js?v=5-14-6-hint-contrast-scroll-fx"></script>
-  <script src="aiTutor.js?v=5-14-6-hint-contrast-scroll-fx"></script>
-  <script src="scripts/scroll-fx.js?v=5-14-6-hint-contrast-scroll-fx"></script>
-  <script src="app.js?v=5-14-6-hint-contrast-scroll-fx"></script>
+  <script src="markdown.js?v=5-14-14-sejarah-glosarium-scroll-fx"></script>
+  <script src="questions.js?v=5-14-14-sejarah-glosarium-scroll-fx"></script>
+  <script src="content-import.js?v=5-14-14-sejarah-glosarium-scroll-fx"></script>
+  <script src="aiTutor.js?v=5-14-14-sejarah-glosarium-scroll-fx"></script>
+  <script src="scripts/scroll-fx.js?v=5-14-14-sejarah-glosarium-scroll-fx"></script>
+  <script src="app.js?v=5-14-14-sejarah-glosarium-scroll-fx"></script>
 </body>
 </html>

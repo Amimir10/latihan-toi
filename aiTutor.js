@@ -165,6 +165,12 @@
       if (elements.log && elements.log.scrollHeight != null) elements.log.scrollTop = elements.log.scrollHeight;
     }
 
+    function resizeInput() {
+      if (!elements.input) return;
+      const lines = String(elements.input.value || "").split(/\r?\n/).length;
+      elements.input.rows = Math.min(5, Math.max(1, lines));
+    }
+
     function appendMessage(role, text, options = {}) {
       if (!elements.log) return null;
       const bubble = makeElement("div");
@@ -346,6 +352,7 @@
         history.push({ role: "assistant", content: answer });
         startAnswerStream(answer);
         if (elements.input) elements.input.value = "";
+        resizeInput();
       } catch (error) {
         if (currentRequest !== requestId) return;
         if (error && error.kind === "timeout") {
@@ -375,10 +382,15 @@
         if (elements.empty) elements.log.appendChild(elements.empty);
       }
       if (elements.input) elements.input.value = "";
+      resizeInput();
       setEmpty(true);
       refreshContext();
     }
 
+    if (elements.input && typeof elements.input.addEventListener === "function") {
+      elements.input.addEventListener("input", resizeInput);
+    }
+    resizeInput();
     setBusy(false);
     refreshContext();
 

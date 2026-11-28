@@ -1334,12 +1334,938 @@ window.STUDY_CONTENT = Object.assign(window.STUDY_CONTENT || {}, {
         "arti": "Informasi bisnis/teknologi (metode produksi, pengolahan, penjualan) yang tidak diketahui umum, bernilai ekonomi, dan dijaga kerahasiaannya."
       }
     ]
+  },
+  "sejarah": {
+    "status": "tersedia",
+    "sumber": "Disusun dari PDF sumber: Ringkasan Materi & Latihan Soal Sejarah.txt.",
+    "topik": [
+      "Latar Belakang & Tujuan Perjuangan",
+      "Empat Bentuk Perlawanan",
+      "Tokoh & Peristiwa Penting",
+      "Fase Perlawanan & Nilai Keteladanan"
+    ],
+    "materiRingkas": [
+      {
+        "judul": "Latar Belakang & Tujuan Perjuangan",
+        "isi": "Proklamasi Kemerdekaan 17 Agustus 1945 menyatakan Indonesia bebas dari penjajahan, tetapi Belanda tidak mengakuinya dan berusaha kembali menguasai Nusantara dengan dukungan pasukan Sekutu. Ketegangan politik dan bentrokan militer memicu tekad bulat rakyat dengan semboyan \"Merdeka atau Mati!\". Tujuan perjuangan adalah mempertahankan kemerdekaan dan kedaulatan RI, mengusir penjajah, menjaga keutuhan NKRI dari Sabang sampai Merauke, serta mewujudkan cita-cita dalam Pembukaan UUD 1945."
+      },
+      {
+        "judul": "Empat Bentuk Perlawanan",
+        "isi": "Perjuangan fisik/bersenjata meliputi pertempuran terbuka, gerilya pimpinan Jenderal Sudirman, dan serangan umum seperti Serangan Umum 1 Maret 1949. Perjuangan diplomasi ditempuh melalui Linggarjati, Renville, Roem–Royen, dan KMB untuk pengakuan kedaulatan de facto maupun de jure. Perjuangan rakyat berupa mobilisasi massa, laskar rakyat, dan PDRI, sedangkan perjuangan internasional menggalang dukungan dunia serta membawa agresi Belanda ke forum PBB."
+      },
+      {
+        "judul": "Tokoh & Peristiwa Penting",
+        "isi": "Lima tokoh sentral adalah Ir. Soekarno sebagai Proklamator dan Presiden pertama, Drs. Mohammad Hatta sebagai Wakil Presiden dan diplomat, Jenderal Sudirman sebagai Panglima Besar TNI, KH. Agus Salim sebagai diplomat Timur Tengah, serta Sultan Hamengkubuwono IX yang mendukung logistik, wilayah, strategi, dan Serangan Umum 1 Maret 1949. Delapan peristiwa kunci meliputi Pertempuran Surabaya, Ambarawa, Bandung Lautan Api, Linggarjati, Renville, Agresi Militer I dan II, Serangan Umum 1 Maret 1949, serta KMB."
+      },
+      {
+        "judul": "Fase Perlawanan & Nilai Keteladanan",
+        "isi": "Fase 1 Agustus–September 1945 berisi Proklamasi, UUD 1945, pembentukan pemerintahan, dan penyebaran berita kemerdekaan. Fase 2 September 1945–1946 dipenuhi pertempuran fisik, Fase 3 1946–1947 difokuskan pada diplomasi Linggarjati, Fase 4 1947–1949 pada agresi Belanda, PDRI, gerilya, dan Serangan Umum, serta Fase 5 1949–1950 pada Roem–Royen, KMB, pengakuan kedaulatan 27 Desember 1949, dan kembalinya NKRI 17 Agustus 1950. Nilai keteladanannya adalah cinta tanah air, keberanian pantang menyerah, persatuan, toleransi, serta semangat diplomasi dan kerja sama."
+      }
+    ],
+    "mindMap": {
+      "pusat": "Sejarah",
+      "cabang": [
+        {
+          "judul": "Latar Belakang & Tujuan",
+          "topik": "Latar Belakang & Tujuan Perjuangan",
+          "anak": [
+            "Proklamasi 17 Agustus 1945",
+            "Belanda tidak mengakui kemerdekaan RI",
+            "Dukungan pasukan Sekutu",
+            "Semboyan \"Merdeka atau Mati!\"",
+            "Kedaulatan, wilayah, dan cita-cita UUD 1945"
+          ]
+        },
+        {
+          "judul": "Empat Jalur Perjuangan",
+          "topik": "Empat Bentuk Perlawanan",
+          "anak": [
+            "Perjuangan fisik/bersenjata",
+            "Perjuangan diplomasi",
+            "Perjuangan rakyat dan laskar",
+            "Perjuangan internasional dan PBB",
+            "PDRI sebagai kelangsungan pemerintahan"
+          ]
+        },
+        {
+          "judul": "Tokoh & Peristiwa",
+          "topik": "Tokoh & Peristiwa Penting",
+          "anak": [
+            "Soekarno, Hatta, Sudirman, Agus Salim, Sultan HB IX",
+            "Pertempuran Surabaya dan Ambarawa",
+            "Bandung Lautan Api",
+            "Linggarjati dan Renville",
+            "Agresi Militer I dan II",
+            "Serangan Umum 1 Maret 1949",
+            "Konferensi Meja Bundar"
+          ]
+        },
+        {
+          "judul": "Fase & Nilai",
+          "topik": "Fase Perlawanan & Nilai Keteladanan",
+          "anak": [
+            "Fase 1 Proklamasi dan pembentukan negara",
+            "Fase 2 perjuangan bersenjata",
+            "Fase 3 diplomasi",
+            "Fase 4 agresi dan perlawanan rakyat",
+            "Fase 5 pengakuan kedaulatan",
+            "Cinta tanah air, keberanian, persatuan, toleransi, diplomasi",
+            "27 Desember 1949 dan 17 Agustus 1950"
+          ]
+        }
+      ]
+    },
+    "flashcards": [
+      {
+        "id": "sejarah-fc-1",
+        "pertanyaan": "Apa latar belakang utama perlawanan bangsa Indonesia pada 1945–1950?",
+        "jawaban": "Belanda tidak mengakui kemerdekaan Indonesia dan berusaha kembali menguasai Indonesia dengan dukungan pasukan Sekutu.",
+        "jenis": "Ringkasan"
+      },
+      {
+        "id": "sejarah-fc-2",
+        "pertanyaan": "Apa tujuan perjuangan mempertahankan kemerdekaan Indonesia?",
+        "jawaban": "Mempertahankan kedaulatan RI, mengusir penjajah, menjaga keutuhan NKRI, dan mewujudkan cita-cita Pembukaan UUD 1945.",
+        "jenis": "Ringkasan"
+      },
+      {
+        "id": "sejarah-fc-3",
+        "pertanyaan": "Apa empat bentuk perlawanan bangsa Indonesia?",
+        "jawaban": "Perjuangan fisik/bersenjata, diplomasi, rakyat, dan internasional.",
+        "jenis": "Ringkasan"
+      },
+      {
+        "id": "sejarah-fc-4",
+        "pertanyaan": "Apa beda perjuangan fisik dan diplomasi?",
+        "jawaban": "Perjuangan fisik memakai kontak senjata dan gerilya di lapangan, sedangkan diplomasi memakai perundingan politik untuk pengakuan kedaulatan.",
+        "jenis": "Ringkasan"
+      },
+      {
+        "id": "sejarah-fc-5",
+        "pertanyaan": "Siapa Panglima Besar TNI yang memimpin perang gerilya?",
+        "jawaban": "Jenderal Sudirman memimpin perang gerilya meskipun dalam kondisi sakit parah.",
+        "jenis": "Ringkasan"
+      },
+      {
+        "id": "sejarah-fc-6",
+        "pertanyaan": "Apa tujuan Serangan Umum 1 Maret 1949?",
+        "jawaban": "Membuktikan kepada dunia internasional bahwa Republik Indonesia dan TNI masih eksis meski Yogyakarta diduduki Belanda.",
+        "jenis": "Ringkasan"
+      },
+      {
+        "id": "sejarah-fc-7",
+        "pertanyaan": "Kapan Belanda mengakui kedaulatan RI dan kapan Indonesia kembali ke NKRI?",
+        "jawaban": "Belanda mengakui kedaulatan RI pada 27 Desember 1949, sedangkan Indonesia kembali ke NKRI pada 17 Agustus 1950.",
+        "jenis": "Ringkasan"
+      },
+      {
+        "id": "sejarah-fc-8",
+        "pertanyaan": "Apa nilai keteladanan dari perjuangan 1945–1950?",
+        "jawaban": "Cinta tanah air, keberanian pantang menyerah, persatuan dan kesatuan, toleransi, serta semangat diplomasi dan kerja sama.",
+        "jenis": "Ringkasan"
+      }
+    ],
+    "poinPenting": [
+      "Urutan kronologis: Perjanjian Linggarjati (25 Maret 1947) → Agresi Militer Belanda I (21 Juli 1947) → Perjanjian Renville (Januari 1948) → Agresi Militer Belanda II (19 Desember 1948) → Serangan Umum 1 Maret 1949 → Perundingan Roem–Royen → KMB (23 Agustus–2 November 1949).",
+      "Bedakan dua tonggak akhir: 27 Desember 1949 adalah pengakuan kedaulatan RI oleh Belanda dalam bentuk RIS, sedangkan 17 Agustus 1950 adalah kembalinya Indonesia ke bentuk NKRI.",
+      "PDRI dibentuk di Bukittinggi ketika Agresi Militer Belanda II menawan Soekarno–Hatta di Yogyakarta agar pemerintahan RI tetap berjalan.",
+      "Serangan Umum 1 Maret 1949 bertujuan membuktikan kepada dunia dan PBB bahwa RI serta TNI masih kuat, bukan sekadar merebut kembali kota.",
+      "Keberhasilan mempertahankan kemerdekaan lahir dari sinergi perjuangan fisik rakyat dan TNI, diplomasi pemimpin bangsa, serta dukungan masyarakat internasional."
+    ],
+    "istilahPenting": [
+      {
+        "istilah": "PDRI (Pemerintahan Darurat Republik Indonesia)",
+        "arti": "Pemerintahan sementara RI di Bukittinggi yang dibentuk saat Agresi Militer Belanda II menawan Soekarno–Hatta di Yogyakarta agar negara tetap berjalan."
+      },
+      {
+        "istilah": "Perang Gerilya",
+        "arti": "Taktik berpindah-pindah secara sembunyi-sembunyi dan menyerang secara tiba-tiba yang dipimpin Panglima Besar Jenderal Sudirman untuk menguras kekuatan Belanda."
+      },
+      {
+        "istilah": "Bandung Lautan Api",
+        "arti": "Peristiwa pembumihangusan Kota Bandung bagian selatan pada Maret 1946 agar fasilitas kota tidak dipakai Sekutu dan NICA sebagai markas militer."
+      },
+      {
+        "istilah": "Serangan Umum 1 Maret 1949",
+        "arti": "Serangan serentak TNI dan rakyat ke Yogyakarta selama enam jam untuk membuktikan kepada dunia internasional dan PBB bahwa RI serta TNI masih kuat."
+      },
+      {
+        "istilah": "Konferensi Meja Bundar (KMB)",
+        "arti": "Perundingan puncak di Den Haag, 23 Agustus–2 November 1949, yang menghasilkan pengakuan kedaulatan Indonesia oleh Belanda pada 27 Desember 1949."
+      },
+      {
+        "istilah": "Kembali ke NKRI (17 Agustus 1950)",
+        "arti": "Momentum pembubaran Republik Indonesia Serikat hasil KMB dan kembalinya Indonesia menjadi Negara Kesatuan Republik Indonesia."
+      }
+    ]
   }
 });
 
 (function () {
   const bank = window.QUESTION_BANK || (window.QUESTION_BANK = {});
   const patches = {
+  "sejarah": [
+    {
+      "id": "sejarah-1",
+      "no": 1,
+      "topik": "Latar Belakang & Tujuan Perjuangan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Latar belakang utama meletusnya perlawanan bangsa Indonesia pada periode 1945–1950 setelah pembacaan Proklamasi 17 Agustus 1945 adalah ....",
+      "options": {
+        "A": "keinginan bangsa Indonesia untuk memperluas wilayah ke negara tetangga",
+        "B": "Belanda tidak mengakui kemerdekaan Indonesia dan berusaha kembali menguasai Indonesia dengan dukungan Sekutu",
+        "C": "terjadinya krisis pangan global akibat berakhirnya Perang Dunia I",
+        "D": "pemerintah Indonesia menolak bekerja sama dengan Perserikatan Bangsa-Bangsa",
+        "E": "seluruh pasukan Jepang menolak meninggalkan wilayah Indonesia secara damai"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-2",
+      "no": 2,
+      "topik": "Latar Belakang & Tujuan Perjuangan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Berikut ini yang bukan merupakan tujuan perjuangan bangsa Indonesia dalam mempertahankan kemerdekaan periode 1945–1950 adalah ....",
+      "options": {
+        "A": "mempertahankan kemerdekaan dan kedaulatan negara Republik Indonesia",
+        "B": "mengusir kembali penjajah Belanda dari tanah air",
+        "C": "menjaga keutuhan wilayah Negara Kesatuan Republik Indonesia",
+        "D": "menggantikan dasar negara Pancasila dengan sistem kolonial",
+        "E": "mewujudkan cita-cita bangsa menjadi negara yang merdeka, bersatu, berdaulat, dan sejahtera"
+      },
+      "answer": "D",
+      "explanation": "Kunci jawaban resmi: D.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-3",
+      "no": 3,
+      "topik": "Empat Bentuk Perlawanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Perjuangan mempertahankan kemerdekaan Indonesia ditempuh melalui empat jalur utama, yaitu ....",
+      "options": {
+        "A": "perjuangan fisik, perjuangan diplomasi, perjuangan rakyat, dan perjuangan internasional",
+        "B": "perjuangan ekonomi, perjuangan budaya, perjuangan maritim, dan perjuangan agraria",
+        "C": "perjuangan parlemen, perjuangan industri, perjuangan teknologi, dan perjuangan pers",
+        "D": "perjuangan serikat buruh, perjuangan koperasi, perjuangan pendidikan, dan perjuangan olahraga",
+        "E": "perjuangan monarki, perjuangan federal, perjuangan otonomi, dan perjuangan militer"
+      },
+      "answer": "A",
+      "explanation": "Kunci jawaban resmi: A.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-4",
+      "no": 4,
+      "topik": "Empat Bentuk Perlawanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Contoh bentuk perjuangan internasional yang dilakukan bangsa Indonesia dalam mempertahankan kemerdekaan pada masa 1945–1950 adalah ....",
+      "options": {
+        "A": "melancarkan perang gerilya di hutan-hutan Pulau Jawa",
+        "B": "membentuk laskar-laskar rakyat di tingkat kecamatan",
+        "C": "menggalang dukungan dunia internasional dan membawa masalah Indonesia ke forum PBB",
+        "D": "membumihanguskan fasilitas umum di Bandung bagian selatan",
+        "E": "mengesahkan Undang-Undang Dasar 1945 pada sidang PPKI"
+      },
+      "answer": "C",
+      "explanation": "Kunci jawaban resmi: C.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-5",
+      "no": 5,
+      "topik": "Empat Bentuk Perlawanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Mobilisasi massa, pembentukan laskar rakyat, serta berdirinya Pemerintahan Darurat Republik Indonesia (PDRI) merupakan wujud nyata dari bentuk perlawanan ....",
+      "options": {
+        "A": "perjuangan diplomasi",
+        "B": "perjuangan rakyat",
+        "C": "perjuangan internasional",
+        "D": "perjuangan parlementer",
+        "E": "perjuangan ekonomi"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-6",
+      "no": 6,
+      "topik": "Tokoh & Peristiwa Penting",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Tokoh yang berperan sebagai Panglima Besar Tentara Nasional Indonesia (TNI) dan memimpin langsung perang gerilya melawan agresi Belanda meskipun dalam kondisi sakit adalah ....",
+      "options": {
+        "A": "Ir. Soekarno",
+        "B": "Drs. Mohammad Hatta",
+        "C": "Jenderal Sudirman",
+        "D": "KH. Agus Salim",
+        "E": "Sultan Hamengkubuwono IX"
+      },
+      "answer": "C",
+      "explanation": "Kunci jawaban resmi: C.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-7",
+      "no": 7,
+      "topik": "Tokoh & Peristiwa Penting",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Tokoh diplomat ulung sekaligus tokoh pergerakan nasional yang berjasa besar memperjuangkan pengakuan kedaulatan Republik Indonesia di negara-negara Timur Tengah dan forum internasional adalah ....",
+      "options": {
+        "A": "Jenderal Sudirman",
+        "B": "KH. Agus Salim",
+        "C": "Bung Tomo",
+        "D": "Supriyadi",
+        "E": "Ki Hajar Dewantara"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-8",
+      "no": 8,
+      "topik": "Tokoh & Peristiwa Penting",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Peran penting Sultan Hamengkubuwono IX dalam perjuangan mempertahankan kemerdekaan Indonesia adalah ....",
+      "options": {
+        "A": "memimpin delegasi Indonesia dalam Perjanjian Renville di atas kapal perang AS",
+        "B": "menjadi pemimpin militer dan politik yang mendukung penuh pemerintahan RI serta strategi Serangan Umum 1 Maret 1949 di Yogyakarta",
+        "C": "membacakan teks Proklamasi Kemerdekaan di Jalan Pegangsaan Timur 56",
+        "D": "memimpin langsung Pertempuran Medan Area di Sumatra Utara",
+        "E": "menjadi ketua Komisi Tiga Negara (KTN) perwakilan PBB"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-9",
+      "no": 9,
+      "topik": "Tokoh & Peristiwa Penting",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Peristiwa heroik perlawanan rakyat terhadap pasukan Inggris (Sekutu) yang meletus pada tanggal 10 November 1945 dan diperingati sebagai Hari Pahlawan adalah ....",
+      "options": {
+        "A": "Pertempuran Ambarawa",
+        "B": "Pertempuran Surabaya",
+        "C": "Bandung Lautan Api",
+        "D": "Puputan Margarana",
+        "E": "Pertempuran Medan Area"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-10",
+      "no": 10,
+      "topik": "Tokoh & Peristiwa Penting",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Peristiwa pembumihangusan kota oleh rakyat dan para pejuang pada bulan Maret 1946 agar bangunan strategis tidak digunakan sebagai markas tentara Sekutu dan Belanda dikenal dengan peristiwa ....",
+      "options": {
+        "A": "Serangan Umum 1 Maret",
+        "B": "Bandung Lautan Api",
+        "C": "Pertempuran Lima Hari di Semarang",
+        "D": "Palagan Ambarawa",
+        "E": "Peristiwa Merah Putih di Manado"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-11",
+      "no": 11,
+      "topik": "Fase Perlawanan & Nilai Keteladanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Berdasarkan pembagian fase perlawanan dalam peta pikiran, kegiatan pengesahan UUD 1945, pembentukan pemerintahan, serta penyebaran berita kemerdekaan termasuk ke dalam ....",
+      "options": {
+        "A": "Fase 1: Proklamasi dan Pembentukan Negara (Agustus – September 1945)",
+        "B": "Fase 2: Perjuangan Bersenjata (September 1945 – 1946)",
+        "C": "Fase 3: Perjuangan Diplomasi (1946 – 1947)",
+        "D": "Fase 4: Agresi Belanda dan Perlawanan Rakyat (1947 – 1949)",
+        "E": "Fase 5: Pengakuan Kedaulatan (1949 – 1950)"
+      },
+      "answer": "A",
+      "explanation": "Kunci jawaban resmi: A.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-12",
+      "no": 12,
+      "topik": "Fase Perlawanan & Nilai Keteladanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Pertempuran Medan Area dan Pertempuran Margarana berlangsung pada periode September 1945 – 1946 yang termasuk dalam ....",
+      "options": {
+        "A": "Fase 1: Proklamasi dan Pembentukan Negara",
+        "B": "Fase 2: Perjuangan Bersenjata",
+        "C": "Fase 3: Perjuangan Diplomasi",
+        "D": "Fase 4: Agresi Belanda dan Perlawanan Rakyat",
+        "E": "Fase 5: Pengakuan Kedaulatan"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-13",
+      "no": 13,
+      "topik": "Tokoh & Peristiwa Penting",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Perundingan diplomatik antara Indonesia dan Belanda yang ditandatangani pada tanggal 25 Maret 1947 untuk memperoleh pengakuan kedaulatan adalah ....",
+      "options": {
+        "A": "Perjanjian Renville",
+        "B": "Perjanjian Linggarjati",
+        "C": "Perundingan Roem–Royen",
+        "D": "Konferensi Meja Bundar",
+        "E": "Perjanjian Kalijati"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-14",
+      "no": 14,
+      "topik": "Fase Perlawanan & Nilai Keteladanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Perhatikan peristiwa-peristiwa berikut! (1) Agresi Militer Belanda I (21 Juli 1947) (2) Perjanjian Renville (Januari 1948) (3) Agresi Militer Belanda II (19 Desember 1948) (4) Serangan Umum 1 Maret 1949. Rangkaian peristiwa di atas termasuk ke dalam ....",
+      "options": {
+        "A": "Fase 1 (Agustus – September 1945)",
+        "B": "Fase 2 (September 1945 – 1946)",
+        "C": "Fase 3 (1946 – 1947)",
+        "D": "Fase 4 (1947 – 1949)",
+        "E": "Fase 5 (1949 – 1950)"
+      },
+      "answer": "D",
+      "explanation": "Kunci jawaban resmi: D.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-15",
+      "no": 15,
+      "topik": "Fase Perlawanan & Nilai Keteladanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Ketika Belanda melancarkan Agresi Militer II pada tanggal 19 Desember 1948 dan menduduki ibu kota Yogyakarta, langkah strategis yang ditempuh bangsa Indonesia untuk menjaga kelangsungan pemerintahan adalah ....",
+      "options": {
+        "A": "membubarkan Tentara Nasional Indonesia",
+        "B": "membentuk Pemerintahan Darurat Republik Indonesia (PDRI)",
+        "C": "menyerahkan seluruh kedaulatan kepada pemerintahan Belanda",
+        "D": "memindahkan ibu kota negara ke Den Haag",
+        "E": "menghentikan seluruh jalur diplomasi di PBB"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-16",
+      "no": 16,
+      "topik": "Tokoh & Peristiwa Penting",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Tujuan utama dilancarkannya Serangan Umum 1 Maret 1949 di Kota Yogyakarta adalah ....",
+      "options": {
+        "A": "membubarkan pemerintahan darurat di Sumatra",
+        "B": "menunjukkan kepada dunia internasional bahwa Republik Indonesia dan TNI masih ada serta mampu melakukan perlawanan",
+        "C": "menggantikan posisi Ir. Soekarno sebagai presiden",
+        "D": "memulai perundingan Linggarjati tahap kedua",
+        "E": "menguasai kembali seluruh wilayah Semenanjung Malaya"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-17",
+      "no": 17,
+      "topik": "Tokoh & Peristiwa Penting",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Konferensi Meja Bundar (KMB) yang menjadi puncak perjuangan diplomasi Indonesia dan Belanda diselenggarakan pada tanggal ....",
+      "options": {
+        "A": "17 Agustus – 18 Agustus 1945",
+        "B": "10 November – 15 Desember 1945",
+        "C": "25 Maret – 21 Juli 1947",
+        "D": "23 Agustus – 2 November 1949",
+        "E": "27 Desember 1949 – 17 Agustus 1950"
+      },
+      "answer": "D",
+      "explanation": "Kunci jawaban resmi: D.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-18",
+      "no": 18,
+      "topik": "Fase Perlawanan & Nilai Keteladanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Dalam rangkaian Fase 5 (Pengakuan Kedaulatan, 1949–1950), perundingan pendahuluan sebelum dilaksanakannya Konferensi Meja Bundar adalah ....",
+      "options": {
+        "A": "Perundingan Linggarjati",
+        "B": "Perundingan Renville",
+        "C": "Perundingan Roem–Royen",
+        "D": "Perundingan Malino",
+        "E": "Perundingan Hooge Veluwe"
+      },
+      "answer": "C",
+      "explanation": "Kunci jawaban resmi: C.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-19",
+      "no": 19,
+      "topik": "Fase Perlawanan & Nilai Keteladanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Pengakuan kedaulatan Republik Indonesia secara resmi oleh pemerintah Belanda sebagai hasil keputusan Konferensi Meja Bundar terjadi pada tanggal ....",
+      "options": {
+        "A": "1 Maret 1949",
+        "B": "2 November 1949",
+        "C": "27 Desember 1949",
+        "D": "17 Agustus 1950",
+        "E": "5 Juli 1959"
+      },
+      "answer": "C",
+      "explanation": "Kunci jawaban resmi: C.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-20",
+      "no": 20,
+      "topik": "Fase Perlawanan & Nilai Keteladanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Setelah sempat berbentuk Republik Indonesia Serikat (RIS) pasca-KMB, bangsa Indonesia akhirnya kembali ke bentuk Negara Kesatuan Republik Indonesia (NKRI) pada tanggal ....",
+      "options": {
+        "A": "18 Agustus 1945",
+        "B": "19 Desember 1948",
+        "C": "27 Desember 1949",
+        "D": "17 Agustus 1950",
+        "E": "10 November 1950"
+      },
+      "answer": "D",
+      "explanation": "Kunci jawaban resmi: D.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-21",
+      "no": 21,
+      "topik": "Fase Perlawanan & Nilai Keteladanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Berikut ini yang termasuk nilai-nilai yang dapat dipetik dari perjuangan bangsa Indonesia dalam mempertahankan kemerdekaan (1945–1950) adalah ....",
+      "options": {
+        "A": "sikap individualisme dan mementingkan golongan sendiri",
+        "B": "cinta tanah air dan bangsa, keberanian dan pantang menyerah, serta persatuan dan kesatuan",
+        "C": "mudah berputus asa ketika menghadapi tekanan militer",
+        "D": "menolak segala bentuk perundingan dan kerja sama internasional",
+        "E": "memaksakan keseragaman tanpa menghargai perbedaan"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-22",
+      "no": 22,
+      "topik": "Fase Perlawanan & Nilai Keteladanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Dalam infografis peta pikiran terdapat semboyan \"Merdeka atau Mati!\" pada bagian tujuan. Semboyan tersebut mencerminkan nilai keteladanan berupa ....",
+      "options": {
+        "A": "sikap kompromi terhadap penjajahan",
+        "B": "keberanian dan semangat pantang menyerah membela kedaulatan bangsa",
+        "C": "keinginan untuk mengisolasi diri dari pergaulan dunia",
+        "D": "ketergantungan pada bantuan militer negara asing",
+        "E": "sikap tergesa-gesa tanpa perhitungan matang"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-23",
+      "no": 23,
+      "topik": "Tokoh & Peristiwa Penting",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Tokoh yang menjabat sebagai Wakil Presiden pertama RI sekaligus diplomat yang memimpin perjuangan di meja perundingan untuk memperoleh pengakuan kedaulatan Indonesia adalah ....",
+      "options": {
+        "A": "Drs. Mohammad Hatta",
+        "B": "Jenderal Sudirman",
+        "C": "KH. Agus Salim",
+        "D": "Sultan Hamengkubuwono IX",
+        "E": "Sutan Sjahrir"
+      },
+      "answer": "A",
+      "explanation": "Kunci jawaban resmi: A.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-24",
+      "no": 24,
+      "topik": "Tokoh & Peristiwa Penting",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Peristiwa Pertempuran Ambarawa yang menjadi salah satu tonggak perjuangan bersenjata melawan pasukan Sekutu dan NICA terjadi pada tahun ....",
+      "options": {
+        "A": "1945",
+        "B": "1947",
+        "C": "1948",
+        "D": "1949",
+        "E": "1950"
+      },
+      "answer": "A",
+      "explanation": "Kunci jawaban resmi: A.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-25",
+      "no": 25,
+      "topik": "Tokoh & Peristiwa Penting",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Agresi Militer Belanda I dan Agresi Militer Belanda II secara berturut-turut dilancarkan oleh Belanda pada tanggal ....",
+      "options": {
+        "A": "10 November 1945 dan 25 Maret 1947",
+        "B": "21 Juli 1947 dan 19 Desember 1948",
+        "C": "19 Desember 1948 dan 1 Maret 1949",
+        "D": "1 Maret 1949 dan 27 Desember 1949",
+        "E": "23 Agustus 1949 dan 17 Agustus 1950"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-26",
+      "no": 26,
+      "topik": "Fase Perlawanan & Nilai Keteladanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Perjanjian Renville yang ditandatangani pada bulan Januari 1948 merupakan bagian dari rangkaian peristiwa pada ....",
+      "options": {
+        "A": "Fase 1 (Agustus – September 1945)",
+        "B": "Fase 2 (September 1945 – 1946)",
+        "C": "Fase 3 (1946 – 1947)",
+        "D": "Fase 4 (1947 – 1949)",
+        "E": "Fase 5 (1949 – 1950)"
+      },
+      "answer": "D",
+      "explanation": "Kunci jawaban resmi: D.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-27",
+      "no": 27,
+      "topik": "Empat Bentuk Perlawanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Perbedaan mendasar antara Perjuangan Fisik/Bersenjata dan Perjuangan Diplomasi selama masa 1945–1950 terletak pada ....",
+      "options": {
+        "A": "tujuan akhirnya, karena perjuangan fisik bertujuan merebut wilayah negara lain",
+        "B": "cara yang ditempuh, yakni kontak senjata/gerilya di lapangan melawan perundingan politik di meja diplomasi",
+        "C": "tokoh yang terlibat, karena perjuangan diplomasi hanya dilakukan oleh rakyat biasa",
+        "D": "waktu pelaksanaannya, karena perjuangan fisik baru dimulai setelah tahun 1950",
+        "E": "hasilnya, karena kedua cara tersebut tidak memberikan pengaruh apa pun"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-28",
+      "no": 28,
+      "topik": "Latar Belakang & Tujuan Perjuangan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Ketegangan politik dan militer di berbagai daerah pasca-Proklamasi 17 Agustus 1945 dipicu oleh ....",
+      "options": {
+        "A": "kedatangan pasukan Belanda bersama Sekutu yang berupaya mengembalikan kekuasaan kolonial di Indonesia",
+        "B": "keputusan pemerintah RI membubarkan seluruh pemerintahan daerah",
+        "C": "penolakan rakyat Indonesia terhadap pembentukan UUD 1945",
+        "D": "berakhirnya Konferensi Meja Bundar di Den Haag",
+        "E": "kembalinya Indonesia ke bentuk NKRI pada tahun 1950"
+      },
+      "answer": "A",
+      "explanation": "Kunci jawaban resmi: A.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-29",
+      "no": 29,
+      "topik": "Fase Perlawanan & Nilai Keteladanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Keberagaman latar belakang para tokoh pejuang—seperti Soekarno (proklamator), Sudirman (panglima militer), Agus Salim (ulama/diplomat), dan Sultan Hamengkubuwono IX (raja/pemimpin politik)—menunjukkan penerapan nilai ....",
+      "options": {
+        "A": "persaingan antarwilayah",
+        "B": "toleransi, menghargai perbedaan, serta persatuan dan kesatuan demi kepentingan bangsa",
+        "C": "dominasi satu golongan atas golongan lainnya",
+        "D": "penolakan terhadap peran pemimpin daerah",
+        "E": "sikap pasif menunggu keputusan negara asing"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-30",
+      "no": 30,
+      "topik": "Fase Perlawanan & Nilai Keteladanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Berdasarkan bagian kesimpulan pada infografis peta pikiran, tiga faktor utama yang membuat Belanda akhirnya mengakui kedaulatan Indonesia pada 27 Desember 1949 adalah ....",
+      "options": {
+        "A": "bantuan senjata dari Jepang, kekalahan Sekutu, dan krisis ekonomi Belanda",
+        "B": "kegigihan rakyat, perjuangan TNI, serta dukungan masyarakat internasional",
+        "C": "perpecahan internal di tubuh TNI, blokade ekonomi, dan perjanjian Renville",
+        "D": "pembubaran PDRI, penangkapan tokoh bangsa, dan berdirinya negara boneka",
+        "E": "penyerahan tanpa syarat seluruh wilayah Sumatra kepada Belanda"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-31",
+      "no": 31,
+      "topik": "Empat Bentuk Perlawanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Dalam bentuk perlawanan fisik/bersenjata, selain pertempuran terbuka dan gerilya, bentuk aksi militer lain yang dilakukan untuk merebut kembali kota yang diduduki Belanda adalah ....",
+      "options": {
+        "A": "serangan umum",
+        "B": "perundingan bilateral",
+        "C": "sidang kabinet darurat",
+        "D": "konferensi tingkat tinggi",
+        "E": "deklarasi kemerdekaan"
+      },
+      "answer": "A",
+      "explanation": "Kunci jawaban resmi: A.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-32",
+      "no": 32,
+      "topik": "Fase Perlawanan & Nilai Keteladanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Penyebaran berita Proklamasi Kemerdekaan ke seluruh penjuru tanah air serta pembentukan alat kelengkapan negara terjadi pada ....",
+      "options": {
+        "A": "Agustus – September 1945 (Fase 1)",
+        "B": "September 1945 – 1946 (Fase 2)",
+        "C": "1946 – 1947 (Fase 3)",
+        "D": "1947 – 1949 (Fase 4)",
+        "E": "1949 – 1950 (Fase 5)"
+      },
+      "answer": "A",
+      "explanation": "Kunci jawaban resmi: A.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-33",
+      "no": 33,
+      "topik": "Fase Perlawanan & Nilai Keteladanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Semangat diplomasi dan kerja sama yang dicontohkan para pendiri bangsa pada periode 1945–1950 dapat diterapkan oleh pelajar masa kini dalam bentuk ....",
+      "options": {
+        "A": "memaksakan pendapat pribadi saat diskusi kelompok",
+        "B": "mengutamakan musyawarah, komunikasi santun, dan kolaborasi dalam menyelesaikan masalah bersama",
+        "C": "menghindari kerja sama dengan teman yang berbeda latar belakang",
+        "D": "menyelesaikan perbedaan pendapat dengan kekerasan fisik",
+        "E": "bersikap acuh tak acuh terhadap kegiatan organisasi sekolah"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-34",
+      "no": 34,
+      "topik": "Tokoh & Peristiwa Penting",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Urutan kronologis yang tepat dari rangkaian peristiwa penting mempertahankan kemerdekaan berikut ini adalah ....",
+      "options": {
+        "A": "Pertempuran Surabaya → Perjanjian Linggarjati → Perjanjian Renville → Serangan Umum 1 Maret 1949 → KMB",
+        "B": "Perjanjian Linggarjati → Pertempuran Surabaya → KMB → Perjanjian Renville → Serangan Umum 1 Maret 1949",
+        "C": "Serangan Umum 1 Maret 1949 → Pertempuran Surabaya → Perjanjian Renville → Perjanjian Linggarjati → KMB",
+        "D": "KMB → Perjanjian Renville → Perjanjian Linggarjati → Pertempuran Surabaya → Serangan Umum 1 Maret 1949",
+        "E": "Perjanjian Renville → Perjanjian Linggarjati → Pertempuran Surabaya → KMB → Serangan Umum 1 Maret 1949"
+      },
+      "answer": "A",
+      "explanation": "Kunci jawaban resmi: A.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-35",
+      "no": 35,
+      "topik": "Tokoh & Peristiwa Penting",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Pasangan tokoh penting dan peran utamanya dalam infografis Perlawanan Bangsa Indonesia dalam Mempertahankan Kemerdekaan yang paling tepat adalah ....",
+      "options": {
+        "A": "Ir. Soekarno — Panglima TNI dan pemimpin perang gerilya",
+        "B": "Jenderal Sudirman — Proklamator dan Presiden pertama RI",
+        "C": "Drs. Mohammad Hatta — Wakil Presiden dan diplomat ulung",
+        "D": "KH. Agus Salim — Raja Yogyakarta dan pemimpin serangan umum",
+        "E": "Sultan Hamengkubuwono IX — Ketua delegasi Indonesia dalam Perjanjian Linggarjati"
+      },
+      "answer": "C",
+      "explanation": "Kunci jawaban resmi: C.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-36",
+      "no": 36,
+      "topik": "Empat Bentuk Perlawanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Upaya membawa sengketa agresi militer Belanda ke forum Perserikatan Bangsa-Bangsa (PBB) bertujuan agar ....",
+      "options": {
+        "A": "PBB mengambil alih seluruh pemerintahan Indonesia secara permanen",
+        "B": "dunia internasional menekan Belanda menghentikan agresi militernya dan mengakui kedaulatan RI",
+        "C": "Indonesia keluar dari keanggotaan negara-negara Asia",
+        "D": "Belanda diperbolehkan memperluas wilayah pendudukannya di Jawa",
+        "E": "perjuangan bersenjata rakyat Indonesia dihentikan tanpa syarat"
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-37",
+      "no": 37,
+      "topik": "Fase Perlawanan & Nilai Keteladanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Rentang waktu keseluruhan perjuangan bangsa Indonesia dalam mempertahankan kemerdekaan hingga kembali menjadi Negara Kesatuan Republik Indonesia (NKRI) sebagaimana tercantum pada judul peta pikiran adalah ....",
+      "options": {
+        "A": "1908 – 1928",
+        "B": "1928 – 1945",
+        "C": "1942 – 1945",
+        "D": "1945 – 1950",
+        "E": "1950 – 1959"
+      },
+      "answer": "D",
+      "explanation": "Kunci jawaban resmi: D.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-38",
+      "no": 38,
+      "topik": "Fase Perlawanan & Nilai Keteladanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Pada saat Agresi Militer Belanda II berlangsung (Desember 1948), sinergi antara perjuangan militer dan politik tetap terjaga karena ....",
+      "options": {
+        "A": "TNI melanjutkan perang gerilya di bawah Jenderal Sudirman sementara pemerintahan dijalankan oleh PDRI",
+        "B": "seluruh pemimpin bangsa menyerah dan menghentikan perlawanan",
+        "C": "Belanda langsung membubarkan pasukan Sekutu di Indonesia",
+        "D": "Konferensi Meja Bundar telah selesai ditandatangani sebelum agresi terjadi",
+        "E": "tidak ada lagi perlawanan rakyat di daerah-daerah luar Yogyakarta"
+      },
+      "answer": "A",
+      "explanation": "Kunci jawaban resmi: A.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-39",
+      "no": 39,
+      "topik": "Fase Perlawanan & Nilai Keteladanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Makna penting dari kembalinya Indonesia ke bentuk Negara Kesatuan Republik Indonesia (NKRI) pada tanggal 17 Agustus 1950 adalah ....",
+      "options": {
+        "A": "berakhirnya bentuk negara serikat (RIS) bentukan politik pecah belah dan bersatunya kembali seluruh wilayah Indonesia dalam satu negara kesatuan",
+        "B": "dimulainya kembali masa pemerintahan kolonial Hindia Belanda",
+        "C": "berubahnya dasar negara Indonesia menjadi sistem kerajaan",
+        "D": "terpisahnya wilayah Sumatra dan Kalimantan dari Republik Indonesia",
+        "E": "pembatalan seluruh hasil pengakuan kedaulatan tahun 1949"
+      },
+      "answer": "A",
+      "explanation": "Kunci jawaban resmi: A.",
+      "hints": [],
+      "keyTerms": []
+    },
+    {
+      "id": "sejarah-40",
+      "no": 40,
+      "topik": "Fase Perlawanan & Nilai Keteladanan",
+      "subtopik": "",
+      "level": "Pilihan Ganda",
+      "question": "Pesan penutup yang tercantum pada bagian kesimpulan infografis Perlawanan Bangsa Indonesia dalam Mempertahankan Kemerdekaan (1945–1950) adalah ....",
+      "options": {
+        "A": "\"Sekali Merdeka, Tetap Terjajah!\"",
+        "B": "\"Merdeka, bersatu, berdaulat!\"",
+        "C": "\"Bersatu Kita Teguh, Bercerai Kita Runtuh!\"",
+        "D": "\"Bhinneka Tunggal Ika Tan Hana Dharma Mangrwa\"",
+        "E": "\"Ing Ngarsa Sung Tuladha, Ing Madya Mangun Karsa\""
+      },
+      "answer": "B",
+      "explanation": "Kunci jawaban resmi: B.",
+      "hints": [],
+      "keyTerms": []
+    }
+  ],
   "pendidikan-agama": [
     {
       "id": "pai-bp-1",

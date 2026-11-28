@@ -1366,7 +1366,23 @@ window.STUDY_CONTENT = Object.assign(window.STUDY_CONTENT || {}, {
       "topik": "Berpikir Kritis & Mencintai Iptek",
       "subtopik": "",
       "level": "Pilihan Ganda",
-      "question": "Perhatikan tabel pasangan potongan ayat Q.S. ar-Rahman/55: 33 dan artinya berikut! (1) ِﺲْﻧِْ اﻻَو ﻦﱢِﺠْاﻟ َﺮَﺸْﻌَﻤٰﯾ( = a) kecuali dengan kekuatan (ilmu pengetahuan) (2) اْوُﺬُﻔْﻨَﺗ ْنَا ْﻢُﺘْﻌَﻄَﺘْاﺳ ِنِا( = b) Wahai golongan jin dan manusia (3) ِضْرَْ اﻻَو ِتٰﻮٰاﻟﺴﱠﻤ ِﺎرَﻄْﻗَا ْﻦِﻣ( = c) dari penjuru langit dan bumi (4) ٍﻦٰﻄْﻠُﺴِﺑ ﻻﱠِا( = d) jika kamu sanggup menembus (melintasi) Pasangan potongan ayat dan arti yang paling tepat ditunjukkan oleh nomor ....",
+      "stimulus": [
+        {
+          "type": "text",
+          "text": "Perhatikan tabel pasangan potongan ayat Q.S. ar-Rahman/55: 33 dan artinya berikut!"
+        },
+        {
+          "type": "table",
+          "headers": ["Potongan Ayat", "Arti"],
+          "rows": [
+            ["(1) ِﺲْﻧِْ اﻻَو ﻦﱢِﺠْاﻟ َﺮَﺸْﻌَﻤٰﯾ", "(a) kecuali dengan kekuatan (ilmu pengetahuan)"],
+            ["(2) اْوُﺬُﻔْﻨَﺗ ْنَا ْﻢُﺘْﻌَﻄَﺘْاﺳ ِنِا", "(b) Wahai golongan jin dan manusia"],
+            ["(3) ِضْرَْ اﻻَو ِتٰﻮٰاﻟﺴﱠﻤ ِﺎرَﻄْﻗَا ْﻦِﻣ", "(c) dari penjuru langit dan bumi"],
+            ["(4) ٍﻦٰﻄْﻠُﺴِﺑ ﻻﱠِا", "(d) jika kamu sanggup menembus (melintasi)"]
+          ]
+        }
+      ],
+      "question": "Pasangan potongan ayat dan arti yang paling tepat ditunjukkan oleh nomor ....",
       "options": {
         "A": "(1)-(a), (2)-(b), (3)-(c), (4)-(d)",
         "B": "(1)-(b), (2)-(d), (3)-(c), (4)-(a)",

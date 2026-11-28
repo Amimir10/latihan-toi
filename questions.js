@@ -46,6 +46,151 @@ window.GLOSSARY = {
   "kedah": "kudu"
 };
 
+window.SUBJECT_GLOSSARY = {
+  "bahasa-jawa": Object.assign({}, window.GLOSSARY, {
+    "Jaman Edan": "Jaman kanthi tatanan moral lan sosial ingkang risak.",
+    "Eling lan Waspada": "Tansah ngelingi Gusti lan ngati-ati tumindak ala.",
+    "Patriotisme": "Tresna lan lila berkorban kangge tanah wutah rah.",
+    "Klimaks": "Puncaking prakara utawi konflik ing cariyos.",
+    "Sudut Pandang": "Papanipun pangripta nalika nyariyosaken cariyos.",
+    "Unsur Ekstrinsik": "Unsur saking njawi cariyos ingkang mangaribawani isinipun.",
+    "Persuasif": "Sipat ukara ingkang mbujuk supados purun nindakaken.",
+    "Target Audience": "Golongan masyarakat ingkang dados sasaran pariwara.",
+    "Kontradiksi": "Pertentangan antawisipun giris utawi isi cariyos."
+  }),
+  "pendidikan-agama": {
+    "Ulil Albab": "Wong kang mikir jero lan ngamalake ajaran agama.",
+    "Syu'abul Iman": "Cabang-cabang keimanan kang mbentuk amal saleh.",
+    "Bi Sulthan": "Syaikh Muhammad Arsyad al-Banjari, ulama Banjar.",
+    "Tabayyun": "Mriksa kabeneran informasi sadurunge ngandelake.",
+    "Khamr": "Minuman keras kang diharamake ing Islam.",
+    "Maysir": "Perjudian utawa kauntungan kang ditampa kanthi cara bathil.",
+    "Maqashid Syariah": "Tujuan-tujuan hukum Islam kanggo kemaslahatan umat.",
+    "Ihsan": "Beribadah kaya-kaya ndeleng Allah.",
+    "Tafakur": "Mikir jero babagan ciptaan Allah.",
+    "Zikir": "Nyebut lan ngelingi Allah."
+  },
+  "pendidikan-pancasila": {
+    "Ideologi Terbuka": "Ideologi kang mbukak critik lan pembaruan.",
+    "Negara Serikat": "Bentuk negara kanthi pembagian kekuasaan antara pusat lan daerah.",
+    "KNIP": "Komite Nasional Indonesia Pusat, lembaga perwakilan awal kamardikan.",
+    "Amandemen": "Pangowahan utawa panambahan pasal ing konstitusi.",
+    "Badan Konstituante": "Lembaga kang nyusun konstitusi.",
+    "Checks and Balances": "Sistem saling ngawasi antarlembaga negara.",
+    "Fungsi Legislasi DPR": "Kewenangan DPR mbentuk undang-undang.",
+    "Pasal 37": "Pasal UUD 1945 kang ngatur prosedur amandemen.",
+    "Dekrit Presiden": "Keputusan presiden kang nduweni kekuatan undang-undang.",
+    "Hikmat Kebijaksanaan": "Pertimbangan matang nalika ngrumusake putusan negara."
+  },
+  "bahasa-indonesia": {
+    "Gagasan Pokok": "Ide utama kang dadi inti paragraf.",
+    "Teks Argumentasi": "Teks kang nyajiake alasan kanggo meyakini pamaca.",
+    "Teks Persuasi": "Teks kang ngajak pamaca nindakake sawijining tindakan.",
+    "Teras Berita": "Bagian wiwitan berita kang ngemot inti informasi.",
+    "Piramida Terbalik": "Penyajian informasi saka kang paling penting menyang kang kurang penting.",
+    "ADIKSIMBA": "Unsur pambentuk berita: asal, waktu, tokoh, apa, ing ngendi, ngapa, lan kepiye.",
+    "Majas Personifikasi": "Majas kang menehi sipat manungsa marang barang mati.",
+    "Majas Asosiasi": "Majas kang mbandhingake rong perkara kang padha.",
+    "Majas Ironi": "Majas kang nyatakake lawan tembung kanggo sindiran.",
+    "Penokohan": "Cara pangripta nggambarake watak tokoh.",
+    "Nilai Sosial": "Nilai kang ngatur hubungan antarmanungsa ing cariyos.",
+    "Slogan": "Ukara cendhak kang gampang dieling-eling kanggo ngajak utawa promosi."
+  },
+  "sejarah": {
+    "Perang Dingin": "Ketegangan politik lan ideologi antarblok negara tanpa perang terbuka.",
+    "Globalisasi": "Proses integrasi ekonomi, budaya, lan teknologi antarnegara.",
+    "Ketahanan Nasional": "Kemampuan negara ngatasi ancaman saka dalam lan njaba.",
+    "Nasionalisme": "Rasa tresna marang bangsa lan Tanah Air.",
+    "Imperialisme": "Kawijakan njajah lan ngwasani wilayah utawa bangsa liya.",
+    "Proklamasi": "Pangumuman kamardikan bangsa.",
+    "Reformasi": "Pangowahan sistem pamarentahan lan masyarakat.",
+    "Demokrasi": "Sistem pamarentahan kanthi kedaulatan ing rakyat.",
+    "Sumpah Pemuda": "Ikrar persatuan pemuda Indonesia taun 1928.",
+    "Industrialisasi": "Proses pangalihan saka ekonomi pertanian menyang industri."
+  },
+  "matematika": {
+    "Fungsi": "Relasi kang memetakan saben unsur himpunan menyang siji unsur himpunan liya.",
+    "Matriks": "Susunan bilangan ing baris lan kolom.",
+    "Determinan": "Nilai skalar kang nggambarake sifat matriks.",
+    "Turunan": "Ukuran laju owah-owahan fungsi.",
+    "Integral": "Proses nyalonake luas utawa akumulasi nilai.",
+    "Statistik": "Ilmu kang ngumpulake, ngolah, lan nafsirake data.",
+    "Peluang": "Ukuran kemungkinan kedadeyan sawijining prastawa.",
+    "Vektor": "Besar kang nduweni nilai lan arah.",
+    "Logaritma": "Pangowahan pangkat dadi angka kang luwih gampang diitung.",
+    "Barisan": "Deretan bilangan kang nduweni aturan tartamtu."
+  },
+  "pjok": {
+    "Offside": "Posisi pemain kang nglanggar aturan garis offside nalika bola dimainake.",
+    "Force Out": "Teknik ngindhari tag kanthi muter awak.",
+    "Sole Control": "Teknik mandhegake bola nganggo telapak sikil.",
+    "Pivot": "Mutasi nganggo siji sikil minangka poros kanggo ngganti arah.",
+    "Lay-up shoot": "Tembakan cedhak ring kanthi mlangkah lan mlumpat.",
+    "FITT": "Pedoman latihan: frequency, intensity, time, lan type.",
+    "DNM": "Durasi, frekuensi, lan intensitas latihan.",
+    "Streamline": "Posisi awak lurus lan ramping kanggo nyuda hambatan banyu.",
+    "Flutter Kick": "Gerakan sikil gantian munggah-mudhun ing gaya bebas.",
+    "Overhand": "Servis voli kanthi ayunan tangan saka ndhuwur.",
+    "Sidearm": "Servis voli kanthi ayunan tangan nyamping.",
+    "Underhand": "Servis voli kanthi ayunan tangan saka ngisor.",
+    "Dribbling": "Nggiring bola kanthi sentuhan sikil bola-bali.",
+    "Heading": "Nyundul bola nganggo kepala."
+  },
+  "bahasa-inggris": {
+    "Listening Comprehension": "Kemampuan ngerti makna saka teks lisan.",
+    "Asking and Giving Opinion": "Ungkapan takon lan ngandharake pendapat.",
+    "Passive Voice": "Kalimat kang subjekipun dikenani tindakan.",
+    "Past Participle": "Bentuk kriya katelu kang digunakake ing passive voice.",
+    "Hortatory Exposition": "Teks kang ngajak pamaca nindakake sawijining perkara.",
+    "Analytical Exposition": "Teks kang nyajiake pendapat kanthi argumen.",
+    "Thesis": "Bagian wiwitan exposition kang ngemot pendapat utama.",
+    "Recommendation": "Bagian teks kang ngemot saran utawa ajakan.",
+    "Reiteration": "Bagian panutup kang mbaleni pendapat utama.",
+    "Implied Meaning": "Makna kang ora diandharake langsung.",
+    "MCMA": "Pitakonan kang njaluk siji wangsulan paling pas."
+  },
+  "konsentrasi-keahlian": {
+    "Kompetensi Keahlian": "Kemampuan khusus kang dibutuhake ing sawijining bidang keahlian.",
+    "Praktik Kerja": "Kegiatan belajar langsung ing lingkungan kerja.",
+    "Keselamatan Kerja": "Tata cara nyegah kacilakan nalika nyambut gawe.",
+    "Teknologi": "Panggunapan ilmu lan piranti kanggo ngrampungake masalah.",
+    "Produk": "Barang utawa layanan kang diasilake kanggo nyukupi kebutuhan.",
+    "Layanan": "Kegiatan kang menehi manfaat marang pelanggan.",
+    "Kewirausahaan": "Sikap lan kemampuan nggawe usaha.",
+    "Sistem": "Kumpulan unsur kang sesambungan lan mbentuk sawijining kerangka.",
+    "Perawatan": "Kegiatan njaga piranti utawa mesin supaya bisa digunakake.",
+    "Mesin": "Piranti kang ngowahi daya utawa gerakan kanggo nindakake pakaryan."
+  },
+  "mata-pelajaran-pilihan": {
+    "Mikrokontroler": "Cip kanthi unit pangolah, memori, lan piranti pendukung kanggo sistem tertanam.",
+    "Mikroprosesor": "Unit pangolah utama ing komputer.",
+    "Aktuator": "Komponen kang ngowahi sinyal dadi gerakan utawa tumindak fisik.",
+    "Abstraksi": "Penyederhanaan sistem kanthi ndhelikake rincian kang ora perlu.",
+    "Kompleksitas Waktu": "Ukuran wektu kang dibutuhake algoritma marang jumlah data.",
+    "Computer Vision": "Bidang kang ngolah citra supaya komputer bisa ngerti visual.",
+    "Rectifier": "Rangkaian kang ngowahi arus bolak-balik dadi arus searah.",
+    "Regulator Tegangan": "Rangkaian kang njaga tegangan metu tetep stabil.",
+    "Design Thinking": "Pendekatan rancang kanthi fokus marang panganggo.",
+    "Dekomposisi": "Pamecahan masalah gedhe dadi bagian-bagian cilik.",
+    "Pengenalan Pola": "Proses ngerteni kateraturan ing data.",
+    "Binary Search": "Panggolekan data terurut kanthi mbagi rentang bola-bali."
+  },
+  "kreativitas-inovasi-kewirausahaan": {
+    "Devotion": "Komitmen kuat marang tugas lan tujuan usaha.",
+    "Details": "Perhatian marang perkara cilik kang mengaruhi asil.",
+    "Kerja Mawas Diri": "Kebiasaan ngevaluasi kekuatan lan kelemahan dhiri.",
+    "Tuntas": "Sikap ngrampungake pakaryan nganti rampung.",
+    "Inovasi Ekstensi": "Pangembangan lanjutan saka produk utawa layanan kang wis ana.",
+    "Sintesis": "Pangumpulan informasi saka sawetara sumber dadi perkara anyar.",
+    "Analisis SWOT": "Pemetaan kekuatan, kelemahan, peluang, lan ancaman.",
+    "Hak Moral": "Hak pencipta marang jeneng lan integritas ciptaane.",
+    "Hak Ekonomi": "Hak pencipta entuk manfaat ekonomi saka ciptaane.",
+    "Invensi": "Panemuan anyar ing bidang teknologi.",
+    "Rahasia Dagang": "Informasi usaha kang ora dipublikasikake lan menehi kaunggulan.",
+    "Peluang Usaha": "Kesempatan nyukupi kebutuhan pasar lumantar produk utawa layanan."
+  }
+};
+
 window.DAY_GROUPS = [
   { "id": "pendidikan-agama", "hari": "Selasa", "grup": 1 },
   { "id": "pendidikan-pancasila", "hari": "Selasa", "grup": 1 },

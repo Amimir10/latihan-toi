@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" content="#F8FAFC" />
+  <link rel="icon" href="data:," />
   <title>Latihan ASAS - Gasal Kelas XI</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,10 +18,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.12.1/html2pdf.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docx@9.16.0/dist/index.iife.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-  <link rel="stylesheet" href="styles/main.css?v=5-14-2-scroll-fx" />
-  <link rel="stylesheet" href="styles/landing.css?v=5-14-2-scroll-fx" />
-  <link rel="stylesheet" href="styles/subjects-status.css?v=5-14-2-scroll-fx" />
-  <link rel="stylesheet" href="styles/subjects-fix.css?v=5-14-2-scroll-fx" />
+  <link rel="stylesheet" href="styles/main.css?v=5-14-6-hint-contrast-scroll-fx" />
+  <link rel="stylesheet" href="styles/landing.css?v=5-14-6-hint-contrast-scroll-fx" />
+  <link rel="stylesheet" href="styles/subjects-status.css?v=5-14-6-hint-contrast-scroll-fx" />
+  <link rel="stylesheet" href="styles/subjects-fix.css?v=5-14-6-hint-contrast-scroll-fx" />
 </head>
 <body class="min-h-full text-[var(--ink)] antialiased">
   <a class="skip-link" href="#mainContent">Lewati ke konten utama</a>
@@ -119,55 +120,49 @@
       </div>
     </section>
 
-    <section id="subjectsPage" class="flow-page hidden">
-      <div class="dashboard-shell">
-        <aside class="dashboard-sidebar" aria-label="Ringkasan Dashboard">
-          <div class="dashboard-brand">
-            <span class="dashboard-seal" aria-hidden="true">AS</span>
-            <div>
-              <p class="eyebrow">Ruang Latihan ASAS</p>
-              <p class="dashboard-brand-sub">Peta belajar gasal</p>
-            </div>
-          </div>
+    <section id="subjectsPage" class="flow-page hidden subjects-page">
+      <header class="subjects-header">
+        <div>
+          <p class="eyebrow">Jelajahi Mapel</p>
+          <h2 class="section-title subjects-title">Daftar Mata Pelajaran</h2>
+          <p class="flow-sub">Pilih mapel untuk melihat pengenalan sebelum masuk ke ruang belajar.</p>
+        </div>
+        <button class="flow-back subjects-home" type="button" data-flow-nav="home">← Beranda</button>
+      </header>
 
-          <nav class="dashboard-rail" aria-label="Navigasi Dashboard">
-            <button class="dashboard-rail-link flow-back" type="button" data-flow-nav="home">← Beranda</button>
-            <span class="dashboard-rail-link dashboard-rail-current" aria-current="page">Daftar Mapel</span>
-          </nav>
+      <div class="summary-strip" aria-label="Ringkasan daftar mapel">
+        <article class="summary-card">
+          <p class="summary-label">Mapel ditampilkan</p>
+          <p id="subjectCountFlow" class="summary-value" aria-live="polite">Menampilkan 11 dari 11 mapel</p>
+          <p class="summary-note">Gasal · Kelas XI</p>
+        </article>
+        <article class="summary-card">
+          <p class="summary-label">Materi siap</p>
+          <p id="summaryMaterialCount" class="summary-value">0 dari 11</p>
+          <div id="summaryMaterialBar" class="summary-bar" role="img" aria-label="Cakupan materi per grup ujian"></div>
+        </article>
+        <article class="summary-card">
+          <p class="summary-label">Latihan siap</p>
+          <p id="summaryPracticeCount" class="summary-value">0 dari 11</p>
+          <p id="summaryPracticeNote" class="summary-note">Menunggu kisi-kisi</p>
+        </article>
+        <article class="summary-card">
+          <p class="summary-label">Ujian terdekat</p>
+          <p id="summaryExamStatus" class="summary-value">Mendatang</p>
+          <p id="summaryExamDate" class="summary-note">Menyiapkan jadwal</p>
+        </article>
+      </div>
 
-          <div class="dashboard-progress" aria-label="Ringkasan jumlah mapel">
-            <div class="dashboard-progress-head">
-              <span class="dashboard-progress-label">Cakupan mapel</span>
-              <span id="subjectCountFlow" class="dashboard-progress-value">11 mapel</span>
-            </div>
-            <div id="coverageSegments" class="coverage-segments" role="img" aria-label="Cakupan materi per grup ujian"></div>
-            <div id="coverageFilters" class="coverage-filters" role="group" aria-label="Filter daftar mapel">
-              <button class="coverage-filter" type="button" data-subject-filter="semua" aria-pressed="true">Semua</button>
-              <button class="coverage-filter" type="button" data-subject-filter="materi" aria-pressed="false">Materi siap</button>
-              <button class="coverage-filter" type="button" data-subject-filter="latihan" aria-pressed="false">Latihan siap</button>
-            </div>
-            <div id="coverageExams" class="coverage-exams" aria-label="Jadwal ujian per grup"></div>
-          </div>
-
-          <p class="dashboard-sidebar-note">Batang menunjukkan materi siap per grup ujian. Pilih filter untuk menyaring daftar mapel.</p>
-        </aside>
-
-        <div class="dashboard-main">
-          <header class="dashboard-header">
-            <div>
-              <p class="eyebrow">Jelajahi Mapel</p>
-              <h2 class="dashboard-title">Daftar Mata Pelajaran</h2>
-              <p class="dashboard-subtitle">Pilih mapel untuk melihat pengenalan sebelum masuk ke ruang belajar.</p>
-            </div>
-            <div class="dashboard-header-meta">
-              <span class="dashboard-kicker">Gasal · Kelas XI</span>
-              <span class="dashboard-legend"><i aria-hidden="true"></i> Materi siap</span>
-              <span class="dashboard-legend dashboard-legend-alt"><i aria-hidden="true"></i> Latihan siap</span>
-            </div>
-          </header>
-          <div id="subjectCardGrid" class="subject-card-grid"></div>
+      <div id="subjectsToolbar" class="subjects-toolbar">
+        <nav id="dayTabs" class="day-tabs" aria-label="Lompat ke grup ujian"></nav>
+        <div id="subjectFilters" class="subject-filters" role="group" aria-label="Filter daftar mapel">
+          <button class="subject-filter" type="button" data-subject-filter="semua" aria-pressed="true">Semua</button>
+          <button class="subject-filter" type="button" data-subject-filter="materi" aria-pressed="false">Materi siap</button>
+          <button class="subject-filter" type="button" data-subject-filter="latihan" aria-pressed="false">Latihan siap</button>
         </div>
       </div>
+
+      <div id="subjectCardGrid" class="subject-card-grid"></div>
     </section>
 
     <section id="introPage" class="flow-page hidden">
@@ -305,6 +300,7 @@
         <button class="flow-back glass" type="button" data-flow-nav="subjects">Daftar Mapel</button>
         <button class="flow-back glass" type="button" data-flow-nav="intro">Pengenalan Mapel</button>
         <button class="flow-back glass" type="button" data-flow-nav="modes">Pilih Mode</button>
+        <button id="highlightBtn" class="ink-btn" type="button" aria-pressed="false">Sorot Kata Kunci</button>
       </div>
         <section id="studyWorkspace" class="hidden space-y-4">
           <div class="sheet p-5">
@@ -373,7 +369,6 @@
                   <span id="bestStreakValue" class="tool-value">0</span>
                 </div>
                 <div class="ml-auto flex items-center gap-2">
-                  <button id="highlightBtn" class="ink-btn" type="button">Sorot Kata Kunci</button>
                   <button id="flagBtn" class="ink-btn" type="button" aria-pressed="false">Ragu</button>
                 </div>
               </div>
@@ -404,7 +399,7 @@
               <div class="question-inline-actions mt-4 flex flex-wrap items-center gap-2">
                 <button id="inlinePrevBtn" class="ink-btn hidden" type="button" title="Kembali ke soal sebelumnya" aria-label="Kembali ke soal sebelumnya">← Sebelumnya</button>
                 <button id="hintBtn" class="ink-btn" type="button">Buka Petunjuk</button>
-                <span id="hintText" class="hidden text-xs font-semibold text-[var(--teal)]"></span>
+                <span id="hintText" class="hidden"></span>
                 <button id="inlineNextBtn" class="ink-btn finish ml-auto hidden" type="button">Selanjutnya →</button>
               </div>
               <div id="explanationBox" class="mt-4 hidden rounded-xl border-l-[3px] border-[var(--teal)] bg-[var(--teal)]/5 p-4">
@@ -661,11 +656,11 @@
     window.AI_TUTOR_ENDPOINT = "https://asas-ai-backend.anj4y789807.workers.dev/v1/ai/tutor";
   </script>
 
-  <script src="markdown.js?v=5-14-2-scroll-fx"></script>
-  <script src="questions.js?v=5-14-2-scroll-fx"></script>
-  <script src="content-import.js?v=5-14-2-scroll-fx"></script>
-  <script src="aiTutor.js?v=5-14-2-scroll-fx"></script>
-  <script src="scripts/scroll-fx.js?v=5-14-2-scroll-fx"></script>
-  <script src="app.js?v=5-14-2-scroll-fx"></script>
+  <script src="markdown.js?v=5-14-6-hint-contrast-scroll-fx"></script>
+  <script src="questions.js?v=5-14-6-hint-contrast-scroll-fx"></script>
+  <script src="content-import.js?v=5-14-6-hint-contrast-scroll-fx"></script>
+  <script src="aiTutor.js?v=5-14-6-hint-contrast-scroll-fx"></script>
+  <script src="scripts/scroll-fx.js?v=5-14-6-hint-contrast-scroll-fx"></script>
+  <script src="app.js?v=5-14-6-hint-contrast-scroll-fx"></script>
 </body>
 </html>

@@ -3,56 +3,58 @@
 :root {
   color-scheme: light;
   accent-color: var(--state-accent);
-  --surface-page: #F8FAFC;
-  --surface-raised: #FFFFFF;
-  --surface-sunken: #F1F5F9;
-  --surface-overlay: #F1F5F9;
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-tertiary: #64748B;
-  --text-on-accent: #FFFFFF;
-  --border-subtle: #E2E8F0;
-  --border-medium: #CBD5E1;
-  --border-strong: #94A3B8;
-  --state-accent: #C2410C;
-  --state-accent-strong: #9A3412;
-  --state-accent-soft: #FFEDD5;
-  --state-success: #0F766E;
-  --state-success-soft: rgb(15 118 110 / 0.12);
+  --surface-page: #E0E0CE;
+  --surface-raised: #F6FFF8;
+  --surface-sunken: #CCE3DE;
+  --surface-overlay: #E0E0CE;
+  --text-primary: #111815;
+  --text-secondary: #474747;
+  --text-tertiary: #6B9080;
+  --text-on-accent: #F6FFF8;
+  --border-subtle: #BFD3C8;
+  --border-medium: #A4C3B2;
+  --border-strong: #6B9080;
+  --state-accent: #3E6B5B;
+  --state-accent-strong: #2F5446;
+  --state-accent-soft: #CCE3DE;
+  --state-success: #2E7D4F;
+  --state-success-soft: rgb(46 125 79 / 0.12);
   --state-danger: #B91C1C;
   --state-danger-soft: rgb(185 28 28 / 0.12);
+  --state-warm: #B45309;
+  --state-warm-decor: #E9A23B;
   --state-warning: #B45309;
   --state-warning-soft: rgb(180 83 9 / 0.12);
-  --state-info: #C2410C;
-  --focus-ring: #C2410C;
-  --overlay-backdrop: rgb(15 23 42 / 0.55);
-  --mind-c1: #C2410C;
-  --mind-c2: #0F766E;
-  --mind-c3: #1E40AF;
+  --state-info: #3E6B5B;
+  --focus-ring: #3E6B5B;
+  --overlay-backdrop: rgb(15 23 20 / 0.55);
+  --mind-c1: #3E6B5B;
+  --mind-c2: #B45309;
+  --mind-c3: #3F6A8A;
   --mind-c4: #7C3A5E;
-  --mind-c5: #B45309;
+  --mind-c5: #6B7A2F;
 
-  --glass-bg: linear-gradient(145deg, rgb(255 255 255 / 0.80), rgb(255 255 255 / 0.46));
-  --glass-bg-hover: linear-gradient(145deg, rgb(255 255 255 / 0.94), rgb(255 255 255 / 0.68));
-  --glass-border: rgb(255 255 255 / 0.85);
-  --glass-ring: rgb(15 23 42 / 0.16);
-  --glass-ring-strong: rgb(15 23 42 / 0.75);
-  --topbar-edge: rgb(226 232 240 / 0.85);
-  --glass-shadow: 0 8px 24px rgb(15 23 42 / 0.10), inset 0 1px 0 rgb(255 255 255 / 0.95), inset 0 -1px 0 rgb(15 23 42 / 0.08);
-  --glass-shadow-hover: 0 12px 30px rgb(15 23 42 / 0.16), inset 0 1px 0 rgb(255 255 255 / 1), inset 0 -1px 0 rgb(15 23 42 / 0.12);
+  --glass-bg: linear-gradient(145deg, rgb(246 255 248 / 0.88), rgb(224 224 206 / 0.62));
+  --glass-bg-hover: linear-gradient(145deg, rgb(246 255 248 / 0.96), rgb(204 227 222 / 0.78));
+  --glass-border: rgb(47 84 70 / 0.72);
+  --glass-ring: rgb(47 84 70 / 0.18);
+  --glass-ring-strong: #2F5446;
+  --topbar-edge: rgb(107 144 128 / 0.62);
+  --glass-shadow: 0 8px 24px rgb(15 23 20 / 0.10), inset 0 1px 0 rgb(246 255 248 / 0.95), inset 0 -1px 0 rgb(47 84 70 / 0.10);
+  --glass-shadow-hover: 0 12px 30px rgb(15 23 20 / 0.16), inset 0 1px 0 rgb(246 255 248 / 1), inset 0 -1px 0 rgb(47 84 70 / 0.14);
   --glass-text: var(--text-primary);
   --glass-hover-text: var(--glass-text);
   --glass-blur: 16px;
   --glass-saturate: 180%;
-  --glass-highlight: linear-gradient(180deg, rgb(255 255 255 / 0.42), rgb(255 255 255 / 0) 48%);
+  --glass-highlight: linear-gradient(180deg, rgb(246 255 248 / 0.48), rgb(246 255 248 / 0) 48%);
 
-  --gradient-accent: linear-gradient(135deg, #B93C0B, #C2410C);
-  --gradient-hero: linear-gradient(135deg, #FFFFFF 0%, #F1F5F9 55%, #FFEFE2 100%);
-  --gradient-surface: linear-gradient(160deg, #FFFFFF, #F8FAFC);
-  --gradient-text: linear-gradient(90deg, #B93C0B, #C2410C);
-  --bg-base: linear-gradient(180deg, #F8FAFC 0%, #EEF2F7 100%);
-  --bg-glow: radial-gradient(ellipse 70% 55% at 0% 0%, rgb(249 115 22 / 0.14), transparent 70%),
-             radial-gradient(ellipse 60% 50% at 100% 10%, rgb(59 130 246 / 0.08), transparent 70%);
+  --gradient-accent: linear-gradient(135deg, #2F5446, #4A7A68);
+  --gradient-hero: linear-gradient(135deg, #F6FFF8 0%, #E0E0CE 55%, #CCE3DE 100%);
+  --gradient-surface: linear-gradient(160deg, #F6FFF8, #EAF4F4);
+  --gradient-text: linear-gradient(90deg, #B45309, #D97706);
+  --bg-base: linear-gradient(180deg, #E8E8D8 0%, #DCDCC8 100%);
+  --bg-glow: radial-gradient(ellipse 70% 55% at 0% 0%, rgb(164 195 178 / 0.35), transparent 70%),
+             radial-gradient(ellipse 60% 50% at 100% 10%, rgb(233 162 59 / 0.14), transparent 70%);
 }
 
 html.light:not(.dark) {
@@ -61,54 +63,56 @@ html.light:not(.dark) {
 
 :is(html.dark, body.dark) {
   color-scheme: dark;
-  --surface-page: #0F172A;
-  --surface-raised: #1E293B;
-  --surface-sunken: #0B1220;
-  --surface-overlay: #1E293B;
-  --text-primary: #F8FAFC;
-  --text-secondary: #94A3B8;
-  --text-tertiary: #7B8BA3;
-  --text-on-accent: #0F172A;
-  --border-subtle: #334155;
-  --border-medium: #475569;
-  --border-strong: #64748B;
-  --state-accent: #F97316;
-  --state-accent-strong: #FB923C;
-  --state-accent-soft: rgb(249 115 22 / 0.16);
-  --state-success: #5EEAD4;
-  --state-success-soft: rgb(94 234 212 / 0.12);
+  --surface-page: #0F1714;
+  --surface-raised: #16211C;
+  --surface-sunken: #0B120F;
+  --surface-overlay: #16211C;
+  --text-primary: #EAF4F4;
+  --text-secondary: #A9B8B0;
+  --text-tertiary: #A9B8B0;
+  --text-on-accent: #0F1714;
+  --border-subtle: #2F4A3F;
+  --border-medium: #3F6355;
+  --border-strong: #6B9080;
+  --state-accent: #A4C3B2;
+  --state-accent-strong: #CCE3DE;
+  --state-accent-soft: rgb(164 195 178 / 0.16);
+  --state-success: #86D9A4;
+  --state-success-soft: rgb(134 217 164 / 0.12);
   --state-danger: #F87171;
   --state-danger-soft: rgb(248 113 113 / 0.12);
-  --state-warning: #FBBF24;
-  --state-warning-soft: rgb(251 191 36 / 0.12);
-  --state-info: #F97316;
-  --focus-ring: #FBBF24;
-  --overlay-backdrop: rgb(0 0 0 / 0.7);
-  --mind-c1: #F97316;
-  --mind-c2: #5EEAD4;
-  --mind-c3: #60A5FA;
+  --state-warm: #F2B45A;
+  --state-warm-decor: #E9A23B;
+  --state-warning: #F2B45A;
+  --state-warning-soft: rgb(242 180 90 / 0.12);
+  --state-info: #A4C3B2;
+  --focus-ring: #CCE3DE;
+  --overlay-backdrop: rgb(0 0 0 / 0.65);
+  --mind-c1: #A4C3B2;
+  --mind-c2: #F2B45A;
+  --mind-c3: #8EC1E4;
   --mind-c4: #D79BC0;
-  --mind-c5: #FBBF24;
+  --mind-c5: #C5D27A;
 
-  --glass-bg: linear-gradient(145deg, rgb(248 250 252 / 0.14), rgb(248 250 252 / 0.05));
-  --glass-bg-hover: linear-gradient(145deg, rgb(248 250 252 / 0.24), rgb(248 250 252 / 0.09));
-  --glass-border: rgb(248 250 252 / 0.22);
-  --glass-ring: rgb(248 250 252 / 0.14);
-  --glass-ring-strong: rgb(248 250 252 / 0.85);
-  --topbar-edge: rgb(51 65 85 / 0.85);
-  --glass-shadow: 0 8px 24px rgb(0 0 0 / 0.35), inset 0 1px 0 rgb(255 255 255 / 0.20), inset 0 -1px 0 rgb(0 0 0 / 0.30);
-  --glass-shadow-hover: 0 12px 30px rgb(0 0 0 / 0.45), inset 0 1px 0 rgb(255 255 255 / 0.28), inset 0 -1px 0 rgb(0 0 0 / 0.35);
+  --glass-bg: linear-gradient(145deg, rgb(27 43 36 / 0.88), rgb(15 23 20 / 0.64));
+  --glass-bg-hover: linear-gradient(145deg, rgb(31 51 42 / 0.94), rgb(22 33 28 / 0.78));
+  --glass-border: rgb(164 195 178 / 0.36);
+  --glass-ring: rgb(164 195 178 / 0.26);
+  --glass-ring-strong: #CCE3DE;
+  --topbar-edge: rgb(142 193 228 / 0.20);
+  --glass-shadow: 0 8px 24px rgb(0 0 0 / 0.32), inset 0 1px 0 rgb(234 244 244 / 0.16), inset 0 -1px 0 rgb(11 18 15 / 0.26);
+  --glass-shadow-hover: 0 12px 30px rgb(0 0 0 / 0.42), inset 0 1px 0 rgb(234 244 244 / 0.24), inset 0 -1px 0 rgb(11 18 15 / 0.32);
   --glass-text: var(--text-primary);
   --glass-hover-text: var(--glass-text);
-  --glass-highlight: linear-gradient(180deg, rgb(255 255 255 / 0.18), rgb(255 255 255 / 0) 48%);
+  --glass-highlight: linear-gradient(180deg, rgb(234 244 244 / 0.22), rgb(142 193 228 / 0.08) 48%);
 
-  --gradient-accent: linear-gradient(135deg, #F97316, #FBBF24);
-  --gradient-hero: linear-gradient(135deg, #1E293B 0%, #222A3F 55%, #33271F 100%);
-  --gradient-surface: linear-gradient(160deg, #243247, #1E293B);
-  --gradient-text: linear-gradient(90deg, #F97316, #FBBF24);
-  --bg-base: linear-gradient(180deg, #0F172A 0%, #0B1220 100%);
-  --bg-glow: radial-gradient(ellipse 70% 55% at 0% 0%, rgb(249 115 22 / 0.16), transparent 70%),
-             radial-gradient(ellipse 60% 50% at 100% 10%, rgb(59 130 246 / 0.12), transparent 70%);
+  --gradient-accent: linear-gradient(135deg, #A4C3B2, #CCE3DE);
+  --gradient-hero: linear-gradient(135deg, #16211C 0%, #1B2B24 60%, #1F332A 100%);
+  --gradient-surface: linear-gradient(160deg, #1A2822, #16211C);
+  --gradient-text: linear-gradient(90deg, #F2B45A, #E9A23B);
+  --bg-base: linear-gradient(180deg, #121C18 0%, #0F1714 100%);
+  --bg-glow: radial-gradient(ellipse 70% 55% at 0% 0%, rgb(107 144 128 / 0.22), transparent 70%),
+             radial-gradient(ellipse 60% 50% at 100% 10%, rgb(242 180 90 / 0.08), transparent 70%);
 }
 
 :root,

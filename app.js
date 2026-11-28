@@ -65,7 +65,9 @@
   }
 
   const BANK = window.QUESTION_BANK;
-  const GLOSSARY = window.GLOSSARY || {};
+    const GLOSSARY = window.GLOSSARY || {};
+    const SUBJECT_GLOSSARY = window.SUBJECT_GLOSSARY || {};
+
   const SUBJECTS = Object.values(BANK).map((s) => {
     const meta = DAY_META.find((m) => m.id === s.id) || {};
     return {
@@ -338,29 +340,30 @@
     </button>`;
   }
 
+  let subjectSpy = null;
+
   function renderSubjectCards() {
     const grid = $("subjectCardGrid");
     if (!grid) return;
+    renderDayTabs();
     const count = $("subjectCountFlow");
     const groups = [...new Set(SUBJECTS.map((s) => Number(s.grup) || 1))]
       .sort((a, b) => a - b);
     const filter = SUBJECT_FILTERS[state.subjectFilter] || SUBJECT_FILTERS.semua;
     const visible = SUBJECTS.filter(filter);
     renderCoverage();
-    if (count) {
-      count.textContent = visible.length === SUBJECTS.length
-        ? `${SUBJECTS.length} mapel`
-        : `${visible.length} dari ${SUBJECTS.length} mapel`;
-    }
+    if (count) count.textContent = `Menampilkan ${visible.length} dari ${SUBJECTS.length} mapel`;
     grid.innerHTML = groups.map((grup) => {
       const items = visible.filter((s) => (Number(s.grup) || 1) === grup);
       if (!items.length) return "";
-      return `<div class="subject-card-group">
+      return `<div id="subjectGroup${grup}" class="subject-card-group" data-subject-group="${grup}">
         ${subjectGroupTitleHtml(grup, items)}
         <div class="subject-card-row" data-reveal-stagger>${items.map((subject) => subjectCardHtml(subject, SUBJECTS.indexOf(subject))).join("")}</div>
       </div>`;
     }).join("") || '<p class="subject-empty">Tidak ada mapel untuk filter ini.</p>';
     fxRefresh(grid, { key: `subjects:${state.subjectFilter || "semua"}` });
+    syncStickyOffsets();
+    bindSubjectSpy();
   }
 
   function coverageSegmentHtml(grup, items) {
@@ -369,7 +372,7 @@
     const level = material === items.length && practice === items.length
       ? "lengkap"
       : material > 0 || practice > 0 ? "sebagian" : "kosong";
-    return `<span class="coverage-segment coverage-segment-${level}" data-coverage-segment="${grup}" style="flex-grow:${items.length}" aria-hidden="true"></span>`;
+    return `<span class="summary-segment summary-segment-${level}" data-coverage-segment="${grup}" style="flex-grow:${items.length}" aria-hidden="true"></span>`;
   }
 
   function examPhase(grup) {
@@ -383,37 +386,115 @@
     return { id: "mendatang", label: "Mendatang" };
   }
 
-  function coverageExamHtml(grup, items) {
+  function examStatusText(grup) {
     const phase = examPhase(grup);
-    const material = items.filter((subject) => subjectStudyInfo(subject).ready).length;
-    return `<article class="exam-card exam-card-${phase.id}" data-exam-phase="${phase.id}">
-      ${dateTileHtml(grup, { small: true })}
-      <div class="exam-card-copy">
-        <p class="exam-card-title">${escapeHTML(formatExamLong(grup))}</p>
-        <p class="exam-card-meta">Grup ${grup} · ${items.length} mapel · ${material}/${items.length} materi siap · ${escapeHTML(phase.label)}</p>
-      </div>
-    </article>`;
+    if (phase.id === "selesai") return "Selesai";
+    const today = new Date();
+    const todayValue = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+    const examValue = examDateParts(grup).date.getTime();
+    const dayMs = 86400000;
+    if (phase.id === "mendatang") return `${Math.round((examValue - todayValue) / dayMs)} hari lagi`;
+    if (phase.id === "hari-ini") return "Hari ke-1";
+    return `Hari ke-${Math.round((todayValue - examValue) / dayMs) + 1}`;
+  }
+
+  function renderDayTabs() {
+    const tabs = $("dayTabs");
+    if (!tabs) return;
+    const groups = [...new Set(SUBJECTS.map((s) => Number(s.grup) || 1))].sort((a, b) => a - b);
+    const items = [
+      { key: "all", label: "Semua", target: "subjectCardGrid", count: SUBJECTS.length },
+      ...groups.map((grup) => ({
+        key: String(grup),
+        label: `${formatExamTile(grup).weekdayShort} ${grup}`,
+        target: `subjectGroup${grup}`,
+        count: SUBJECTS.filter((s) => (Number(s.grup) || 1) === grup).length
+      }))
+    ];
+    tabs.innerHTML = items.map((item) => `<a class="day-tab${item.key === "all" ? " is-active" : ""}" href="#${item.target}" data-day-tab="${item.key}"${item.key === "all" ? ' aria-current="true"' : ""}><span>${escapeHTML(item.label)}</span><span class="day-tab-count">${item.count}</span></a>`).join("");
+    setActiveDayTab("all");
   }
 
   function renderCoverage() {
-    const segments = $("coverageSegments");
-    const exams = $("coverageExams");
-    const filters = $("coverageFilters");
+    const bar = $("summaryMaterialBar");
+    const materialCount = $("summaryMaterialCount");
+    const practiceCount = $("summaryPracticeCount");
+    const practiceNote = $("summaryPracticeNote");
+    const examStatus = $("summaryExamStatus");
+    const examDate = $("summaryExamDate");
+    const filters = $("subjectFilters");
     const list = [...new Set(SUBJECTS.map((s) => Number(s.grup) || 1))].sort((a, b) => a - b);
     const byGroup = list.map((grup) => [grup, SUBJECTS.filter((s) => (Number(s.grup) || 1) === grup)]);
-    if (segments) {
-      segments.innerHTML = byGroup.map(([grup, items]) => coverageSegmentHtml(grup, items)).join("");
-      segments.setAttribute("aria-label", `Cakupan materi per grup ujian. ${byGroup.map(([grup, items]) => {
-        const material = items.filter((subject) => subjectStudyInfo(subject).ready).length;
-        return `Grup ${grup}: ${material} dari ${items.length} materi siap`;
+    const total = SUBJECTS.length;
+    const material = SUBJECTS.filter((subject) => subjectStudyInfo(subject).ready).length;
+    const practice = SUBJECTS.filter((subject) => subjectPracticeInfo(subject).ready).length;
+    if (bar) {
+      bar.innerHTML = byGroup.map(([grup, items]) => coverageSegmentHtml(grup, items)).join("");
+      bar.setAttribute("aria-label", `Cakupan materi per grup ujian. ${byGroup.map(([grup, items]) => {
+        const ready = items.filter((subject) => subjectStudyInfo(subject).ready).length;
+        return `Grup ${grup}: ${ready} dari ${items.length} materi siap`;
       }).join("; ")}`);
     }
-    if (exams) exams.innerHTML = byGroup.map(([grup, items]) => coverageExamHtml(grup, items)).join("");
+    if (materialCount) materialCount.textContent = `${material} dari ${total}`;
+    if (practiceCount) practiceCount.textContent = `${practice} dari ${total}`;
+    if (practiceNote) practiceNote.textContent = practice ? `${practice} mapel dengan bank soal` : "Menunggu kisi-kisi";
+    const nextGroup = byGroup.find(([grup]) => examPhase(grup).id !== "selesai");
+    if (examStatus) examStatus.textContent = nextGroup ? examStatusText(nextGroup[0]) : "Selesai";
+    if (examDate) examDate.textContent = nextGroup ? formatExamShort(nextGroup[0]) : "Selesai";
     if (filters) {
       filters.querySelectorAll("[data-subject-filter]").forEach((button) => {
         button.setAttribute("aria-pressed", String(button.dataset.subjectFilter === state.subjectFilter));
       });
     }
+  }
+
+  function setActiveDayTab(key) {
+    const tabs = $("dayTabs");
+    if (!tabs) return;
+    let activeTab = null;
+    tabs.querySelectorAll("[data-day-tab]").forEach((tab) => {
+      const active = tab.dataset.dayTab === key;
+      tab.classList.toggle("is-active", active);
+      if (active) {
+        tab.setAttribute("aria-current", "true");
+        activeTab = tab;
+      } else tab.removeAttribute("aria-current");
+    });
+    if (activeTab && typeof tabs.scrollTo === "function") {
+      const left = activeTab.offsetLeft - tabs.offsetLeft - (tabs.clientWidth - activeTab.clientWidth) / 2;
+      tabs.scrollTo({ left, behavior: prefersReducedMotion() ? "auto" : "smooth" });
+    }
+  }
+
+  function prefersReducedMotion() {
+    return typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  function bindSubjectSpy() {
+    const page = $("subjectsPage");
+    const tabs = $("dayTabs");
+    if (subjectSpy) {
+      subjectSpy.disconnect();
+      subjectSpy = null;
+    }
+    if (!page || page.classList.contains("hidden") || !tabs || typeof IntersectionObserver !== "function") return;
+    const targets = Array.from(document.querySelectorAll("[data-subject-group]"));
+    if (!targets.length) return;
+    const styles = getComputedStyle(document.documentElement);
+    const topbar = parseFloat(styles.getPropertyValue("--topbar-h")) || 64;
+    const toolbar = parseFloat(styles.getPropertyValue("--subject-toolbar-h")) || 56;
+    const stickyOffset = parseFloat(styles.getPropertyValue("--sticky-offset")) || topbar + toolbar + 8;
+    const visible = new Map();
+    subjectSpy = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) visible.set(entry.target.dataset.subjectGroup, entry.boundingClientRect.top);
+        else visible.delete(entry.target.dataset.subjectGroup);
+      });
+      if (!visible.size) return;
+      const closest = Array.from(visible.entries()).sort((a, b) => Math.abs(a[1]) - Math.abs(b[1]))[0][0];
+      setActiveDayTab(closest);
+    }, { rootMargin: `-${Math.round(stickyOffset + 8)}px 0px -55% 0px`, threshold: 0 });
+    targets.forEach((target) => subjectSpy.observe(target));
   }
 
   function renderIntroPage() {
@@ -830,7 +911,7 @@
     }));
     const poin = [];
     const glosarium = [];
-    const subjectGlossary = studyModules(subjectId).useGlobalGlossary ? GLOSSARY : {};
+    const subjectGlossary = glossaryFor(subjectId);
     const seenPoin = new Set();
     const seenGlosarium = new Set();
     all.forEach((q) => {
@@ -1130,6 +1211,7 @@
       if (MODE_LABEL[raw.mode]) state.mode = raw.mode;
       if (STUDY_SECTIONS[raw.studySection]) state.studySection = raw.studySection;
       if (raw.theme === "dark" || raw.theme === "light") state.theme = raw.theme;
+      if (typeof raw.highlight === "boolean") state.highlight = raw.highlight;
     } catch (error) {
       console.warn("[ASAS] Preferensi tidak dapat dibaca.", error);
     }
@@ -1142,7 +1224,8 @@
         bank: state.bank,
         mode: state.mode,
         studySection: state.studySection,
-        theme: state.theme
+        theme: state.theme,
+        highlight: state.highlight
       }));
     } catch (error) {
       console.warn("[ASAS] Preferensi tidak dapat disimpan.", error);
@@ -1430,6 +1513,10 @@
     const header = document.querySelector?.(".topbar");
     const height = Math.ceil(header?.getBoundingClientRect?.().height || header?.offsetHeight || 0);
     if (height) document.documentElement.style.setProperty("--topbar-h", `${height}px`);
+    const toolbar = $("subjectsToolbar");
+    const toolbarHeight = Math.ceil(toolbar?.getBoundingClientRect?.().height || toolbar?.offsetHeight || 0);
+    if (toolbarHeight) document.documentElement.style.setProperty("--subject-toolbar-h", `${toolbarHeight}px`);
+    if (typeof window.dispatchEvent === "function" && typeof Event === "function") window.dispatchEvent(new Event("scroll"));
   }
 
   function renderShell() {
@@ -1545,8 +1632,17 @@
     return builtin + custom;
   }
 
+  function syncHighlightToggle() {
+    const button = $("highlightBtn");
+    if (!button) return;
+    button.textContent = state.highlight ? "Hilangkan Sorotan" : "Sorot Kata Kunci";
+    button.setAttribute("aria-pressed", String(state.highlight));
+    button.classList.toggle("active", state.highlight);
+  }
+
   function renderWorkspace() {
     renderSafely(() => {
+      syncHighlightToggle();
       if (state.mode === "belajar") {
         $("emptyState").classList.add("hidden");
         $("quizWorkspace").classList.add("hidden");
@@ -1690,7 +1786,7 @@
             <span class="text-[10px] font-bold text-[var(--muted)]">${escapeHTML(item.subtopik.length)} subtopik</span>
           </div>
           <h3 class="font-bacaan mt-2 text-base font-extrabold">${mdInline(item.judul)}</h3>
-          <div class="font-bacaan mt-2 text-sm leading-7 text-[var(--muted)] markdown-content">${md(item.isi)}</div>
+          <div class="font-bacaan mt-2 text-sm leading-7 text-[var(--muted)] markdown-content">${renderKeyTerms(item.isi, item.keyTerms, true)}</div>
           ${item.indikatorKisi?.length ? `<p class="mt-2 text-[10px] font-bold text-[var(--muted)]">Indikator kisi: ${item.indikatorKisi.join(", ")}</p>` : ""}
           ${item.subtopik.length ? `<div class="mt-3 flex flex-wrap gap-1.5">${item.subtopik.map((s) => `<span class="study-chip">${escapeHTML(s)}</span>`).join("")}</div>` : ""}
           <div class="mt-3 flex flex-wrap gap-2">
@@ -1784,7 +1880,7 @@
         </div>
         <div class="flashcard mt-4 ${state.studyRevealed ? "revealed" : ""}">
           <p class="text-[10px] font-extrabold uppercase tracking-wider text-[var(--muted)]">${state.studyRevealed ? "Jawaban" : card.jenis || "Pertanyaan"}</p>
-          <div class="font-bacaan mt-3 text-base font-bold leading-8 markdown-content">${md(state.studyRevealed ? card.jawaban : card.pertanyaan)}</div>
+          <div class="font-bacaan mt-3 text-base font-bold leading-8 markdown-content">${renderKeyTerms(state.studyRevealed ? card.jawaban : card.pertanyaan, card.keyTerms, true)}</div>
         </div>
         <div class="mt-4 flex flex-wrap items-center gap-2">
           <button class="ink-btn" type="button" data-study-card-action="prev" ${state.studyCardIndex === 0 ? "disabled" : ""}>← Sebelumnya</button>
@@ -1814,7 +1910,7 @@
               <p class="text-[10px] font-extrabold uppercase tracking-wider text-[var(--muted)]">${escapeHTML(item.topik || studyTopicName(content, item.topikId))}${item.wajib ? " - Wajib" : ""}</p>
               <label class="font-bacaan mt-1 flex cursor-pointer gap-2 text-sm leading-7">
                 <input type="checkbox" class="mt-1.5" data-study-point-check="${escapeHTML(key)}" ${checked ? "checked" : ""} />
-                <span>${mdInline(item.teks)}</span>
+                <span>${renderKeyTerms(item.teks, item.keyTerms)}</span>
               </label>
             </div>
           </article>`;
@@ -1922,7 +2018,7 @@
       $("progressText").textContent = `Terjawab ${answered} dari ${state.queue.length}`;
       $("streakValue").textContent = String(state.streak);
       $("bestStreakValue").textContent = String(state.bestStreak);
-      $("highlightBtn").textContent = state.highlight ? "Hilangkan Sorotan" : "Sorot Kata Kunci";
+      syncHighlightToggle();
       renderCurrentQuestion();
       renderNavigator();
     }, "merender soal");
@@ -2006,6 +2102,26 @@
     $("stimulusText").innerHTML = blocks.map((block) => renderStimulusBlock(block, q)).join("");
   }
 
+  function getHints(q) {
+    const original = Array.isArray(q?.hints) ? q.hints.filter((hint) => String(hint || "").trim()) : [];
+    if (original.length) return original.slice();
+    const topic = String(q?.topikSumber || q?.indikatorSumber || q?.indikator || q?.topik || "").trim();
+    const topicHint = topic ? [`Topik soal ini: ${topic}.`] : [];
+    const options = q?.options || {};
+    const filled = LETTERS.filter((letter) => String(options[letter] ?? "").trim());
+    if (filled.length < 4) return topicHint;
+    const answer = String(q?.answer || "").toUpperCase();
+    const wrong = filled.filter((letter) => letter !== answer);
+    if (wrong.length < 2) return topicHint;
+    const id = String(q?.id || "");
+    let seed = 0;
+    for (let i = 0; i < id.length; i += 1) seed = (seed * 31 + id.charCodeAt(i)) >>> 0;
+    const first = wrong[seed % wrong.length];
+    const rest = wrong.filter((letter) => letter !== first);
+    const second = rest[(seed >>> 3) % rest.length];
+    return [...topicHint, `Salah satu pilihan yang salah: ${first}.`, `Satu pilihan salah lagi: ${second}.`];
+  }
+
   function renderCurrentQuestion() {
     const q = currentQuestion();
     if (!q) return;
@@ -2061,12 +2177,12 @@
       $("explanationText").innerHTML = renderKeyTerms(q.explanation, q.keyTerms, true);
     }
 
-    const hints = q.hints || [];
+    const hints = getHints(q);
     const used = clamp(state.hintsUsed[q.id] || 0, 0, hints.length);
     $("hintText").classList.toggle("hidden", used === 0);
     $("hintText").textContent = hints.slice(0, used).map((h, i) => `${i + 1}. ${h}`).join("  •  ");
     $("hintBtn").textContent = used === 0 ? "Buka Petunjuk" : used < hints.length ? "Petunjuk Lain" : "Petunjuk Habis";
-    $("hintBtn").disabled = used >= hints.length;
+    $("hintBtn").disabled = used >= hints.length || revealed;
 
     const flagged = !!state.flagged[q.id];
     $("flagBtn").textContent = flagged ? "✓ Ragu" : "Ragu";
@@ -2097,6 +2213,16 @@
     $("mobileNavSummary").textContent = `Soal ${Math.min(state.current + 1, state.queue.length)} dari ${state.queue.length}`;
   }
 
+  function glossaryFor(subjectId = state.subject) {
+    return SUBJECT_GLOSSARY[subjectId] || {};
+  }
+
+  function glossaryMeaning(term, subjectId = state.subject) {
+    const glossary = glossaryFor(subjectId);
+    const key = String(term || "").trim().toLocaleLowerCase("id-ID");
+    return glossary[key] || Object.entries(glossary).find(([name]) => name.toLocaleLowerCase("id-ID") === key)?.[1] || "";
+  }
+
   function glossaryEntries(terms = []) {
     const entries = [];
     const seen = new Set();
@@ -2106,52 +2232,92 @@
       const key = t.toLocaleLowerCase("id-ID");
       if (seen.has(key)) return;
       seen.add(key);
-      entries.push({ term: t, meaning: String(meaning || GLOSSARY[key] || "Istilah penting dalam soal.") });
+      entries.push({ term: t, meaning: String(meaning || glossaryMeaning(t) || "Istilah penting dalam soal.") });
     };
     terms.forEach((t) => {
       if (typeof t === "string") add(t);
       else if (t && typeof t === "object") add(t.term || t.istilah || t.kata, t.meaning || t.teges || t.definisi || t.arti);
     });
-    const globalTerms = studyModules().useGlobalGlossary ? Object.entries(GLOSSARY) : [];
-    globalTerms.forEach(([term, meaning]) => {
-      if (term.length >= 5) add(term, meaning);
-    });
     return entries.sort((a, b) => b.term.length - a.term.length);
+  }
+
+  function keyTermEntries(text, terms = []) {
+    const provided = glossaryEntries(terms).map((entry) => ({ ...entry, strong: true }));
+    if (provided.length) return provided;
+    return findGlossaryTerms(text).map((entry) => ({ ...entry, strong: false }));
+  }
+
+  function keyTermRanges(value, entries, seen = new Set()) {
+    const boundary = "[\\p{L}\\p{N}\\p{M}_]";
+    const patterns = entries
+      .map((entry) => ({
+        ...entry,
+        pattern: new RegExp(`(?<!${boundary})${escapeRegExp(entry.term)}(?!${boundary})`, "giu")
+      }))
+      .sort((a, b) => b.term.length - a.term.length);
+    const ranges = [];
+    patterns.forEach((entry) => {
+      const key = entry.term.toLocaleLowerCase("id-ID");
+      if (seen.has(key)) return;
+      let match;
+      while ((match = entry.pattern.exec(value)) !== null) {
+        if (seen.has(key)) return;
+        const start = match.index;
+        const end = start + match[0].length;
+        if (ranges.some((range) => start < range.end && end > range.start)) {
+          seen.add(key);
+          continue;
+        }
+        ranges.push({ start, end, match: match[0], term: entry.term, meaning: entry.meaning, strong: entry.strong });
+        seen.add(key);
+        break;
+      }
+    });
+    return ranges.sort((a, b) => a.start - b.start);
   }
 
   function renderKeyTerms(text, terms = [], block = false) {
     const raw = String(text || "");
     const baseHtml = block ? md(raw) : mdInline(raw);
-    const entries = glossaryEntries(terms);
+    if (!state.highlight) return baseHtml;
+    const entries = keyTermEntries(raw, terms);
     if (!entries.length || typeof document === "undefined") return baseHtml;
-    const pattern = new RegExp(`(${entries.map((e) => escapeRegExp(e.term)).join("|")})`, "gi");
-    const markClass = state.highlight ? "key-term-mark key-term-mark-strong" : "key-term-mark";
     const host = document.createElement("div");
     host.innerHTML = baseHtml;
+    const seenByParagraph = new WeakMap();
     const textNodes = [];
     const collect = (node) => {
       Array.from(node.childNodes || []).forEach((child) => {
-        if (child.nodeName === "CODE" || child.nodeName === "PRE") return;
-        if (child.nodeType === 3) textNodes.push(child);
-        else collect(child);
+        if (child.nodeType === 3) {
+          if (child.parentElement && child.parentElement.closest("code, pre, a, h1, h2, h3, h4, h5, h6, mark")) return;
+          textNodes.push(child);
+          return;
+        }
+        if (child.nodeName === "CODE" || child.nodeName === "PRE" || child.nodeName === "A" || /^H[1-6]$/.test(child.nodeName) || child.nodeName === "MARK") return;
+        collect(child);
       });
     };
     collect(host);
     textNodes.forEach((node) => {
       const value = String(node.nodeValue || "");
+      const container = node.parentElement && node.parentElement.closest("p, li, td, th, figcaption, blockquote") ? node.parentElement.closest("p, li, td, th, figcaption, blockquote") : host;
+      if (!seenByParagraph.has(container)) seenByParagraph.set(container, new Set());
+      const ranges = keyTermRanges(value, entries, seenByParagraph.get(container));
+      if (!ranges.length) return;
       const fragment = document.createDocumentFragment();
       let last = 0;
-      value.replace(pattern, (match, _group, offset) => {
-        if (offset > last) fragment.appendChild(document.createTextNode(value.slice(last, offset)));
-        const found = entries.find((e) => e.term.toLocaleLowerCase("id-ID") === String(match).toLocaleLowerCase("id-ID")) || { term: match, meaning: "Istilah penting." };
+      ranges.forEach((range) => {
+        if (range.start > last) fragment.appendChild(document.createTextNode(value.slice(last, range.start)));
         const mark = document.createElement("mark");
-        mark.className = markClass;
-        mark.setAttribute("data-term", found.term);
-        mark.setAttribute("data-meaning", found.meaning);
-        mark.textContent = match;
+        mark.className = range.strong ? "key-term-mark key-term-mark-strong" : "key-term-mark";
+        mark.setAttribute("data-term", range.term);
+        mark.setAttribute("data-meaning", range.meaning || "Istilah penting.");
+        mark.setAttribute("tabindex", "0");
+        mark.setAttribute("role", "button");
+        mark.setAttribute("aria-label", `${range.term}: ${range.meaning || "Istilah penting."}`);
+        mark.textContent = range.match;
         fragment.appendChild(mark);
-        last = offset + String(match).length;
-        return match;
+        last = range.end;
       });
       if (last < value.length) fragment.appendChild(document.createTextNode(value.slice(last)));
       node.parentNode.replaceChild(fragment, node);
@@ -2165,11 +2331,10 @@
     $("keyTermPopover").classList.remove("hidden");
   }
 
-  function findGlossaryTerms(text) {
-    if (!studyModules().useGlobalGlossary) return [];
+  function findGlossaryTerms(text, subjectId = state.subject) {
     const raw = String(text || "").toLocaleLowerCase("id-ID");
-    return Object.entries(GLOSSARY)
-      .filter(([term]) => term.length >= 5 && raw.includes(term.toLocaleLowerCase("id-ID")))
+    return Object.entries(glossaryFor(subjectId))
+      .filter(([term]) => raw.includes(term.toLocaleLowerCase("id-ID")))
       .map(([term, meaning]) => ({ term, meaning }))
       .sort((a, b) => b.term.length - a.term.length)
       .slice(0, 12);
@@ -2192,7 +2357,7 @@
     const rows = terms.length
       ? terms.map((t) => {
           const term = typeof t === "string" ? t : t.term || t.istilah || t.kata;
-          const meaning = typeof t === "string" ? GLOSSARY[term] : t.meaning || t.teges || t.definisi || t.arti;
+          const meaning = typeof t === "string" ? glossaryMeaning(term) : t.meaning || t.teges || t.definisi || t.arti;
           return `<div class="mt-1.5"><strong>${escapeHTML(term)}</strong> — ${escapeHTML(meaning || "Arti kata belum tercatat.")}</div>`;
         }).join("")
       : "<div class='mt-1.5'>Kata sulit belum tercatat di bank soal ini.</div>";
@@ -2255,9 +2420,10 @@
   function nextHint() {
     const q = currentQuestion();
     if (!q) return;
-    const hints = q.hints || [];
+    const hints = getHints(q);
     const used = clamp(state.hintsUsed[q.id] || 0, 0, hints.length);
-    if (used >= hints.length) return;
+    const revealed = state.mode === "latihan" && state.answers[q.id] !== undefined;
+    if (used >= hints.length || revealed) return;
     state.hintsUsed[q.id] = used + 1;
     saveProgress();
     renderQuizSafely();
@@ -2507,7 +2673,7 @@
       card.className = "review-card";
       const keyTermRows = (q.keyTerms || []).map((t) => {
         const term = typeof t === "string" ? t : t.term || t.istilah || t.kata;
-        const meaning = typeof t === "string" ? GLOSSARY[term] : t.meaning || t.teges || t.definisi || t.arti;
+        const meaning = typeof t === "string" ? glossaryMeaning(term) : t.meaning || t.teges || t.definisi || t.arti;
         return `<li><strong>${escapeHTML(term)}</strong> — ${escapeHTML(meaning || "Istilah penting.")}</li>`;
       }).join("");
       card.innerHTML = `
@@ -2758,7 +2924,7 @@
   function parseTerms(raw) {
     return String(raw || "").split(/[;\n]+/).map((s) => s.trim()).filter(Boolean).map((term) => ({
       term,
-      meaning: GLOSSARY[term.toLocaleLowerCase("id-ID")] || "Istilah penting dalam soal."
+      meaning: glossaryMeaning(term) || "Istilah penting dalam soal."
     }));
   }
 
@@ -3449,6 +3615,12 @@
       $("bedahOutput").classList.add("hidden");
       return;
     }
+    const mark = target && target.closest && target.closest(".key-term-mark");
+    if (mark && (event.key === "Enter" || event.key === " ")) {
+      event.preventDefault();
+      showTermPopover(mark.dataset.term, mark.dataset.meaning);
+      return;
+    }
     const modalOpen = ["creatorPinModal", "questionModal", "studyModal"].some((id) => !$(id).classList.contains("hidden"));
     if (modalOpen || state.status !== "running" || !$("quizWorkspace") || $("quizWorkspace").classList.contains("hidden")) return;
     const letterByDigit = { 1: "A", 2: "B", 3: "C", 4: "D", 5: "E" };
@@ -3486,7 +3658,15 @@
       const card = e.target.closest("[data-subject-card]");
       if (card && BANK[card.dataset.subjectCard]) navigateFlow("intro", { subject: card.dataset.subjectCard });
     });
-    $("coverageFilters").addEventListener("click", (e) => {
+    $("dayTabs").addEventListener("click", (e) => {
+      const tab = e.target.closest("[data-day-tab]");
+      if (!tab) return;
+      e.preventDefault();
+      const target = $(tab.dataset.dayTab === "all" ? "subjectCardGrid" : `subjectGroup${tab.dataset.dayTab}`);
+      if (target?.scrollIntoView) target.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });
+      setActiveDayTab(tab.dataset.dayTab);
+    });
+    $("subjectFilters").addEventListener("click", (e) => {
       const button = e.target.closest("[data-subject-filter]");
       if (!button || !SUBJECT_FILTERS[button.dataset.subjectFilter]) return;
       state.subjectFilter = button.dataset.subjectFilter;
@@ -3715,7 +3895,8 @@
     $("downloadDocxBtn").addEventListener("click", downloadDocx);
     $("highlightBtn").addEventListener("click", () => {
       state.highlight = !state.highlight;
-      renderQuizSafely();
+      savePreferences();
+      renderWorkspace();
     });
     $("optionsContainer").addEventListener("click", (e) => {
       const btn = e.target.closest("[data-letter]");
@@ -3914,12 +4095,21 @@
     mountAITutor();
     syncStickyOffsets();
     if (typeof window.addEventListener === "function") {
-      window.addEventListener("resize", syncStickyOffsets);
-      window.addEventListener("orientationchange", () => window.setTimeout(syncStickyOffsets, 120));
+      window.addEventListener("resize", () => {
+        syncStickyOffsets();
+        bindSubjectSpy();
+      });
+      window.addEventListener("orientationchange", () => window.setTimeout(() => {
+        syncStickyOffsets();
+        bindSubjectSpy();
+      }, 120));
     }
     if (FLOW_ENABLED && typeof ResizeObserver === "function") {
       const header = document.querySelector?.(".topbar");
-      if (header) new ResizeObserver(syncStickyOffsets).observe(header);
+      if (header) new ResizeObserver(() => {
+        syncStickyOffsets();
+        bindSubjectSpy();
+      }).observe(header);
     }
     const params = new URLSearchParams(window.location.search);
     if (params.get("creator") === "1" || window.location.hash === "#creator") openPinModal();

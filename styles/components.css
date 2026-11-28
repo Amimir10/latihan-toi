@@ -54,6 +54,26 @@
   transition: transform 140ms ease-out, box-shadow 140ms ease-out, background 140ms ease-out, border-color 140ms ease-out, color 140ms ease-out;
 }
 
+@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .topbar,
+  .exam-topbar.glass,
+  .subjects-toolbar {
+    transition: transform 220ms var(--fx-ease);
+  }
+
+  html[data-sticky-hidden] :is(.topbar, .exam-topbar.glass, .subjects-toolbar) {
+    will-change: transform;
+  }
+
+  html[data-sticky-hidden] .topbar {
+    transform: translateY(-100%);
+  }
+
+  html[data-sticky-hidden] :is(.exam-topbar.glass, .subjects-toolbar) {
+    transform: translateY(calc(var(--topbar-h) * -1));
+  }
+}
+
 .glass,
 .topbar {
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
@@ -387,6 +407,18 @@
   padding: 0.6rem 1.4rem;
   min-height: 44px;
   box-shadow: var(--shadow-btn);
+}
+
+#hintText:not(.hidden) {
+  display: block;
+  max-width: 100%;
+  margin-top: 0.35rem;
+  color: var(--text-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.6;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 
 :is(.glass, .glass-lite):is(button, .landing-secondary, .flow-back, .glass-segment, #examTopbar) {
@@ -1474,6 +1506,38 @@ html.fx-ready [data-reveal].is-in {
 }
 html.fx-ready [data-reveal][data-reveal-delay].is-in {
   transition-delay: calc(var(--reveal-delay, 0) * 1ms);
+}
+
+mark.key-term-mark,
+mark.key-term-mark-strong {
+  padding: 0 2px;
+  border-radius: 4px;
+  color: var(--text-primary);
+  background: var(--state-accent-soft);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+mark.key-term-mark-strong {
+  background: var(--state-warning-soft);
+  font-weight: 700;
+  text-decoration-style: solid;
+}
+mark.key-term-mark:hover,
+mark.key-term-mark-strong:hover {
+  box-shadow: inset 0 -3px 0 var(--state-accent);
+}
+mark.key-term-mark-strong:hover {
+  box-shadow: inset 0 -3px 0 var(--state-warm);
+}
+mark.key-term-mark:focus-visible,
+mark.key-term-mark-strong:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
 
